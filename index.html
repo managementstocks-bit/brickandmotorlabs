@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BrickAndMotorLabs - Hands-on STEM robotics kits for kids ages 3+. Build, learn, and spark the future with DIY engineering toys.">
+  <title>BrickAndMotorLabs - Build. Learn. Engineer the Future.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar__logo">BrickAndMotor<span>Labs</span></a>
+      <ul class="navbar__menu">
+        <li><a href="index.html" class="navbar__link navbar__link--active">Home</a></li>
+        <li><a href="about.html" class="navbar__link">About</a></li>
+        <li><a href="events.html" class="navbar__link">Events</a></li>
+        <li><a href="contact.html" class="navbar__link">Contact</a></li>
+        <li><a href="contact.html" class="navbar__cta">Get In Touch</a></li>
+      </ul>
+      <button class="navbar__hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero hero--centered">
+    <div class="container">
+      <div class="hero__content hero__content--centered">
+        <span class="hero__badge">STEM Learning Toys for Ages 3+</span>
+        <h1 class="hero__title">Build Real Machines.<br><span>Spark Real Minds.</span></h1>
+        <p class="hero__description">Hands-on robotics and engineering kits that turn curiosity into creation. Every BrickAndMotorLabs kit teaches real scientific principles through play.</p>
+        <div class="hero__buttons">
+          <a href="#products" class="btn btn--primary">Explore Kits</a>
+          <a href="https://www.youtube.com/@blixrobotix628" target="_blank" rel="noopener" class="btn btn--outline">Watch Demos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__subtitle">Our Products</p>
+        <h2 class="section__title">Explore Our STEM Kits</h2>
+        <p class="section__description">From simple builds for little hands to complex RC robots for young engineers — there's a BrickAndMotorLabs kit for every age and skill level.</p>
+      </div>
+
+      <!-- Age Filter -->
+      <div class="filter-bar">
+        <button class="filter-btn" data-filter="all">All Kits</button>
+        <button class="filter-btn" data-filter="3">Age 3+</button>
+        <button class="filter-btn" data-filter="5">Age 5+</button>
+        <button class="filter-btn" data-filter="8">Age 8+</button>
+        <select class="sort-select" aria-label="Sort products by price">
+          <option value="default">Sort: Featured</option>
+          <option value="price-low-high" selected>Price: Low to High</option>
+          <option value="price-high-low">Price: High to Low</option>
+        </select>
+      </div>
+
+      <!-- Product Grid -->
+      <!--
+        CLICK-TO-PAY (Manual e-Transfer):
+        Clicking a product price opens an in-page popup with the product and price.
+        The popup button opens a prefilled email to brickandmotorlabs@gmail.com requesting the order.
+        You then reply with an Interac e-Transfer Request Money link (or e-Transfer details) to complete the sale.
+        No per-product payment links are baked into the page, so there is nothing to maintain here.
+      -->
+      <div class="product-grid">
+
+        <!-- Product 1: Bike -->
+        <div class="product-card" data-age="5" data-price="12.78">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/Blix_Minis_Bike.png?v=1782452464&width=1000" alt="Blix Minis Bike" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 5+</span>
+            <h3 class="product-card__title">Blix Minis - Bike</h3>
+            <p class="product-card__description">Assemble a detailed motorcycle in just a short time. The perfect project for a quick dose of DIY fun.</p>
+            <p class="product-card__parts">45+ parts</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="Blix Minis - Bike" data-pay-price="$12.78 CAD" title="Order this kit">$12.78 CAD</button>
+              <a href="builds/bike.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: Queaky Charge -->
+        <div class="product-card" data-age="3" data-price="24.99">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/BlixQueakyCharge-Sleepy1.png?v=1770963330&width=1000" alt="Queaky Charge Sleepy" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 3+</span>
+            <h3 class="product-card__title">Queaky Charge - Sleepy</h3>
+            <p class="product-card__description">Turn everyday objects into musical instruments. Teaches circuits, resistance, and current flow.</p>
+            <p class="product-card__parts">Rechargeable</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="Queaky Charge - Sleepy" data-pay-price="$24.99 CAD" title="Order this kit">$24.99 CAD</button>
+              <a href="builds/queaky-charge.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: Forklift Power -->
+        <div class="product-card" data-age="8" data-price="76.68">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/Blix_Forklift_Power.png?v=1770975128&width=1000" alt="Forklift Power" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 8+</span>
+            <h3 class="product-card__title">Forklift Power</h3>
+            <p class="product-card__description">Build a working motorized forklift. Discover how motors convert electrical energy into real-world motion.</p>
+            <p class="product-card__parts">180+ parts &bull; DC Motor</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="Forklift Power" data-pay-price="$76.68 CAD" title="Order this kit">$76.68 CAD</button>
+              <a href="builds/forklift-power.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4: Crawlers -->
+        <div class="product-card" data-age="8" data-price="49.70">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/Crawlers.webp?v=1733820650&width=1000" alt="Blix Crawlers" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 8+</span>
+            <h3 class="product-card__title">Crawlers</h3>
+            <p class="product-card__description">Build two-legged and four-legged walking robots. Learn how gears and linkages create motion.</p>
+            <p class="product-card__parts">70+ parts &bull; DC Motor</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="Crawlers" data-pay-price="$49.70 CAD" title="Order this kit">$49.70 CAD</button>
+              <a href="builds/crawlers.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5: Discovering Motions -->
+        <div class="product-card" data-age="8" data-price="134.90">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/Discovering_Motions.png?v=1733820660&width=1000" alt="Discovering Motions" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 8+</span>
+            <h3 class="product-card__title">Discovering Motions</h3>
+            <p class="product-card__description">Build working models that demonstrate how real-world mechanisms function. Learn gears, pulleys, and motion types.</p>
+            <p class="product-card__parts">176 parts &bull; DC Motor</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="Discovering Motions" data-pay-price="$134.90 CAD" title="Order this kit">$134.90 CAD</button>
+              <a href="builds/discovering-motions.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6: Buddy -->
+        <div class="product-card" data-age="5" data-price="28.40">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/blix_buddy.webp?v=1733820666&width=1000" alt="Blix Buddy" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 5+</span>
+            <h3 class="product-card__title">Blix Buddy</h3>
+            <p class="product-card__description">Create a waving robot, a moving horse, and more. Discover gear mechanisms, links, joints, and cranks.</p>
+            <p class="product-card__parts">61 parts</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="Blix Buddy" data-pay-price="$28.40 CAD" title="Order this kit">$28.40 CAD</button>
+              <a href="builds/buddy.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7: RC Explorers -->
+        <div class="product-card" data-age="8" data-price="115.02">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/Blix_RC_Explorers.png?v=1733820654&width=1000" alt="RC Explorers" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 8+</span>
+            <h3 class="product-card__title">RC Explorers</h3>
+            <p class="product-card__description">Build 6+ different robot models with a 2.4GHz remote control. Explore motorized and wireless mechanisms.</p>
+            <p class="product-card__parts">120+ parts &bull; 2.4GHz RC</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="RC Explorers" data-pay-price="$115.02 CAD" title="Order this kit">$115.02 CAD</button>
+              <a href="builds/rc-explorers.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 8: RC Rover -->
+        <div class="product-card" data-age="8" data-price="115.02">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/Blix_RC_Rover_1.png?v=1782118753&width=1000" alt="RC Rover" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 8+</span>
+            <h3 class="product-card__title">RC Rover</h3>
+            <p class="product-card__description">Build 5 different track-driven models. Use the 2.4GHz remote to drive, climb, and navigate terrains.</p>
+            <p class="product-card__parts">180+ parts &bull; 2.4GHz RC</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="RC Rover" data-pay-price="$115.02 CAD" title="Order this kit">$115.02 CAD</button>
+              <a href="builds/rc-rover.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 9: Gear Box -->
+        <div class="product-card" data-age="8" data-price="69.57">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/Gear-box.webp?v=1733820657&width=1000" alt="Gear Box" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 8+</span>
+            <h3 class="product-card__title">Gear Box</h3>
+            <p class="product-card__description">Assemble a working gearbox and watch gears mesh together. Learn RPM calculation and power transmission.</p>
+            <p class="product-card__parts">100+ parts &bull; DC Motor</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="Gear Box" data-pay-price="$69.57 CAD" title="Order this kit">$69.57 CAD</button>
+              <a href="builds/gear-box.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 10: RC Megastructures -->
+        <div class="product-card" data-age="8" data-price="268.38">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/Rc_Megastructure.png?v=1733820719&width=1000" alt="RC Megastructures" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 8+</span>
+            <h3 class="product-card__title">RC Megastructures</h3>
+            <p class="product-card__description">Build and operate 8 heavy machinery models with 750+ pieces and a 2.4GHz remote control.</p>
+            <p class="product-card__parts">750+ parts &bull; 2.4GHz RC</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="RC Megastructures" data-pay-price="$268.38 CAD" title="Order this kit">$268.38 CAD</button>
+              <a href="builds/rc-megastructures.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 11: Amusement Park -->
+        <div class="product-card" data-age="8" data-price="115.02">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/Amusement_Park_1.webp?v=1733820662&width=1000" alt="Amusement Park" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 8+</span>
+            <h3 class="product-card__title">Amusement Park</h3>
+            <p class="product-card__description">Build 7 motorized rides inspired by theme parks. 340+ parts with 2.4GHz remote control.</p>
+            <p class="product-card__parts">340+ parts &bull; 2.4GHz RC</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="Amusement Park" data-pay-price="$115.02 CAD" title="Order this kit">$115.02 CAD</button>
+              <a href="builds/amusement-park.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 12: Power Screw -->
+        <div class="product-card" data-age="8" data-price="80.93">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/power-screw_1.webp?v=1733820669&width=1000" alt="Power Screw" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 8+</span>
+            <h3 class="product-card__title">Power Screw</h3>
+            <p class="product-card__description">Build 7 working models including a dumper truck and scissor lift. Learn power screws and linear motion.</p>
+            <p class="product-card__parts">200+ parts &bull; DC Motor</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="Power Screw" data-pay-price="$80.93 CAD" title="Order this kit">$80.93 CAD</button>
+              <a href="builds/power-screw.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 13: Rover -->
+        <div class="product-card" data-age="8" data-price="53.96">
+          <div class="product-card__image"><img src="https://blixedu.com/cdn/shop/files/Rover.1.jpg?v=1782117868&width=1000" alt="Rover" loading="lazy"></div>
+          <div class="product-card__body">
+            <span class="product-card__age">Age 8+</span>
+            <h3 class="product-card__title">Rover</h3>
+            <p class="product-card__description">Build 4 different track-driven models. Explore how movement, sprockets, and power transmission work.</p>
+            <p class="product-card__parts">150+ parts &bull; DC Motor</p>
+            <div class="product-card__footer">
+              <button type="button" class="product-card__price product-card__pay" data-pay-title="Rover" data-pay-price="$53.96 CAD" title="Order this kit">$53.96 CAD</button>
+              <a href="builds/rover.html" class="product-card__link">Build Guide &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube Section -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__subtitle">Watch &amp; Learn</p>
+        <h2 class="section__title">See BrickAndMotorLabs in Action</h2>
+        <p class="section__description">Watch build tutorials, product demos, and kids enjoying their BrickAndMotorLabs kits on our YouTube channel.</p>
+      </div>
+      <div class="youtube-cta" style="text-align: center; margin-top: 20px;">
+        <a href="https://www.youtube.com/@blixrobotix628" target="_blank" rel="noopener" class="btn btn--primary">Visit YouTube Channel</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">BrickAndMotor<span>Labs</span></div>
+          <p>Hands-on STEM robotics kits that turn curiosity into creation. Building the next generation of engineers, one kit at a time.</p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Kits</h4>
+          <ul class="footer__links">
+            <li><a href="builds/bike.html">Blix Minis - Bike</a></li>
+            <li><a href="builds/queaky-charge.html">Queaky Charge</a></li>
+            <li><a href="builds/forklift-power.html">Forklift Power</a></li>
+            <li><a href="builds/rc-megastructures.html">RC Megastructures</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Connect</h4>
+          <ul class="footer__links">
+            <li><a href="mailto:brickandmotorlabs@gmail.com">brickandmotorlabs@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 BrickAndMotorLabs. All rights reserved.</p>
+        <p>Built with passion for STEM education.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Payment Modal -->
+  <div class="pay-modal" id="pay-modal" hidden>
+    <div class="pay-modal__overlay" data-pay-close></div>
+    <div class="pay-modal__card" role="dialog" aria-modal="true" aria-labelledby="pay-modal-title">
+      <button type="button" class="pay-modal__close" data-pay-close aria-label="Close">&times;</button>
+      <h3 class="pay-modal__title" id="pay-modal-title"></h3>
+      <p class="pay-modal__price" id="pay-modal-price"></p>
+      <p class="pay-modal__text">We'll email you a secure Interac e-Transfer Request Money link to complete your payment. Click below to send us your order request.</p>
+      <a class="btn btn--primary pay-modal__btn" id="pay-modal-link" href="#">Request Payment by Email</a>
+      <p class="pay-modal__alt">Questions? <a href="mailto:brickandmotorlabs@gmail.com">brickandmotorlabs@gmail.com</a></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

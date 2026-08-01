@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BrickAndMotorLabs - Get in touch. Contact us for inquiries, partnerships, and support.">
+  <title>Contact Us - BrickAndMotorLabs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar__logo">BrickAndMotor<span>Labs</span></a>
+      <ul class="navbar__menu">
+        <li><a href="index.html" class="navbar__link">Home</a></li>
+        <li><a href="about.html" class="navbar__link">About</a></li>
+        <li><a href="events.html" class="navbar__link">Events</a></li>
+        <li><a href="contact.html" class="navbar__link navbar__link--active">Contact</a></li>
+        <li><a href="contact.html" class="navbar__cta">Get In Touch</a></li>
+      </ul>
+      <button class="navbar__hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="hero" style="padding: 60px 0 80px;">
+    <div class="container">
+      <div class="hero__content" style="max-width: 700px;">
+        <span class="hero__badge">Get In Touch</span>
+        <h1 class="hero__title">Let's <span>Connect</span></h1>
+        <p class="hero__description">Have a question about our kits? Want to partner with us? Or just want to say hi? We'd love to hear from you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section">
+    <div class="container">
+      <div style="max-width: 600px; margin: 0 auto;">
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper">
+          <h3>Send Us a Message</h3>
+          <form id="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSeACvicVDMZVLLRPPuWlNho4D646Tofwq_D-d8hxg2e2FsZpw/formResponse" method="post" target="hidden_iframe">
+            <div class="form-group">
+              <label for="contact-name">Your Name</label>
+              <input type="text" id="contact-name" name="entry.2005620554" placeholder="Jane Smith" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" name="entry.1045781291" placeholder="jane@example.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <select id="contact-subject" name="entry.1166974658" required>
+                <option value="">Select a topic</option>
+                <option value="Product Enquiry">Product Enquiry</option>
+                <option value="Order / Shipping">Order / Shipping</option>
+                <option value="Partnership / Schools">Partnership / Schools</option>
+                <option value="Event / Workshop">Event / Workshop</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="entry.839337160" placeholder="Tell us how we can help..." required></textarea>
+            </div>
+            <button type="submit" id="contact-submit" class="btn btn--primary" style="width:100%;justify-content:center;">Send Message</button>
+            <iframe name="hidden_iframe" title="Contact form submission" aria-hidden="true" style="display:none;width:0;height:0;border:0;"></iframe>
+            <p id="form-status" class="form-alert" role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">BrickAndMotor<span>Labs</span></div>
+          <p>Hands-on STEM robotics kits that turn curiosity into creation.</p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Kits</h4>
+          <ul class="footer__links">
+            <li><a href="builds/bike.html">Blix Minis - Bike</a></li>
+            <li><a href="builds/forklift-power.html">Forklift Power</a></li>
+            <li><a href="builds/rc-megastructures.html">RC Megastructures</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Connect</h4>
+          <ul class="footer__links">
+            <li><a href="mailto:brickandmotorlabs@gmail.com">brickandmotorlabs@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 BrickAndMotorLabs. All rights reserved.</p>
+        <p>Built with passion for STEM education.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
