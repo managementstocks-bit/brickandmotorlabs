@@ -277,13 +277,18 @@ p {
 
 .hero__buttons {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
+}
+
+.hero__buttons .btn {
+  padding: 12px 22px;
+  font-size: 0.95rem;
 }
 
 .hero__buttons--group {
   display: inline-flex;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: nowrap;
 }
 
