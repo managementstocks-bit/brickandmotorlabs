@@ -125,6 +125,11 @@ p {
   color: var(--accent);
 }
 
+.navbar__logo img {
+  height: 32px;
+  width: auto;
+}
+
 .navbar__menu {
   display: flex;
   align-items: center;
@@ -306,6 +311,17 @@ p {
 .btn--outline:hover {
   border-color: var(--primary);
   color: var(--primary);
+}
+
+.btn--accent {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.btn--accent:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .hero__visual {
@@ -1055,7 +1071,7 @@ p {
 
 .build-item h4 {
   margin-bottom: 8px;
-  color: var(--primary);
+  color: var(--dark);
 }
 
 .build-item p {
@@ -1179,6 +1195,54 @@ p {
   gap: 16px;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.4);
+}
+
+/* --- Promo Banner --- */
+.promo-banner {
+  margin-top: var(--nav-height);
+  padding: 48px 0;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--accent) 100%);
+}
+
+.promo-banner .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.promo-banner__content {
+  flex: 1;
+  min-width: 260px;
+}
+
+.promo-banner__tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 12px;
+}
+
+.promo-banner h2 {
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.promo-banner p {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0;
+  max-width: 520px;
+}
+
+.promo-banner__action {
+  flex-shrink: 0;
 }
 
 /* --- Responsive --- */

@@ -75,7 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Apply sort on initial load
-  applySort();
+  if (sortSelect) {
+    applySort();
+  }
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
