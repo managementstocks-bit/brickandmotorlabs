@@ -1211,7 +1211,7 @@ p {
     padding: 20px;
     gap: 0;
     box-shadow: var(--shadow-md);
-    transform: translateY(-120%);
+    transform: translateY(calc(-100% - var(--nav-height)));
     transition: transform var(--transition);
     z-index: 999;
   }
@@ -1541,4 +1541,14 @@ p {
   .build-nav__btn--prev { order: 2; }
   .build-nav__btn--next { order: 0; }
   .build-nav__count     { order: 3; }
+}
+
+@media (max-width: 400px) {
+  .navbar .container {
+    padding: 0 12px;
+  }
+
+  .navbar__logo {
+    font-size: 1.25rem;
+  }
 }
