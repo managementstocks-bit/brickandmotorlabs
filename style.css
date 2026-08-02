@@ -205,8 +205,8 @@ p {
 /* --- Hero Section --- */
 .hero {
   margin-top: var(--nav-height);
-  padding: 80px 0;
-  height: 620px;
+  padding: 40px 0;
+  height: 460px;
   display: flex;
   align-items: center;
   background: linear-gradient(rgba(248, 249, 250, 0.92), rgba(255, 255, 255, 0.88)), url('images/hero.jpg') center / cover no-repeat;
@@ -1284,7 +1284,7 @@ p {
 
   .hero {
     height: auto;
-    padding: 60px 0;
+    padding: 40px 0;
   }
 
   .hero .container {
