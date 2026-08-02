@@ -129,47 +129,4 @@ document.addEventListener('DOMContentLoaded', () => {
       status.hidden = false;
     });
   }
-
-  // Payment modal for click-to-pay prices
-  const payModal = document.getElementById('pay-modal');
-  if (payModal) {
-    const modalTitle = document.getElementById('pay-modal-title');
-    const modalPrice = document.getElementById('pay-modal-price');
-    const modalLink = document.getElementById('pay-modal-link');
-
-    function openPayModal(btn) {
-      const title = btn.dataset.payTitle || '';
-      const price = btn.dataset.payPrice || '';
-      const subject = encodeURIComponent('Order Request: ' + title + ' (' + price + ')');
-      const body = encodeURIComponent(
-        'Hi,\n\nI\'d like to order the ' + title + ' for ' + price + '.\n\n' +
-        'Please send me an Interac e-Transfer Request Money link so I can complete my payment.\n\n' +
-        'My name:\nMy email address:\nMy shipping address:\n\nThank you!'
-      );
-
-      modalTitle.textContent = title;
-      modalPrice.textContent = price;
-      modalLink.href = 'mailto:brickandmotorlabs@gmail.com?subject=' + subject + '&body=' + body;
-
-      payModal.hidden = false;
-    }
-
-    function closePayModal() {
-      payModal.hidden = true;
-    }
-
-    document.querySelectorAll('.product-card__pay').forEach(btn => {
-      btn.addEventListener('click', () => openPayModal(btn));
-    });
-
-    payModal.querySelectorAll('[data-pay-close]').forEach(el => {
-      el.addEventListener('click', closePayModal);
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !payModal.hidden) {
-        closePayModal();
-      }
-    });
-  }
 });
