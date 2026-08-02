@@ -206,7 +206,7 @@ p {
 .hero {
   margin-top: var(--nav-height);
   padding: 80px 0 100px;
-  background: linear-gradient(135deg, #e8f0fe 0%, #f8f9fa 50%, #fef7e0 100%);
+  background: linear-gradient(rgba(248, 249, 250, 0.92), rgba(255, 255, 255, 0.88)), url('images/Rc_Megastructure.jpg') center / cover no-repeat;
   position: relative;
   overflow: hidden;
 }
@@ -1201,54 +1201,6 @@ p {
   gap: 16px;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.4);
-}
-
-/* --- Promo Banner --- */
-.promo-banner {
-  margin-top: var(--nav-height);
-  padding: 48px 0;
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--accent) 100%);
-}
-
-.promo-banner .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
-.promo-banner__content {
-  flex: 1;
-  min-width: 260px;
-}
-
-.promo-banner__tag {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.18);
-  color: var(--white);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 50px;
-  margin-bottom: 12px;
-}
-
-.promo-banner h2 {
-  color: var(--white);
-  margin-bottom: 8px;
-}
-
-.promo-banner p {
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 0;
-  max-width: 520px;
-}
-
-.promo-banner__action {
-  flex-shrink: 0;
 }
 
 /* --- Responsive --- */
