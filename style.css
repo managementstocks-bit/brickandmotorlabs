@@ -278,6 +278,12 @@ p {
   flex-wrap: wrap;
 }
 
+.hero__buttons--group {
+  display: inline-flex;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
