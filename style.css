@@ -30,6 +30,30 @@
   --nav-height: 70px;
 }
 
+/* --- Skip Link (Accessibility) --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--primary);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* --- Focus Visible (Accessibility) --- */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 /* --- Reset & Base --- */
 *,
 *::before,
@@ -533,30 +557,6 @@ p {
   color: var(--primary);
 }
 
-.product-card__price.product-card__pay {
-  text-decoration: none;
-  border-bottom: 2px dotted var(--primary);
-  cursor: pointer;
-  background: none;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  padding: 0;
-  font-family: inherit;
-  text-align: left;
-}
-
-.product-card__price.product-card__pay:hover {
-  color: var(--primary-dark);
-  border-bottom-style: solid;
-}
-
-.product-card__price.product-card__pay:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
-
 .product-card__link {
   display: inline-flex;
   align-items: center;
@@ -1014,53 +1014,78 @@ p {
 }
 
 /* --- YouTube Section --- */
-.youtube-section {
-  padding: 60px 0;
-}
-
-.youtube-grid {
+/* --- Testimonials --- */
+.testimonial-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-.youtube-card {
+.testimonial-card {
+  background: var(--white);
   border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  padding: 32px 24px;
   border: 1px solid var(--gray-light);
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 
-.youtube-card:hover {
+.testimonial-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-4px);
 }
 
-.youtube-card iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: none;
-}
-
-.youtube-card__footer {
-  padding: 16px;
-  background: var(--white);
-}
-
-.youtube-card__footer h4 {
+.testimonial-card__text {
   font-size: 0.95rem;
-  margin-bottom: 4px;
+  color: var(--dark-light);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  flex: 1;
+  font-style: italic;
 }
 
-.youtube-card__footer span {
+.testimonial-card__author {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--gray-light);
+  padding-top: 16px;
+}
+
+.testimonial-card__name {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.9rem;
+}
+
+.testimonial-card__location {
   font-size: 0.8rem;
   color: var(--gray);
 }
 
-.youtube-cta {
-  text-align: center;
-  margin-top: 40px;
+/* --- Footer Trust --- */
+.footer__trust {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.footer__trust span {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer__trust span::before {
+  content: "\2713";
+  color: var(--success);
+  font-weight: 700;
 }
 
 /* --- Footer --- */
@@ -1139,9 +1164,6 @@ p {
     grid-template-columns: 1fr 1fr;
   }
 
-  .youtube-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 768px) {
@@ -1254,133 +1276,13 @@ p {
     text-align: center;
   }
 
-  .youtube-grid {
+  .testimonial-grid {
     grid-template-columns: 1fr;
   }
 
   .section {
     padding: 60px 0;
   }
-}
-
-/* ─── Product Card Placeholder ─────────────────────────────────── */
-.product-card__placeholder {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, #e8f0fe 0%, #fef7e0 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.5rem;
-  border-bottom: 1px solid var(--gray-light);
-}
-
-/* ─── Hero Channel Card ─────────────────────────────────────────── */
-.hero__channel-card {
-  background: var(--dark);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  width: 100%;
-  max-width: 500px;
-}
-
-.channel-card__link {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: var(--white);
-}
-
-.channel-card__thumb {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity var(--transition);
-}
-
-.channel-card__link:hover .channel-card__thumb {
-  opacity: 0.85;
-}
-
-.channel-card__icon {
-  width: 72px;
-  height: 72px;
-  background: #ff0000;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: var(--white);
-  box-shadow: 0 0 40px rgba(255, 0, 0, 0.35);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.channel-card__link:hover .channel-card__icon {
-  transform: scale(1.1);
-  box-shadow: 0 0 60px rgba(255, 0, 0, 0.5);
-}
-
-.channel-card__info {
-  padding: 20px 24px;
-  background: rgba(255,255,255,0.05);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.channel-card__info strong {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--white);
-}
-
-.channel-card__info span {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.6);
-}
-
-/* ─── YouTube Clickable Cards ───────────────────────────────────── */
-.youtube-card--link .youtube-card__thumb-link {
-  display: block;
-  text-decoration: none;
-}
-
-.youtube-card__thumb-placeholder {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: opacity var(--transition);
-}
-
-.youtube-card__thumb-link:hover .youtube-card__thumb-placeholder {
-  opacity: 0.8;
-}
-
-.youtube-card__thumb-placeholder span {
-  width: 56px;
-  height: 56px;
-  background: #ff0000;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  color: var(--white);
-  box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
-  transition: transform var(--transition);
-}
-
-.youtube-card__thumb-link:hover .youtube-card__thumb-placeholder span {
-  transform: scale(1.15);
 }
 
 /* ─── Build Page Navigation ─────────────────────────────────────── */
@@ -1500,4 +1402,132 @@ p {
   .navbar__logo {
     font-size: 1.25rem;
   }
+}
+
+/* ─── FAQ Accordion ─────────────────────────────────────────────── */
+.faq-item {
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.faq-item summary {
+  padding: 20px 24px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background var(--transition);
+}
+
+.faq-item summary:hover {
+  background: var(--light);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--primary);
+  transition: transform var(--transition);
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item[open] summary {
+  border-bottom: 1px solid var(--gray-light);
+  background: var(--light);
+}
+
+.faq-item p,
+.faq-item ul {
+  padding: 20px 24px;
+  margin: 0;
+  color: var(--dark-light);
+  line-height: 1.7;
+}
+
+.faq-item ul {
+  padding-left: 24px;
+}
+
+.faq-item a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* ─── Form Alerts ───────────────────────────────────────────────── */
+.form-alert {
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.form-alert--success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.form-alert--error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* ─── Scroll Animations ─────────────────────────────────────────── */
+.product-card,
+.feature-card,
+.testimonial-card,
+.event-card,
+.faq-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Events Empty State ────────────────────────────────────────── */
+.events-empty {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.events-empty__icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.events-empty h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.events-empty p {
+  color: var(--dark-light);
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.events-empty .btn {
+  margin-top: 20px;
 }

@@ -90,27 +90,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Contact form -> Google Forms submission
-    const contactForm = document.getElementById('contact-form');
+  // Contact form -> Google Forms submission with validation
+  const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     const iframe = contactForm.querySelector('iframe[name="hidden_iframe"]');
     const status = document.getElementById('form-status');
     const submitBtn = document.getElementById('contact-submit');
+    const emailInput = document.getElementById('contact-email');
     let submitting = false;
     let loadTimeout = null;
 
-    contactForm.addEventListener('submit', () => {
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    contactForm.addEventListener('submit', (e) => {
+      status.hidden = true;
+      status.classList.remove('form-alert--success', 'form-alert--error');
+
+      if (emailInput && !validateEmail(emailInput.value)) {
+        e.preventDefault();
+        status.textContent = 'Please enter a valid email address.';
+        status.classList.add('form-alert--error');
+        status.hidden = false;
+        emailInput.focus();
+        return;
+      }
+
       submitting = true;
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
-      status.hidden = true;
-      status.classList.remove('form-alert--success', 'form-alert--error');
 
       loadTimeout = setTimeout(() => {
         submitting = false;
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
-        status.textContent = 'Sorry, your message couldn\'t be sent. Please check your connection and try again, or email us at hello@brickandmotorlabs.com.';
+        status.textContent = 'Sorry, your message couldn\'t be sent. Please check your connection and try again, or email us at brickandmotorlabs@gmail.com.';
         status.classList.add('form-alert--error');
         status.hidden = false;
       }, 12000);
@@ -124,9 +139,35 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.textContent = 'Send Message';
 
       contactForm.reset();
-      status.textContent = 'Thank you! Your message has been sent. We\'ll get back to you soon.';
+      status.textContent = 'Thank you! Your message has been sent. We\'ll get back to you within 24 hours.';
       status.classList.add('form-alert--success');
       status.hidden = false;
     });
   }
+
+  // FAQ accordion - only one open at a time
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('toggle', () => {
+      if (item.open) {
+        document.querySelectorAll('.faq-item[open]').forEach(other => {
+          if (other !== item) other.open = false;
+        });
+      }
+    });
+  });
+
+  // Scroll reveal animations
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.product-card, .feature-card, .testimonial-card, .event-card, .faq-item').forEach(el => {
+    observer.observe(el);
+  });
 });
