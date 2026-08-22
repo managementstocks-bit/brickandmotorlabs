@@ -156,18 +156,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Scroll reveal animations
-  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
+  // Scroll reveal animations (skipped when the user prefers reduced motion;
+  // the reduced-motion CSS block keeps cards visible without any movement)
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) {
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
 
-  document.querySelectorAll('.product-card, .feature-card, .testimonial-card, .event-card, .faq-item').forEach(el => {
-    observer.observe(el);
-  });
+    document.querySelectorAll('.product-card, .feature-card, .testimonial-card, .event-card, .faq-item, .video-card').forEach(el => {
+      observer.observe(el);
+    });
+  }
 });

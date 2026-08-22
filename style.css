@@ -1156,6 +1156,10 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1244,6 +1248,13 @@ p {
     grid-template-columns: 1fr;
     max-width: 400px;
     margin: 0 auto;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .about-grid {
@@ -1488,12 +1499,119 @@ p {
   border: 1px solid #f5c6cb;
 }
 
+/* --- Video Showcase --- */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.video-card {
+  display: block;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-light);
+  transition: all var(--transition);
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+
+.video-card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: var(--dark);
+}
+
+.video-card__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.video-card:hover .video-card__thumb {
+  transform: scale(1.05);
+}
+
+.video-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.35) 100%);
+  pointer-events: none;
+}
+
+.video-card__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-md);
+  z-index: 1;
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+.video-card__play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  border-left: 14px solid var(--primary);
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+}
+
+.video-card:hover .video-card__play {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: var(--white);
+}
+
+.video-card__body {
+  display: block;
+  padding: 16px 20px;
+}
+
+.video-card__title {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.video-card__meta {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.video-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+
 /* ─── Scroll Animations ─────────────────────────────────────────── */
 .product-card,
 .feature-card,
 .testimonial-card,
 .event-card,
-.faq-item {
+.faq-item,
+.video-card {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -1530,4 +1648,31 @@ p {
 
 .events-empty .btn {
   margin-top: 20px;
+}
+
+/* ─── Reduced Motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Cards stay fully visible; no fade/slide-in on scroll */
+  .product-card,
+  .feature-card,
+  .testimonial-card,
+  .event-card,
+  .faq-item,
+  .video-card {
+    opacity: 1;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
