@@ -143,6 +143,7 @@ p {
   display: flex;
   align-items: center;
   gap: 8px;
+  letter-spacing: -0.02em;
 }
 
 .navbar__logo span {
@@ -150,7 +151,7 @@ p {
 }
 
 .navbar__logo img {
-  height: 32px;
+  height: 36px;
   width: auto;
 }
 
