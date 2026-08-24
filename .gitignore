@@ -3,3 +3,10 @@ node_modules/
 *.log
 .env
 update-pages.js
+
+# Local dev / experimental artifacts (not part of the deployed site)
+.vision/
+inject-3d.js
+inject-anim.js
+fix-paths.js
+ANIMATION_STATE.md

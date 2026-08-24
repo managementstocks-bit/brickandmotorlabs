@@ -29,6 +29,7 @@
   <link rel="icon" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"FAQ - BrickAndMotorLabs | Common Questions About Our STEM Kits","url":"https://brickandmotorlabs.com/faq.html","description":"Frequently asked questions about BrickAndMotorLabs STEM robotics kits: age ranges, ordering, shipping, and more.","isPartOf":{"@type":"WebSite","name":"BrickAndMotorLabs","url":"https://brickandmotorlabs.com/"}}
@@ -40,7 +41,7 @@
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="navbar__logo"><img src="images/logo.svg" alt="BrickAndMotorLabs logo">BrickAndMotor<span>Labs</span></a>
-      <ul class="navbar__menu">
+      <ul class="navbar__menu" id="navbar-menu">
         <li><a href="index.html" class="navbar__link">Home</a></li>
         <li><a href="about.html" class="navbar__link">About</a></li>
         <li><a href="index.html#products" class="navbar__link">Kits</a></li>
@@ -48,7 +49,7 @@
         <li><a href="contact.html" class="navbar__link">Contact</a></li>
         <li><a href="contact.html" class="navbar__cta">Get In Touch</a></li>
       </ul>
-      <button class="navbar__hamburger" aria-label="Toggle menu">
+      <button class="navbar__hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navbar-menu">
         <span></span><span></span><span></span>
       </button>
     </div>

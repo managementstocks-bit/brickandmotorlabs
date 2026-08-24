@@ -15,12 +15,13 @@
 - Inter font from Google Fonts
 - CSS custom properties for theming
 - WebP images with `<picture>` fallbacks (15 WebP files in images/)
-- Google Analytics 4: G-9VZK4GZM4K
+- Google Analytics 4: G-VJJ1KVW9LM
 
 ## File Structure
 ```
 BrickAndMotorLabs.com/
 ├── index.html          # Landing page with product grid, filter, sort
+├── 404.html            # Branded 404 (served automatically by GitHub Pages)
 ├── about.html          # Company story
 ├── events.html         # Events page
 ├── contact.html        # Contact form (email-first ordering)
@@ -56,8 +57,8 @@ BrickAndMotorLabs.com/
 ## Product Catalog (15 kits, sorted by price low-to-high)
 1. Blix Minis Bike - $12.78 CAD, Age 5+, 45+ parts
 2. Blix Minis Ferris Wheel - $12.78 CAD, Age 5+, 50+ parts
-3. Queaky Charge - $24.99 CAD, Age 5+
-4. Blix Buddy - $28.40 CAD, Age 8+, 61 parts
+3. Queaky Charge - $24.99 CAD, Age 3+
+4. Blix Buddy - $28.40 CAD, Age 5+, 61 parts
 5. Blix Crawler - $49.70 CAD, Age 8+, 70+ parts
 6. Blix Rover - $53.96 CAD, Age 8+, 150+ parts
 7. Blix Gear Box - $69.57 CAD, Age 8+, 100+ parts
@@ -88,8 +89,20 @@ BrickAndMotorLabs.com/
 ## YouTube Demo Videos
 - Bike: https://www.youtube.com/watch?v=KsnRgw7CJBM
 - Ferris Wheel: https://www.youtube.com/watch?v=iiLmrAEs_G4
+- Queaky Charge: https://www.youtube.com/watch?v=6bcL4xkWFyg
+- Blix Buddy: https://www.youtube.com/watch?v=JikTX5-Lpa4
+- Crawler: https://www.youtube.com/watch?v=cPoskmlzszY
+- Rover: https://www.youtube.com/watch?v=teOLC33eUdE
+- Gear Box: https://www.youtube.com/watch?v=__i8lnySPdk
+- Forklift Power: https://www.youtube.com/watch?v=4HhDFlixjYs
+- Power Screw: https://www.youtube.com/watch?v=38AioA78VXs
 - Marble Run 2: https://www.youtube.com/watch?v=2qDj7rsl6mM
-- Others: Check individual build pages
+- RC Explorers: https://www.youtube.com/watch?v=BnafTHQzZvw
+- RC Rover: https://www.youtube.com/watch?v=FlpMFRt1bC8
+- Amusement Park: https://www.youtube.com/watch?v=8HPHd5AGhm0
+- Discovering Motions: https://www.youtube.com/watch?v=d-bz_nbVJwc
+- RC Megastructures: https://www.youtube.com/watch?v=_D-ln4IxVIc
+- Thumbnails: local `images/youtube-<slug>.jpg` (copied from `.vision/<slug>/thumb_maxresdefault.jpg`)
 
 ## Build Page Navigation Order
 Build pages have prev/next links sorted by price (low-to-high), matching landing page default sort.
@@ -110,4 +123,10 @@ Build pages have prev/next links sorted by price (low-to-high), matching landing
 1. Updated all 15 build pages with product descriptions from PDF
 2. Fixed build page navigation order to match landing page price sort
 3. Added missing "Watch Demo" buttons to Ferris Wheel and Marble Run 2 pages
-4. All changes validated and deployed to production
+4. Fixed wrong ages in titles/meta (bike 5+, forklift-power & rc-megastructures 8+); added `offers` + real product images to Product JSON-LD and OG tags on all 15 build pages
+5. Build pages now serve WebP via `<picture>` (was PNG/JPG originals up to 921 KB); fonts moved from CSS @import to `<link>` in head
+6. Removed dead "Featured" sort option; hamburger menu now has aria-expanded/controls + Escape/outside-click close
+7. Created 404.html; updated sitemap lastmod to 2026-08-24; gitignored .vision/ + dev scripts
+8. ⚠️ `update-pages.js` is DESTRUCTIVE (wipes GA/JSON-LD/OG images) — see warning at top of file; prefer editing pages directly
+
+## All changes validated (node validate.js, 0 errors). Not yet pushed.

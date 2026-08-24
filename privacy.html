@@ -29,6 +29,7 @@
   <link rel="icon" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Privacy Policy - BrickAndMotorLabs","url":"https://brickandmotorlabs.com/privacy.html","description":"BrickAndMotorLabs privacy policy. We respect your privacy and are committed to protecting your personal information.","isPartOf":{"@type":"WebSite","name":"BrickAndMotorLabs","url":"https://brickandmotorlabs.com/"}}
@@ -40,7 +41,7 @@
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="navbar__logo"><img src="images/logo.svg" alt="BrickAndMotorLabs logo">BrickAndMotor<span>Labs</span></a>
-      <ul class="navbar__menu">
+      <ul class="navbar__menu" id="navbar-menu">
         <li><a href="index.html" class="navbar__link">Home</a></li>
         <li><a href="about.html" class="navbar__link">About</a></li>
         <li><a href="index.html#products" class="navbar__link">Kits</a></li>
@@ -48,7 +49,7 @@
         <li><a href="contact.html" class="navbar__link">Contact</a></li>
         <li><a href="contact.html" class="navbar__cta">Get In Touch</a></li>
       </ul>
-      <button class="navbar__hamburger" aria-label="Toggle menu">
+      <button class="navbar__hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navbar-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -71,7 +72,7 @@
       <p>When you use our website or contact us, we may collect:</p>
       <ul>
         <li><strong>Personal information</strong> — name, email address, and message content when you fill out our contact form</li>
-        <li><strong>Usage data</strong> — anonymous analytics through privacy-friendly tools (pages visited, time on site, device type)</li>
+        <li><strong>Usage data</strong> — anonymous analytics (pages visited, time on site, device type) via Google Analytics 4</li>
       </ul>
 
       <h3>2. How We Use Your Information</h3>
@@ -86,17 +87,20 @@
       <h3>3. What We Do NOT Do</h3>
       <ul>
         <li>We do not sell, rent, or share your personal information with third parties</li>
-        <li>We do not use tracking cookies or behavioural advertising</li>
+        <li>We do not use advertising cookies or cross-site behavioural tracking</li>
         <li>We do not collect data from children under 13 without parental consent</li>
       </ul>
 
       <h3>4. Google Forms</h3>
       <p>Our contact form uses Google Forms to collect submissions. Google's privacy policy applies to data processed through their service. We only request the minimum information needed to respond to your message.</p>
 
-      <h3>5. Data Retention</h3>
+      <h3>5. Google Analytics</h3>
+      <p>Our website uses Google Analytics 4 (GA4) to collect anonymous usage analytics. GA4 stores a first-party analytics cookie (such as <code>_ga</code>) in your browser so it can recognize you as an anonymous returning visitor. This data is not used for advertising, and no advertising cookies are set on our site. If you prefer not to be tracked, you can opt out of Google Analytics at <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google's opt-out page</a>. Google's privacy policy applies to data collected by GA4.</p>
+
+      <h3>6. Data Retention</h3>
       <p>We retain contact form submissions and order information for as long as necessary to provide our services and comply with legal obligations. You can request deletion of your data at any time by emailing us.</p>
 
-      <h3>6. Your Rights</h3>
+      <h3>7. Your Rights</h3>
       <p>Under Canadian privacy law (PIPEDA), you have the right to:</p>
       <ul>
         <li>Access the personal information we hold about you</li>
@@ -105,7 +109,7 @@
         <li>Withdraw consent for data processing</li>
       </ul>
 
-      <h3>7. Contact</h3>
+      <h3>8. Contact</h3>
       <p>For any privacy-related questions, email us at <a href="mailto:brickandmotorlabs@gmail.com">brickandmotorlabs@gmail.com</a>.</p>
     </div>
   </section>

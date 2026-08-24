@@ -4,17 +4,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const menu = document.querySelector('.navbar__menu');
 
   if (hamburger && menu) {
+    const closeMenu = () => {
+      hamburger.classList.remove('navbar__hamburger--active');
+      menu.classList.remove('navbar__menu--open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    };
+
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('navbar__hamburger--active');
-      menu.classList.toggle('navbar__menu--open');
+      const open = menu.classList.toggle('navbar__menu--open');
+      hamburger.classList.toggle('navbar__hamburger--active', open);
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
     // Close menu when clicking a link
     menu.querySelectorAll('.navbar__link, .navbar__cta').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('navbar__hamburger--active');
-        menu.classList.remove('navbar__menu--open');
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape (restore focus to the toggle button)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('navbar__menu--open')) {
+        closeMenu();
+        hamburger.focus();
+      }
+    });
+
+    // Close when clicking outside the nav
+    document.addEventListener('click', (e) => {
+      if (menu.classList.contains('navbar__menu--open') && !e.target.closest('.navbar')) {
+        closeMenu();
+      }
     });
   }
 
