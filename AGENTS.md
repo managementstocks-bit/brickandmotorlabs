@@ -129,4 +129,4 @@ Build pages have prev/next links sorted by price (low-to-high), matching landing
 7. Created 404.html; updated sitemap lastmod to 2026-08-24; gitignored .vision/ + dev scripts
 8. ⚠️ `update-pages.js` is DESTRUCTIVE (wipes GA/JSON-LD/OG images) — see warning at top of file; prefer editing pages directly
 
-## All changes validated (node validate.js, 0 errors). Not yet pushed.
+## All changes validated (node validate.js, 0 errors) and pushed to production (commit 56f7baa).
