@@ -4,6 +4,10 @@ node_modules/
 .env
 update-pages.js
 
+# Checkout worker secrets / local state
+api/.dev.vars
+.wrangler/
+
 # Local dev / experimental artifacts (not part of the deployed site)
 .vision/
 inject-3d.js

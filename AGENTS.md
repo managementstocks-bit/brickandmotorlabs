@@ -81,10 +81,42 @@ BrickAndMotorLabs.com/
 - Accessibility: Skip-link, :focus-visible, ARIA labels, semantic HTML
 
 ## Ordering Process
-- Contact-first: No payment setup yet
-- Customers click price → goes to contact.html
-- Customers email for shipping quotes
+- Two paths: (1) **card checkout** — Add to Cart → Stripe hosted checkout (see E-Commerce below); (2) **contact-first / Interac e-Transfer** — price links and the cart drawer both offer "order by email", kept for customers who prefer e-transfer
 - No "free shipping" claims on site
+
+## E-Commerce (Phase 1) — Stripe Checkout via Cloudflare Worker
+- ⚠️ **THIS WORK IS ON `feat/checkout-payments` — NOT MERGED TO MAIN.** Do not merge until: (1) real kit weights → update `SHIPPING_CONFIG` secret, (2) user tests the full checkout flow in browser. Worker is already deployed live (worker secrets are independent of git).
+- Cart UI lives in `script.js` (catalog constant, drawer, localStorage `bml_cart`). Add-to-Cart buttons are injected on the 15 product cards and 15 build pages — no per-page HTML needed.
+- Checkout API is a Cloudflare Worker — source in PRIVATE repo `managementstocks-bit/brickandmotorlabs-worker` (main branch; NOT in this repo):
+  - `POST /api/checkout` — creates a Stripe Checkout Session from the cart (multi-kit), returns session URL
+  - `POST /api/webhook` — verifies Stripe signature, logs paid orders
+  - `GET /api/health`
+- Config via env/secrets (see `api/wrangler.toml` in the private worker repo): `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `PRICE_MAP` (slug→price_ ID), `SHIPPING_OPTIONS` (flat CAD rates), `CHECKOUT_SUCCESS_URL`, `CHECKOUT_CANCEL_URL`, `ALLOWED_ORIGINS`.
+
+### Stripe setup (do once)
+1. Create account at stripe.com (Canada). Complete identity + bank + tax info.
+2. Dashboard → Products → create one product per kit with a CAD one-time Price (amount = kit price in cents). Copy each `price_...` ID into `PRICE_MAP`.
+3. Dashboard → Developers → Webhooks → Add endpoint `https://<your-worker>/api/webhook`, subscribe to `checkout.session.completed`, copy the `whsec_...` signing secret.
+4. Set statement descriptor / business name in Settings so it shows on card statements.
+5. Test in Test mode first (test key `sk_test_...`, card `4242 4242 4242 4242`); then flip to Live keys.
+6. Payment methods enabled automatically (cards, Apple Pay, Google Pay). Interac e-Transfer stays manual on our side (email path).
+
+### Cloudflare deploy
+```
+cd api
+npm i -g wrangler && wrangler login
+wrangler deploy
+wrangler secret put STRIPE_SECRET_KEY
+wrangler secret put STRIPE_WEBHOOK_SECRET
+wrangler secret put PRICE_MAP
+wrangler secret put SHIPPING_OPTIONS
+```
+Optional (recommended): put brickandmotorlabs.com on Cloudflare DNS so the Worker runs on the same domain (`/api/*`, no CORS). Otherwise host on `*.workers.dev` and set `BML_API_BASE` in script.js.
+
+### Shipping
+- Phase 1: flat rates in `SHIPPING_OPTIONS` (default: Standard Canada Post $12.00, 5–9 business days). Update after measuring kits + checking Canada Post rates.
+- Phase 2 (IN PROGRESS, 2026-08-26): 2-step checkout built — cart asks postal code → `POST /api/rates` → live Canada Post quotes (Rating 4.0.0 REST/JSON, OAuth2) → user picks → `POST /api/checkout` re-quotes server-side (amount can't be tampered). Worker falls back to SHIPPING_CONFIG/SHIPPING_OPTIONS when CP keys absent. Needs: user creates Developer Portal account → Test app keys (`CP_CLIENT_ID`/`CP_CLIENT_SECRET` secrets) → then Production app. Kit weights/dims live in `api/src/canadapost.js` in the PRIVATE worker repo (`KIT_PARAMS`); the origin postal code is set via the `CP_ORIGIN` worker secret (value lives only in the private worker repo / Cloudflare dashboard — never commit it here).
+- Hand delivery option (built 2026-08-26): `api/src/handdelivery.js` (PRIVATE worker repo) — $5 flat, id `HAND.DELIVERY`, offered when postal code FSA is in zone lists: Ottawa Area (FSAs within 30km of the Ottawa-area origin address — covers Ottawa, Kanata, Orleans, Kars, Stittsville, Gatineau west) and GTA (city coverage around the GTA origin address — Mississauga, S Brampton, Oakville, Milton, Etobicoke, W Toronto). FSA lists derived from GeoNames centroids + 5km buffer (anchor addresses live only in the private worker repo); override via `HAND_DELIVERY_CONFIG` secret.
 
 ## YouTube Demo Videos
 - Bike: https://www.youtube.com/watch?v=KsnRgw7CJBM
