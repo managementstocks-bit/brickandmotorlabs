@@ -4,7 +4,8 @@ Everything is paste-ready. Handle for both platforms: **@brickandmotorlabs**
 
 ## Facebook Page
 
-**Name:** BrickAndMotorLabs
+**Name:** Brick and Motor Labs (title case — Facebook rejects camelCase names; "Brickandmotorlabs" is the fallback they suggest)
+**Handle:** @brickandmotorlabs
 **Category:** Retail shop (or "Education website")
 **Short description (155 chars max):**
 Hands-on STEM & robotics kits for kids — 15 Blix kits with real gears, motors & remote control. Step-by-step manuals. Ships in Canada. We also run workshops for schools & groups.
@@ -13,6 +14,9 @@ Hands-on STEM & robotics kits for kids — 15 Blix kits with real gears, motors 
 BrickAndMotorLabs makes hands-on STEM & robotics kits for kids. Every Blix kit comes with a step-by-step manual, so children build real machines with their own hands: gears, motors and 2.4 GHz remote control. We run kids' STEM workshops and bring hands-on robotics to schools, camps and community groups.
 
 ## Instagram
+
+**Username:** @brickandmotorlabs (if taken: @brickandmotorlabs.ca)
+**Display name:** BrickAndMotorLabs (Instagram allows stylized names)
 
 **Bio (150 chars):**
 Hands-on STEM & robotics kits for kids 🤖

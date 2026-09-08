@@ -14,7 +14,7 @@ Ready-to-use images and copy for Facebook + Instagram. You create the accounts (
 | `post-workshop-1080x1350.png` | Post #5 — schools/workshops |
 
 ## Your steps (one-time, ~15 min)
-1. **Facebook Page:** facebook.com/pages/create → name "BrickAndMotorLabs", category "Retail shop". Upload `avatar-1080.png` (profile) and `fb-cover-820x312.png` (cover). Paste the bio from `copy.md`.
+1. **Facebook Page:** facebook.com/pages/create → name **"Brick and Motor Labs"** (Facebook rejects camelCase), category "Retail shop", then claim handle @brickandmotorlabs. Upload `avatar-1080.png` (profile) and `fb-cover-820x312.png` (cover). Paste the bio from `copy.md`.
 2. **Instagram:** create **@brickandmotorlabs** (or switch an existing account to Business: Settings → Account type → Business). Upload `avatar-1080.png` as profile photo. Paste the IG bio from `copy.md`, link = brickandmotorlabs.com. In IG settings, **link it to your Facebook Page**.
 3. **Meta Business Suite:** business.facebook.com → add your Page, Instagram and website. This is your dashboard: one inbox + free post scheduler.
 4. **Create the two Facebook Events** (copy in `copy.md`) — do this first, it's your best free reach for October.
