@@ -27,8 +27,21 @@
     font-family: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
     color: #202124; background: #ffffff;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    position: relative;
     padding: 7mm 9mm 6mm;
   }
+
+  /* ---------- whole-page watermark ---------- */
+  .page-wm {
+    position: absolute; inset: 0; z-index: 0;
+    background: url(../images/Rc_Megastructure.jpg) center 32% / cover no-repeat;
+    opacity: 0.15;
+  }
+  .page-veil {
+    position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.30) 38%, rgba(255,255,255,0.30) 60%, rgba(255,255,255,0.86) 100%);
+  }
+  main { position: relative; z-index: 1; }
 
   /* ---------- top bar ---------- */
   .flyer-top { display: flex; align-items: center; justify-content: space-between; }
@@ -43,44 +56,41 @@
   .flyer-head { margin-top: 4.5mm; }
   .flyer-head h1 { font-size: 25pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.05; }
   .flyer-head h1 em { font-style: normal; color: #1a73e8; }
-  .flyer-head p { font-size: 9.5pt; color: #3c4043; margin-top: 2mm; line-height: 1.4; max-width: 150mm; }
+  .flyer-head p { font-size: 9.5pt; color: #3c4043; margin-top: 2mm; line-height: 1.4; max-width: 160mm; }
   .flyer-head p b { color: #e05e00; }
 
-  /* ---------- watermark product rows ---------- */
-  .wm-row {
-    position: relative; height: 41mm; margin-top: 5mm; overflow: hidden;
-    border-radius: 3.5mm; border: 0.8pt solid #e8eaed;
+  /* ---------- product bubbles over the watermark ---------- */
+  .flyer-bubbles {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 8mm;
+    margin-top: 7mm; align-items: start;
   }
-  .wm-row__img {
-    position: absolute; top: 0; height: 100%; width: 58%; object-fit: cover;
-    opacity: 0.16; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  .p-bubble {
+    position: relative;
+    background: #ffffff; border: 1pt solid #1a73e8; border-radius: 3.5mm;
+    padding: 3mm 4.5mm 3.4mm;
+    box-shadow: 0 1.5px 5px rgba(0,0,0,0.16);
   }
-  .wm-row--r .wm-row__img { right: 0; object-position: center 35%; }
-  .wm-row--l .wm-row__img { left: 0; object-position: center 35%; transform: scaleX(-1); }
-  .wm-row--r .wm-row__fade { position: absolute; inset: 0; background: linear-gradient(90deg, #ffffff 30%, rgba(255,255,255,0) 78%); }
-  .wm-row--l .wm-row__fade { position: absolute; inset: 0; background: linear-gradient(270deg, #ffffff 30%, rgba(255,255,255,0) 78%); }
-  .wm-row__text { position: relative; z-index: 1; padding: 7mm 9mm; height: 100%; display: flex; flex-direction: column; justify-content: center; }
-  .wm-row--l .wm-row__text { align-items: flex-end; text-align: right; }
-  .wm-row__title { display: flex; align-items: center; gap: 3mm; }
-  .wm-row--l .wm-row__title { justify-content: flex-end; }
-  .wm-row__title h3 { font-size: 15.5pt; font-weight: 800; color: #1557b0; letter-spacing: -0.3pt; }
-  .wm-badge { font-size: 7pt; font-weight: 800; color: #ffffff; background: #ff6d00; border-radius: 2.2mm; padding: 0.8mm 2.2mm; white-space: nowrap; }
-  .wm-bubble {
-    margin-top: 2.4mm; max-width: 105mm;
-    background: #ffffff; border: 1pt solid #202124; border-left: 3mm solid #ff6d00; border-radius: 3mm;
-    padding: 2.4mm 4mm; font-size: 9.5pt; line-height: 1.45; color: #202124;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.14);
+  .p-bubble::after {
+    content: ""; position: absolute; left: 8mm; bottom: -2.7mm;
+    border-left: 2.8mm solid transparent; border-right: 2.8mm solid transparent;
+    border-top: 3mm solid #1a73e8;
   }
-  .wm-row--l .wm-bubble { border-left: 1pt solid #202124; border-right: 3mm solid #ff6d00; }
-  .wm-bubble b { color: #e05e00; }
+  .p-bubble:nth-child(even) { margin-top: 11mm; }
+  .p-bubble:nth-child(even)::after { left: auto; right: 8mm; }
+  .p-bubble__title { display: flex; align-items: center; gap: 2.5mm; }
+  .p-bubble__title h3 { font-size: 12.5pt; font-weight: 800; color: #1557b0; letter-spacing: -0.2pt; line-height: 1.1; }
+  .p-badge { margin-left: auto; flex-shrink: 0; font-size: 6.8pt; font-weight: 800; color: #ffffff; background: #ff6d00; border-radius: 2.2mm; padding: 0.8mm 2.2mm; white-space: nowrap; }
+  .p-bubble__text { font-size: 8.8pt; color: #202124; line-height: 1.42; margin-top: 1.6mm; }
+  .p-bubble__text b { color: #e05e00; }
+  .p-bubble--wide { grid-column: 1 / -1; max-width: 120mm; margin-left: auto; margin-right: auto; margin-top: 2mm; }
 
   /* ---------- also in the family ---------- */
-  .flyer-also { margin-top: 4mm; font-size: 7.5pt; color: #5f6368; line-height: 1.45; }
-  .flyer-also b { color: #3c4043; }
+  .flyer-also { margin-top: 5mm; font-size: 7.5pt; color: #3c4043; line-height: 1.45; background: rgba(255,255,255,0.88); display: inline-block; padding: 1.2mm 3mm; border-radius: 2mm; }
+  .flyer-also b { color: #202124; }
 
   /* ---------- workshop band ---------- */
   .flyer-workshop {
-    margin-top: 4.5mm; background: #1a73e8; border-radius: 3.5mm;
+    margin-top: 5mm; background: #1a73e8; border-radius: 3.5mm;
     padding: 5.5mm 7mm 6mm; color: #ffffff;
   }
   .flyer-workshop__kicker { font-size: 8pt; font-weight: 800; letter-spacing: 1.6pt; color: #ffffff; opacity: 0.92; }
@@ -95,7 +105,7 @@
   }
 
   /* ---------- footer ---------- */
-  .flyer-foot { margin-top: 4mm; border-top: 0.7pt solid #dadce0; padding-top: 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .flyer-foot { margin-top: 4mm; padding-top: 3mm; display: flex; align-items: center; justify-content: space-between; }
   .flyer-foot__lines p { font-size: 9pt; font-weight: 700; color: #1557b0; line-height: 1.5; }
   .flyer-foot__lines small { display: block; font-size: 7.5pt; font-weight: 600; color: #5f6368; }
   .flyer-foot__qr { display: flex; align-items: center; gap: 3mm; text-align: right; }
@@ -105,6 +115,8 @@
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
+<div class="page-wm" aria-hidden="true"></div>
+<div class="page-veil" aria-hidden="true"></div>
 <main id="main-content">
 
   <header class="flyer-top">
@@ -123,34 +135,30 @@
     <p><b>15 Blix kits</b> — every box comes with a step-by-step manual, so your child builds real machines: gears, motors and 2.4&nbsp;GHz remote control. <b>We also run workshops</b> for schools &amp; groups.</p>
   </section>
 
-  <section class="wm-row wm-row--r">
-    <img class="wm-row__img" src="../images/Rc_Megastructure.jpg" alt="">
-    <div class="wm-row__fade"></div>
-    <div class="wm-row__text">
-      <div class="wm-row__title"><h3>RC Megastructures</h3><span class="wm-badge">8 models</span></div>
-      <div class="wm-bubble"><b>You can build:</b> a remote-controlled giant crane, folding transporter bridge &amp; X-Y table — real DC motor + 2.4&nbsp;GHz RC. Kids build it, then they drive it.</div>
+  <section class="flyer-bubbles">
+    <div class="p-bubble">
+      <div class="p-bubble__title"><h3>RC Megastructures</h3><span class="p-badge">8 models</span></div>
+      <p class="p-bubble__text"><b>You can build:</b> a remote-controlled giant crane, folding transporter bridge &amp; X-Y table. Kids build it — then they drive it.</p>
+    </div>
+    <div class="p-bubble">
+      <div class="p-bubble__title"><h3>Discovering Motions</h3><span class="p-badge">13 models</span></div>
+      <p class="p-bubble__text"><b>You can build:</b> 13 real machines that move — gears, cams, levers &amp; cranks, built step by step. The flagship for curious builders.</p>
+    </div>
+    <div class="p-bubble">
+      <div class="p-bubble__title"><h3>Amusement Park</h3><span class="p-badge">7 models</span></div>
+      <p class="p-bubble__text"><b>You can build:</b> a motorized ferris wheel plus carousel, launch coaster, mini-golf car &amp; 3 more rides — a whole park, all gear-driven.</p>
+    </div>
+    <div class="p-bubble">
+      <div class="p-bubble__title"><h3>Crawlers</h3><span class="p-badge">8 models</span></div>
+      <p class="p-bubble__text"><b>You can build:</b> 8 walking robots — from 2 legs to 4, every single one gear-powered and ready to scurry.</p>
+    </div>
+    <div class="p-bubble">
+      <div class="p-bubble__title"><h3>Power Screw</h3><span class="p-badge">7 models</span></div>
+      <p class="p-bubble__text"><b>You can build:</b> a scissor lift that really lifts — a high-torque motor turning screw threads into real mechanical advantage.</p>
     </div>
   </section>
 
-  <section class="wm-row wm-row--l">
-    <img class="wm-row__img" src="../images/Discovering_Motions.png" alt="">
-    <div class="wm-row__fade"></div>
-    <div class="wm-row__text">
-      <div class="wm-row__title"><h3>Discovering Motions</h3><span class="wm-badge">13 models</span></div>
-      <div class="wm-bubble"><b>You can build:</b> 13 real machines that move — gears, cams, levers and cranks, built step by step — the flagship kit for curious builders.</div>
-    </div>
-  </section>
-
-  <section class="wm-row wm-row--r">
-    <img class="wm-row__img" src="../images/Amusement_Park_1.jpg" alt="">
-    <div class="wm-row__fade"></div>
-    <div class="wm-row__text">
-      <div class="wm-row__title"><h3>Amusement Park</h3><span class="wm-badge">7 models</span></div>
-      <div class="wm-bubble"><b>You can build:</b> a motorized ferris wheel plus a carousel, launch coaster, mini-golf car &amp; 3 more rides — a whole park, all gear-driven.</div>
-    </div>
-  </section>
-
-  <p class="flyer-also"><b>Also in the family:</b> Crawlers · Power Screw · Marble Run 2 · Gear Box · Forklift Power · RC Explorers · Buddy · RC Rover · Rover · Minis Bike &amp; Ferris Wheel · Queaky Sleepy — <b>15 Blix kits total, all with step-by-step manuals</b>.</p>
+  <p class="flyer-also"><b>Also in the family:</b> Marble Run 2 · Gear Box · Forklift Power · RC Explorers · Buddy · RC Rover · Rover · Minis Bike &amp; Ferris Wheel · Queaky Sleepy — <b>15 Blix kits total, all with step-by-step manuals</b>.</p>
 
   <section class="flyer-workshop">
     <div class="flyer-workshop__kicker">SCHOOLS · CAMPS · COMMUNITY GROUPS</div>
