@@ -18,14 +18,13 @@ BrickAndMotorLabs makes hands-on STEM & robotics kits for kids. Every Blix kit c
 **Username:** @brickandmotorlabs (if taken: @brickandmotorlabs.ca)
 **Display name:** BrickAndMotorLabs (Instagram allows stylized names)
 
-**Bio (150 chars):**
+**Bio (130 chars — fits IG's 150 limit):**
 Hands-on STEM & robotics kits for kids 🤖
-15 Blix kits — real gears, motors & RC
-Step-by-step manuals · Ships in Canada
-We run workshops for schools & groups 👇
-brickandmotorlabs.com
+15 Blix kits · real gears, motors & RC
+Workshops for schools & groups
+Ships in Canada 👇
 
-**Link:** https://brickandmotorlabs.com
+**Link (dedicated field, not in bio):** https://brickandmotorlabs.com
 
 ## Captions (match the images in img/)
 
