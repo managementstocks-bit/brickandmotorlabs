@@ -14,3 +14,6 @@ inject-3d.js
 inject-anim.js
 fix-paths.js
 ANIMATION_STATE.md
+
+# Print flyer (source HTML committed; rendered PDF is a local build artifact)
+flyer/flyer.pdf

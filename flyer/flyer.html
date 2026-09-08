@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrickAndMotorLabs — A4 Product Flyer</title>
+<meta name="description" content="15 Blix STEM & robotics kits for kids — see what your child can build with each one.">
+<meta property="og:title" content="BrickAndMotorLabs — Build. Learn. Play.">
+<meta property="og:description" content="15 Blix STEM & robotics kits for kids — see what your child can build with each one.">
+<meta property="og:image" content="https://brickandmotorlabs.com/images/baml1-logo.png">
+<meta property="og:url" content="https://brickandmotorlabs.com/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1a73e8">
+<link rel="canonical" href="https://brickandmotorlabs.com/flyer/flyer.html">
+<link rel="stylesheet" href="../style.css">
+<script src="../script.js" defer></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJJ1KVW9LM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VJJ1KVW9LM');</script>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .skip-link { position: absolute; left: -9999px; }
+  @media print { .skip-link { display: none; } }
+  html, body { width: 210mm; }
+  h1, h2, h3, h4, p, a, img, ul, li, span, section, header, footer, main, div { margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #202124; background: #ffffff;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    padding: 8mm 10mm 7mm;
+  }
+
+  /* ---------- header ---------- */
+  .header { display: flex; align-items: center; justify-content: space-between; border-bottom: 0.8pt solid #dadce0; padding-bottom: 4mm; }
+  .brand { display: flex; align-items: center; gap: 4mm; }
+  .brand img { height: 17mm; width: auto; }
+  .brand__name { font-size: 21pt; font-weight: 800; color: #1557b0; letter-spacing: -0.3pt; line-height: 1; }
+  .brand__name span { color: #ff6d00; }
+  .brand__tag { font-size: 8.5pt; color: #5f6368; margin-top: 1.2mm; }
+  .header__url { text-align: right; font-size: 10.5pt; font-weight: 700; color: #1557b0; }
+  .header__url small { display: block; font-size: 7.5pt; font-weight: 600; color: #5f6368; margin-top: 0.8mm; }
+
+  /* ---------- hero ---------- */
+  .flyer-hero { margin-top: 4mm; text-align: center; }
+  .flyer-hero h1 { font-size: 19pt; font-weight: 800; color: #202124; letter-spacing: -0.3pt; }
+  .flyer-hero h1 em { font-style: normal; color: #1a73e8; }
+  .flyer-hero p { font-size: 10pt; color: #3c4043; margin-top: 1.8mm; line-height: 1.45; }
+  .flyer-hero p b { color: #e05e00; }
+
+  /* ---------- product grid ---------- */
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin-top: 4mm; }
+  .card { border: 0.8pt solid #dadce0; border-radius: 3mm; overflow: hidden; background: #f8f9fa; }
+  .card img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center 40%; background: #fff; }
+  .card__body { padding: 2.6mm 3mm 3mm; }
+  .card__top { display: flex; align-items: center; justify-content: space-between; gap: 2mm; }
+  .card__name { font-size: 10pt; font-weight: 800; color: #1557b0; line-height: 1.15; }
+  .badge { flex-shrink: 0; font-size: 7pt; font-weight: 800; color: #ffffff; background: #ff6d00; border-radius: 2.4mm; padding: 0.8mm 2mm; white-space: nowrap; }
+  .card__build { font-size: 8.2pt; color: #3c4043; line-height: 1.4; margin-top: 1.4mm; }
+  .card__build b { color: #202124; }
+
+  /* ---------- also in the family ---------- */
+  .flyer-more { margin-top: 3.5mm; background: #eef4fd; border: 0.8pt solid #d2e3fc; border-radius: 3mm; padding: 2.6mm 4mm; }
+  .flyer-more h3 { font-size: 8.5pt; font-weight: 800; color: #1557b0; text-transform: uppercase; letter-spacing: 0.6pt; text-align: center; }
+  .flyer-more p { font-size: 8.2pt; color: #3c4043; text-align: center; line-height: 1.55; margin-top: 1.2mm; }
+  .flyer-more p b { color: #1557b0; }
+
+  /* ---------- value strip ---------- */
+  .flyer-values { display: flex; gap: 3mm; margin-top: 3.5mm; }
+  .flyer-value { flex: 1; text-align: center; border: 0.8pt solid #dadce0; border-radius: 3mm; padding: 2.6mm 2mm; background: #fff; }
+  .flyer-value .ico { font-size: 13pt; line-height: 1; }
+  .flyer-value h4 { font-size: 8.6pt; font-weight: 800; color: #202124; margin-top: 1.4mm; }
+  .flyer-value p { font-size: 7.4pt; color: #5f6368; margin-top: 0.8mm; line-height: 1.35; }
+
+  /* ---------- footer ---------- */
+  .flyer-footer { margin-top: 4mm; border-top: 0.8pt solid #dadce0; padding-top: 3.5mm; display: flex; align-items: center; justify-content: space-between; }
+  .flyer-footer__contact .web { font-size: 15pt; font-weight: 800; color: #1a73e8; }
+  .flyer-footer__contact .email { font-size: 9.5pt; font-weight: 600; color: #3c4043; margin-top: 1mm; }
+  .flyer-footer__contact .note { font-size: 7.5pt; color: #5f6368; margin-top: 1.2mm; }
+  .flyer-footer__qr { display: flex; align-items: center; gap: 3mm; }
+  .flyer-footer__qr img { width: 24mm; height: 24mm; }
+  .flyer-footer__qr p { font-size: 8pt; font-weight: 700; color: #202124; line-height: 1.35; max-width: 26mm; }
+  .flyer-footer__qr p span { color: #5f6368; font-weight: 600; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content">
+  <header class="header">
+    <div class="brand">
+      <img src="../images/baml1-logo.png" alt="BrickAndMotorLabs logo">
+      <div>
+        <div class="brand__name">BrickAndMotor<span>Labs</span></div>
+        <div class="brand__tag">Hands-on STEM &amp; robotics kits for kids</div>
+      </div>
+    </div>
+    <div class="header__url">brickandmotorlabs.com<small>Order online · Ships in Canada</small></div>
+  </header>
+
+  <section class="flyer-hero">
+    <h1>Build. <em>Learn.</em> Play.</h1>
+    <p><b>15 Blix kits</b> — and every box comes with a step-by-step manual showing exactly<br>
+    what your child can build. Here are the favourites:</p>
+  </section>
+
+  <section class="grid" aria-label="Featured kits">
+    <div class="card">
+      <img src="../images/Rc_Megastructure.jpg" alt="RC Megastructures kit">
+      <div class="card__body">
+        <div class="card__top"><span class="card__name">RC Megastructures</span><span class="badge">8 models</span></div>
+        <p class="card__build"><b>You can build:</b> a remote-controlled giant crane, a folding transporter bridge, an X-Y table — 750+ pieces.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../images/Amusement_Park_1.jpg" alt="Amusement Park kit">
+      <div class="card__body">
+        <div class="card__top"><span class="card__name">Amusement Park</span><span class="badge">7 rides</span></div>
+        <p class="card__build"><b>You can build:</b> a motorized ferris wheel plus 6 more working park rides — and wheels to invent your own.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../images/Discovering_Motions.png" alt="Discovering Motions kit">
+      <div class="card__body">
+        <div class="card__top"><span class="card__name">Discovering Motions</span><span class="badge">13 models</span></div>
+        <p class="card__build"><b>You can build:</b> real machines from a 22-chapter adventure — gears, cams, levers, pulleys, power screws &amp; more.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../images/power-screw_1.jpg" alt="Power Screw kit">
+      <div class="card__body">
+        <div class="card__top"><span class="card__name">Power Screw</span><span class="badge">7 machines</span></div>
+        <p class="card__build"><b>You can build:</b> a motorized dumper truck, a scissor lift, a pressing machine — driven by a high-torque motor.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../images/Crawlers.jpg" alt="Crawlers kit">
+      <div class="card__body">
+        <div class="card__top"><span class="card__name">Crawlers</span><span class="badge">8 walkers</span></div>
+        <p class="card__build"><b>You can build:</b> 8 motorized walking robots — from two-legged to four-legged, all powered by gear mechanisms.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../images/Marble_Run_2.png" alt="Marble Run 2 kit">
+      <div class="card__body">
+        <div class="card__top"><span class="card__name">Marble Run 2</span><span class="badge">4 courses</span></div>
+        <p class="card__build"><b>You can build:</b> 4 motorized marble mazes with tracks, slopes and a DC motor that keeps the marbles moving.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="flyer-more">
+    <h3>Also in the family</h3>
+    <p><b>Gear Box</b> (10 gear models) · <b>Forklift Power</b> (6 industrial machines) · <b>RC Explorers</b> (6+ RC builds) ·
+    <b>Buddy</b> (5 moving mechanisms) · <b>RC Rover</b> (5 RC track bots) · <b>Rover</b> (4 track bots) ·
+    <b>Minis Bike &amp; Ferris Wheel</b> (collectible builds) · <b>Queaky Sleepy</b> (musical circuit toy)</p>
+  </section>
+
+  <section class="flyer-values">
+    <div class="flyer-value">
+      <div class="ico">📘</div>
+      <h4>Step-by-step manuals</h4>
+      <p>Every kit is a guided build — no guessing, no glue, parts stay reusable.</p>
+    </div>
+    <div class="flyer-value">
+      <div class="ico">⚙️</div>
+      <h4>Real gears &amp; motors</h4>
+      <p>Working mechanisms kids can touch: crank &amp; slider, cams, track drives, 2.4GHz RC.</p>
+    </div>
+    <div class="flyer-value">
+      <div class="ico">🧒</div>
+      <h4>Ages 5 and up</h4>
+      <p>From quick mini builds to big RC machines — a kit for every age and curiosity.</p>
+    </div>
+  </section>
+
+  <footer class="flyer-footer">
+    <div class="flyer-footer__contact">
+      <div class="web">brickandmotorlabs.com</div>
+      <div class="email">brickandmotorlabs@gmail.com</div>
+      <div class="note">Ask us about classroom &amp; workshop bookings</div>
+    </div>
+    <div class="flyer-footer__qr">
+      <p>Scan to see<br>all 15 kits <span>and order online</span></p>
+      <img src="qrcode.png" alt="QR code to brickandmotorlabs.com">
+    </div>
+  </footer>
+</main>
+</body>
+</html>
