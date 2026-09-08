@@ -199,9 +199,13 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const kit = urlParams.get('kit');
-    if (kit) {
-      const subject = document.getElementById('contact-subject');
-      const message = document.getElementById('contact-message');
+    const event = urlParams.get('event');
+    const subject = document.getElementById('contact-subject');
+    const message = document.getElementById('contact-message');
+    if (event) {
+      if (subject) subject.value = 'Event / Workshop';
+      if (message) message.value = 'Hi, I would like to RSVP for ' + event + '.\n\nName:\nEmail:\nNumber of kids:';
+    } else if (kit) {
       if (subject) subject.value = 'Order / Shipping';
       if (message) message.value = 'Hi, I would like to order the ' + kit + '. Please let me know the next steps.';
     }
