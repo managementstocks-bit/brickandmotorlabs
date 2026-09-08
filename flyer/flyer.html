@@ -43,41 +43,39 @@
   .flyer-head { margin-top: 4.5mm; }
   .flyer-head h1 { font-size: 25pt; font-weight: 800; letter-spacing: -0.5pt; line-height: 1.05; }
   .flyer-head h1 em { font-style: normal; color: #1a73e8; }
-  .flyer-head p { font-size: 9.5pt; color: #3c4043; margin-top: 2mm; line-height: 1.4; }
+  .flyer-head p { font-size: 9.5pt; color: #3c4043; margin-top: 2mm; line-height: 1.4; max-width: 150mm; }
   .flyer-head p b { color: #e05e00; }
 
-  /* ---------- hero image ---------- */
-  .flyer-heroimg { position: relative; margin-top: 4mm; }
-  .flyer-heroimg > img { display: block; width: 100%; height: 74mm; object-fit: cover; object-position: center 38%; border-radius: 3.5mm; }
-
-  /* ---------- speech bubbles ---------- */
-  .bubble {
-    position: absolute; z-index: 2;
-    background: #ffffff; border: 1.1pt solid #202124; border-radius: 3mm;
-    padding: 1.8mm 3mm 2mm; text-align: center;
-    font-size: 8.5pt; font-weight: 700; line-height: 1.32; color: #202124;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.30);
+  /* ---------- watermark product rows ---------- */
+  .wm-row {
+    position: relative; height: 41mm; margin-top: 5mm; overflow: hidden;
+    border-radius: 3.5mm; border: 0.8pt solid #e8eaed;
   }
-  .bubble small { display: block; font-weight: 600; font-size: 7pt; color: #5f6368; margin-top: 0.6mm; }
-  .bubble::after {
-    content: ""; position: absolute; left: 50%; bottom: -2.6mm; transform: translateX(-50%);
-    border-left: 2.6mm solid transparent; border-right: 2.6mm solid transparent;
-    border-top: 2.8mm solid #ff6d00;
+  .wm-row__img {
+    position: absolute; top: 0; height: 100%; width: 58%; object-fit: cover;
+    opacity: 0.16; -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  .bubble--tl { top: 5mm; left: 5mm; width: 62mm; }
-  .bubble--br { bottom: 5mm; right: 5mm; width: 58mm; }
-
-  /* ---------- image trio ---------- */
-  .flyer-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3.5mm; margin-top: 10mm; }
-  .flyer-trio figure { position: relative; margin-top: 7mm; }
-  .flyer-trio img { display: block; width: 100%; height: 45mm; object-fit: cover; border-radius: 3mm; }
-  .flyer-trio .bubble { top: -6.5mm; left: 50%; transform: translateX(-50%); width: 55mm; }
-  .flyer-trio figure:nth-child(1) .bubble::after,
-  .flyer-trio figure:nth-child(2) .bubble::after,
-  .flyer-trio figure:nth-child(3) .bubble::after { border-top-color: #1a73e8; }
+  .wm-row--r .wm-row__img { right: 0; object-position: center 35%; }
+  .wm-row--l .wm-row__img { left: 0; object-position: center 35%; transform: scaleX(-1); }
+  .wm-row--r .wm-row__fade { position: absolute; inset: 0; background: linear-gradient(90deg, #ffffff 30%, rgba(255,255,255,0) 78%); }
+  .wm-row--l .wm-row__fade { position: absolute; inset: 0; background: linear-gradient(270deg, #ffffff 30%, rgba(255,255,255,0) 78%); }
+  .wm-row__text { position: relative; z-index: 1; padding: 7mm 9mm; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+  .wm-row--l .wm-row__text { align-items: flex-end; text-align: right; }
+  .wm-row__title { display: flex; align-items: center; gap: 3mm; }
+  .wm-row--l .wm-row__title { justify-content: flex-end; }
+  .wm-row__title h3 { font-size: 15.5pt; font-weight: 800; color: #1557b0; letter-spacing: -0.3pt; }
+  .wm-badge { font-size: 7pt; font-weight: 800; color: #ffffff; background: #ff6d00; border-radius: 2.2mm; padding: 0.8mm 2.2mm; white-space: nowrap; }
+  .wm-bubble {
+    margin-top: 2.4mm; max-width: 105mm;
+    background: #ffffff; border: 1pt solid #202124; border-left: 3mm solid #ff6d00; border-radius: 3mm;
+    padding: 2.4mm 4mm; font-size: 9.5pt; line-height: 1.45; color: #202124;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.14);
+  }
+  .wm-row--l .wm-bubble { border-left: 1pt solid #202124; border-right: 3mm solid #ff6d00; }
+  .wm-bubble b { color: #e05e00; }
 
   /* ---------- also in the family ---------- */
-  .flyer-also { margin-top: 4.5mm; font-size: 7.5pt; color: #5f6368; line-height: 1.45; }
+  .flyer-also { margin-top: 4mm; font-size: 7.5pt; color: #5f6368; line-height: 1.45; }
   .flyer-also b { color: #3c4043; }
 
   /* ---------- workshop band ---------- */
@@ -90,7 +88,6 @@
   .flyer-workshop ul { list-style: none; margin-top: 2.5mm; }
   .flyer-workshop li { font-size: 9.5pt; line-height: 1.5; padding-left: 5.5mm; position: relative; }
   .flyer-workshop li::before { content: "●"; position: absolute; left: 0.5mm; color: #ff6d00; font-size: 8pt; }
-  .flyer-workshop li b { color: #ffffff; }
   .flyer-cta {
     display: inline-block; margin-top: 3.5mm; background: #ffffff; color: #1557b0;
     font-size: 11pt; font-weight: 800; border-radius: 999px; padding: 2.6mm 7mm;
@@ -123,31 +120,37 @@
 
   <section class="flyer-head">
     <h1>Build. <em>Learn.</em> Play.</h1>
-    <p><b>15 Blix kits</b> — every box comes with a step-by-step manual, so your child builds real machines: gears, motors and 2.4&nbsp;GHz remote control.</p>
+    <p><b>15 Blix kits</b> — every box comes with a step-by-step manual, so your child builds real machines: gears, motors and 2.4&nbsp;GHz remote control. <b>We also run workshops</b> for schools &amp; groups.</p>
   </section>
 
-  <section class="flyer-heroimg">
-    <img src="../images/Rc_Megastructure.jpg" alt="RC Megastructures kit: a remote-controlled giant crane build">
-    <div class="bubble bubble--tl">RC Megastructures<small>remote-controlled giant crane, folding bridge &amp; X-Y table — 750+ pieces</small></div>
-    <div class="bubble bubble--br">Kids build it,<br>then they drive it<small>real DC motor + 2.4 GHz RC</small></div>
+  <section class="wm-row wm-row--r">
+    <img class="wm-row__img" src="../images/Rc_Megastructure.jpg" alt="">
+    <div class="wm-row__fade"></div>
+    <div class="wm-row__text">
+      <div class="wm-row__title"><h3>RC Megastructures</h3><span class="wm-badge">8 models</span></div>
+      <div class="wm-bubble"><b>You can build:</b> a remote-controlled giant crane, folding transporter bridge &amp; X-Y table — real DC motor + 2.4&nbsp;GHz RC. Kids build it, then they drive it.</div>
+    </div>
   </section>
 
-  <section class="flyer-trio">
-    <figure>
-      <img src="../images/Discovering_Motions.png" alt="Discovering Motions kit box">
-      <div class="bubble">Discovering Motions<small>13 real machines — gears, cams &amp; levers in motion</small></div>
-    </figure>
-    <figure>
-      <img src="../images/Amusement_Park_1.jpg" alt="Amusement Park kit with motorized ferris wheel">
-      <div class="bubble">Amusement Park<small>build a motorized ferris wheel + 6 more rides</small></div>
-    </figure>
-    <figure>
-      <img src="../images/Crawlers.jpg" alt="Crawlers kit: walking robots">
-      <div class="bubble">Crawlers<small>8 walking robots — from 2 legs to 4, all gear-powered</small></div>
-    </figure>
+  <section class="wm-row wm-row--l">
+    <img class="wm-row__img" src="../images/Discovering_Motions.png" alt="">
+    <div class="wm-row__fade"></div>
+    <div class="wm-row__text">
+      <div class="wm-row__title"><h3>Discovering Motions</h3><span class="wm-badge">13 models</span></div>
+      <div class="wm-bubble"><b>You can build:</b> 13 real machines that move — gears, cams, levers and cranks, built step by step — the flagship kit for curious builders.</div>
+    </div>
   </section>
 
-  <p class="flyer-also"><b>Also in the family:</b> Power Screw · Marble Run 2 · Gear Box · Forklift Power · RC Explorers · Buddy · RC Rover · Rover · Minis Bike &amp; Ferris Wheel · Queaky Sleepy — <b>15 Blix kits total, all with step-by-step manuals</b>.</p>
+  <section class="wm-row wm-row--r">
+    <img class="wm-row__img" src="../images/Amusement_Park_1.jpg" alt="">
+    <div class="wm-row__fade"></div>
+    <div class="wm-row__text">
+      <div class="wm-row__title"><h3>Amusement Park</h3><span class="wm-badge">7 models</span></div>
+      <div class="wm-bubble"><b>You can build:</b> a motorized ferris wheel plus a carousel, launch coaster, mini-golf car &amp; 3 more rides — a whole park, all gear-driven.</div>
+    </div>
+  </section>
+
+  <p class="flyer-also"><b>Also in the family:</b> Crawlers · Power Screw · Marble Run 2 · Gear Box · Forklift Power · RC Explorers · Buddy · RC Rover · Rover · Minis Bike &amp; Ferris Wheel · Queaky Sleepy — <b>15 Blix kits total, all with step-by-step manuals</b>.</p>
 
   <section class="flyer-workshop">
     <div class="flyer-workshop__kicker">SCHOOLS · CAMPS · COMMUNITY GROUPS</div>
