@@ -23,6 +23,7 @@ Ready-to-use images and copy for Facebook + Instagram. You create the accounts (
 | 2. Instagram account, business type, avatar, bio, linked to the FB Page | **Done by owner** |
 | 4. Two Facebook Events (Bazaar Oct 10, Ferris Wheel Oct 17) | **Done** (published, posters as cover photos) |
 | 5. First-week posts (5, one per day at 10:00 AM ET) | **Done** (scheduled in FB Content Library, event posts tagged to their events) |
+| 5b. Social links on website | **Done** (footer icons on all 24 pages + "Follow Us" row on contact page, commit 8b15d54) |
 | 3. Meta Business Suite | **Optional, not set up** (the FB Professional dashboard already covers inbox + scheduling) |
 
 ## Original steps (for reference / to replicate on other pages)
