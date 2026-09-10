@@ -1801,29 +1801,6 @@ p {
   color: var(--primary);
 }
 
-.product-card__etransfer {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 12px;
-  padding: 10px 18px;
-  width: 100%;
-  flex-basis: 100%;
-  border: 2px solid var(--gray-light);
-  border-radius: 50px;
-  background: transparent;
-  color: var(--dark);
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all var(--transition);
-}
-
-.product-card__etransfer:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
 .build-cta .add-to-cart {
   margin-left: 10px;
 }

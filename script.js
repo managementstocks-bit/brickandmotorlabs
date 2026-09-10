@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!CATALOG[slug]) return;
       card.dataset.slug = slug;
       const footer = card.querySelector('.product-card__footer');
-      if (!footer || footer.querySelector('.product-card__etransfer')) return;
+      if (!footer) return;
 
       const price = footer.querySelector('.product-card__price');
       if (price) {
@@ -736,12 +736,6 @@ document.addEventListener('DOMContentLoaded', () => {
         priceBtn.addEventListener('click', () => addToCart(slug, priceBtn));
         price.replaceWith(priceBtn);
       }
-
-      const etransfer = document.createElement('a');
-      etransfer.href = 'contact.html';
-      etransfer.className = 'product-card__etransfer';
-      etransfer.textContent = 'Interac e-Transfer';
-      footer.appendChild(etransfer);
     });
   }
 
