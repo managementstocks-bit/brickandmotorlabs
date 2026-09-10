@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="cart-rate-options" hidden></div>
         </div>
         <button class="btn btn--primary cart-checkout" style="width:100%;justify-content:center;">Proceed to Checkout</button>
-        <p class="cart-note">Prefer to pay by Interac e-Transfer? <a href="#" class="cart-etransfer">Order by email instead</a>.</p>
+        <p class="cart-note">Prefer to pay by Interac e-Transfer? <a href="contact.html" class="cart-etransfer">Contact us to order by email</a>.</p>
         <p class="cart-error" hidden></p>
       </div>`;
 
@@ -378,7 +378,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateSubtotal();
     });
     drawer.querySelector('.cart-checkout').addEventListener('click', checkout);
-    drawer.querySelector('.cart-etransfer').addEventListener('click', (e) => { e.preventDefault(); emailOrder(); });
     drawer.querySelector('.cart-getrates').addEventListener('click', getRates);
     drawer.querySelector('.cart-postal').addEventListener('keydown', (e) => {
       if (e.key === 'Enter') { e.preventDefault(); getRates(); }
@@ -664,23 +663,6 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.textContent = 'Proceed to Checkout';
       setCartError('Could not start checkout (' + (e && e.message ? e.message : 'unknown error') + '). Try again, or order by email.');
     }
-  }
-
-  function emailOrder() {
-    if (!ageConfirmed()) {
-      setCartError('Please confirm the recipient meets the minimum age requirement (choking hazard) before proceeding.');
-      return;
-    }
-    const lines = Object.entries(cart)
-      .filter(([slug]) => CATALOG[slug])
-      .map(([slug, qty]) => `- ${qty} x ${CATALOG[slug].name} (${fmt(CATALOG[slug].price)})`);
-    const subject = encodeURIComponent('Order request: BrickAndMotorLabs');
-    const body = encodeURIComponent(
-      'Hi BrickAndMotorLabs,\n\nI would like to order:\n' + lines.join('\n') +
-      '\n\nSubtotal: ' + fmt(subtotal()) +
-      '\n\nI prefer to pay by Interac e-Transfer. Please send the details.'
-    );
-    window.location.href = 'mailto:brickandmotorlabs@gmail.com?subject=' + subject + '&body=' + body;
   }
 
   function addToCart(slug, btn) {
