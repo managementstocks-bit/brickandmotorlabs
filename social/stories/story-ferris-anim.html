@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    background: #fff;
+    color: #1f2937;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .deco-gear {
+    position: absolute;
+    top: -90px; right: -90px;
+    width: 460px; height: 460px;
+    fill: #f3f4f6;
+    z-index: 0;
+    animation: spin 36s linear infinite paused;
+  }
+  .deco-gear2 {
+    position: absolute;
+    bottom: 60px; left: -120px;
+    width: 320px; height: 320px;
+    fill: #f9fafb;
+    z-index: 0;
+    animation: spinrev 48s linear infinite paused;
+  }
+  .content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 170px 64px 26px 64px;
+  }
+  .pill {
+    background: #f97316;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    padding: 18px 42px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-size: 92px;
+    font-weight: 800;
+    line-height: 1.04;
+    margin-top: 34px;
+    color: #111827;
+  }
+  .sub { font-size: 44px; font-weight: 700; color: #1a73e8; margin-top: 18px; }
+  .time { font-size: 54px; font-weight: 800; color: #f97316; margin-top: 30px; }
+  .loc { font-size: 40px; font-weight: 600; line-height: 1.4; margin-top: 12px; color: #1f2937; }
+  .callout {
+    margin-top: 26px;
+    border: 3px solid #fb923c;
+    background: #fff7ed;
+    border-radius: 999px;
+    padding: 18px 34px;
+    font-size: 33px;
+    font-weight: 700;
+    color: #c2410c;
+    line-height: 1.3;
+  }
+  .vband {
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 22px 55px rgba(17,24,39,.28);
+    background: #111827;
+    position: relative;
+  }
+  .vband video { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+  .vtag {
+    position: absolute;
+    top: 20px; left: 20px;
+    background: rgba(17,24,39,.78);
+    color: #fff;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 10px 24px;
+    border-radius: 999px;
+  }
+  .price {
+    align-self: center;
+    margin-top: 26px;
+    background: #f97316;
+    color: #fff;
+    font-size: 46px;
+    font-weight: 800;
+    padding: 22px 52px;
+    border-radius: 999px;
+    box-shadow: 0 10px 28px rgba(249,115,22,.35);
+  }
+  .takehome {
+    align-self: center;
+    margin-top: 22px;
+    font-size: 42px;
+    font-weight: 800;
+    color: #c2410c;
+  }
+  .partner { align-self: center; margin-top: 18px; font-size: 33px; font-weight: 700; color: #9ca3af; }
+  footer {
+    position: relative; z-index: 1;
+    background: #1f2937;
+    height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 64px; gap: 22px;
+  }
+  footer svg { width: 60px; height: 60px; fill: #fff; }
+  footer span { color: #fff; font-size: 40px; font-weight: 700; }
+  footer b { font-weight: 800; }
+
+  /* motion */
+  .anim { animation-play-state: paused; }
+  body.running .anim { animation-play-state: running; }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-28px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeUp   { from { opacity: 0; transform: translateY(28px); }  to { opacity: 1; transform: none; } }
+  @keyframes pop      { from { opacity: 0; transform: scale(.82); }        to { opacity: 1; transform: scale(1); } }
+  @keyframes spin     { to { transform: rotate(360deg); } }
+  @keyframes spinrev  { to { transform: rotate(-360deg); } }
+
+  .a-pill   { animation: fadeDown .7s ease-out .2s both; }
+  .a-h1     { animation: fadeUp .8s ease-out .55s both; }
+  .a-sub    { animation: fadeUp .8s ease-out .95s both; }
+  .a-time   { animation: fadeUp .8s ease-out 1.3s both; }
+  .a-loc    { animation: fadeUp .8s ease-out 1.6s both; }
+  .a-call   { animation: fadeUp .8s ease-out 1.95s both; }
+  .a-vid    { animation: fadeUp .9s ease-out 2.4s both; }
+  .a-price  { animation: pop .7s cubic-bezier(.34,1.56,.64,1) 3.9s both; }
+  .a-take   { animation: pop .7s cubic-bezier(.34,1.56,.64,1) 4.5s both; }
+  .a-part   { animation: fadeUp .8s ease-out 4.9s both; }
+  .a-foot   { animation: fadeUp .8s ease-out .3s both; }
+</style>
+</head>
+<body>
+  <svg class="deco-gear anim" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+  <svg class="deco-gear2 anim" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+
+  <div class="content">
+    <div class="pill anim a-pill">Saturday &middot; Oct 17, 2026</div>
+    <h1 class="anim a-h1">Build a<br>Ferris Wheel!</h1>
+    <div class="sub anim a-sub">Kids STEM Workshop &middot; Ages 5+</div>
+    <div class="time anim a-time">1:30 PM</div>
+    <div class="loc anim a-loc">J.R. Brisson Recreation Complex,<br>Casselman, ON</div>
+    <div class="callout anim a-call">Limited seats &mdash; every child builds a working, gear-driven ferris wheel</div>
+    <div class="vband anim a-vid">
+      <video src="videos/ferris-loop.mp4" autoplay muted loop playsinline preload="auto" aria-label="Blix Minis Ferris Wheel demo video"></video>
+      <div class="vtag">&#9654; Watch it spin</div>
+    </div>
+    <div class="price anim a-price">Build it for $20</div>
+    <div class="takehome anim a-take">Take it home with you!</div>
+    <div class="partner anim a-part">Presented with Art &amp; Souls</div>
+  </div>
+  <footer class="anim a-foot">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+    <span>RSVP &rarr; brickandmotorlabs.com</span>
+  </footer>
+</body>
+</html>

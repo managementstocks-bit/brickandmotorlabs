@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    background: #fff;
+    color: #1f2937;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .deco-gear {
+    position: absolute;
+    top: -90px; right: -90px;
+    width: 460px; height: 460px;
+    fill: #f3f4f6;
+    z-index: 0;
+    animation: spin 36s linear infinite paused;
+  }
+  .deco-gear2 {
+    position: absolute;
+    bottom: 60px; left: -120px;
+    width: 320px; height: 320px;
+    fill: #f9fafb;
+    z-index: 0;
+    animation: spinrev 48s linear infinite paused;
+  }
+  .content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 170px 64px 26px 64px;
+  }
+  .pill {
+    background: #f97316;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    padding: 18px 42px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+  h1 { font-size: 92px; font-weight: 800; line-height: 1.04; margin-top: 30px; color: #111827; }
+  .sub { font-size: 44px; font-weight: 700; color: #1a73e8; margin-top: 14px; }
+  .time { font-size: 52px; font-weight: 800; color: #f97316; margin-top: 28px; }
+  .time .free { color: #1a73e8; }
+  .loc { font-size: 39px; font-weight: 600; line-height: 1.4; margin-top: 12px; color: #1f2937; }
+  .vband {
+    width: 100%;
+    margin-top: 26px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 22px 55px rgba(17,24,39,.28);
+    background: #111827;
+    position: relative;
+  }
+  .vband video { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+  .vtag {
+    position: absolute;
+    top: 20px; left: 20px;
+    background: rgba(17,24,39,.78);
+    color: #fff;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 10px 24px;
+    border-radius: 999px;
+  }
+  .cards { display: flex; gap: 32px; width: 100%; margin-top: 28px; }
+  .card {
+    flex: 1;
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    border-radius: 28px;
+    padding: 22px 20px 26px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  }
+  .card .imgbox { height: 178px; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .card .bob-bike, .card .bob-bud { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+  .card img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .card img.cover { width: 100%; height: 100%; object-fit: cover; }
+  .card .name { font-size: 38px; font-weight: 800; color: #111827; margin-top: 16px; }
+  .card .price { font-size: 52px; font-weight: 800; color: #f97316; margin-top: 6px; }
+  .takehome {
+    align-self: center;
+    margin-top: 24px;
+    background: #fff7ed;
+    border: 3px solid #fb923c;
+    border-radius: 999px;
+    padding: 18px 44px;
+    font-size: 42px;
+    font-weight: 800;
+    color: #c2410c;
+  }
+  footer {
+    position: relative; z-index: 1;
+    background: #1f2937;
+    height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 64px; gap: 22px;
+  }
+  footer svg { width: 60px; height: 60px; fill: #fff; }
+  footer span { color: #fff; font-size: 40px; font-weight: 700; }
+
+  .anim { animation-play-state: paused; }
+  body.running .anim { animation-play-state: running; }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-28px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeUp   { from { opacity: 0; transform: translateY(28px); }  to { opacity: 1; transform: none; } }
+  @keyframes pop      { from { opacity: 0; transform: scale(.82); }        to { opacity: 1; transform: scale(1); } }
+  @keyframes slideL   { from { opacity: 0; transform: translateX(-64px); } to { opacity: 1; transform: none; } }
+  @keyframes slideR   { from { opacity: 0; transform: translateX(64px); }  to { opacity: 1; transform: none; } }
+  @keyframes spin     { to { transform: rotate(360deg); } }
+  @keyframes spinrev  { to { transform: rotate(-360deg); } }
+  @keyframes bob      { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+  .a-pill   { animation: fadeDown .7s ease-out .2s both; }
+  .a-h1     { animation: fadeUp .8s ease-out .55s both; }
+  .a-sub    { animation: fadeUp .8s ease-out .95s both; }
+  .a-time   { animation: fadeUp .8s ease-out 1.3s both; }
+  .a-loc    { animation: fadeUp .8s ease-out 1.6s both; }
+  .a-vid    { animation: fadeUp .9s ease-out 2s both; }
+  .a-cardL  { animation: slideL .8s ease-out 3.4s both; }
+  .a-cardR  { animation: slideR .8s ease-out 3.7s both; }
+  .a-take   { animation: pop .7s cubic-bezier(.34,1.56,.64,1) 4.8s both; }
+  .a-foot   { animation: fadeUp .8s ease-out .3s both; }
+  .bob-bike { animation: bob 2.8s ease-in-out 3.4s infinite; }
+  .bob-bud  { animation: bob 3.4s ease-in-out 3.7s infinite; }
+</style>
+</head>
+<body>
+  <svg class="deco-gear anim" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+  <svg class="deco-gear2 anim" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+
+  <div class="content">
+    <div class="pill anim a-pill">Saturday &middot; Oct 10, 2026</div>
+    <h1 class="anim a-h1">Family Bazaar</h1>
+    <div class="sub anim a-sub">Kids' STEM &amp; Robotics Workshops</div>
+    <div class="time anim a-time">11:30 AM &ndash; 4:15 PM &middot; <span class="free">Free entry</span></div>
+    <div class="loc anim a-loc">Pineview Community Hub &mdash; Gloucester &amp; Meadowbrook Room<br>1700 Blair Rd, Gloucester, ON</div>
+    <div class="vband anim a-vid">
+      <video src="videos/bike-loop.mp4" autoplay muted loop playsinline preload="auto" aria-label="Blix Minis Bike demo video"></video>
+      <div class="vtag">&#9654; Watch it roll</div>
+    </div>
+    <div class="cards">
+      <div class="card anim a-cardL">
+        <div class="imgbox"><div class="bob-bike anim">
+          <img src="../../images/Blix_Minis_Bike.png" alt="Blix Minis Bike kit">
+        </div></div>
+        <div class="name">Mini Bike</div>
+        <div class="price">$12</div>
+      </div>
+      <div class="card anim a-cardR">
+        <div class="imgbox"><div class="bob-bud anim">
+          <img class="cover" src="../../images/blix_buddy.jpg" alt="Blix Buddy kit">
+        </div></div>
+        <div class="name">Buddy</div>
+        <div class="price">$28</div>
+      </div>
+    </div>
+    <div class="takehome anim a-take">Take the kits home with you!</div>
+  </div>
+  <footer class="anim a-foot">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+    <span>RSVP &rarr; brickandmotorlabs.com</span>
+  </footer>
+</body>
+</html>
