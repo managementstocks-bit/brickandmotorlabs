@@ -8,7 +8,9 @@ let warnings = 0;
 // Get all HTML files
 function getAllHtml(dir, prefix = '') {
   let files = [];
+  // social/ = social-media asset canvases (story cards, reels) — not site pages
   for (const f of fs.readdirSync(dir)) {
+    if (f === 'social') continue;
     const full = path.join(dir, f);
     if (fs.statSync(full).isDirectory()) {
       files = files.concat(getAllHtml(full, prefix + f + '/'));
