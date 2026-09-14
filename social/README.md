@@ -12,6 +12,7 @@ Ready-to-use images and copy for Facebook + Instagram. You create the accounts (
 | `post-ferris-1080x1350.png` | Post #3 + Facebook Event photo (Oct 17) |
 | `post-kits-1080x1350.png` | Post #4 — product overview |
 | `post-workshop-1080x1350.png` | Post #5 — schools/workshops |
+| `post-expo-1080x1350.png` | Post #6 — Ottawa Parent & Child Expo (Oct 17-18, Nepean) |
 | `event-cover-post-bazaar-1600x800.png` | FB Event 1 cover (Family Bazaar) |
 | `event-cover-post-ferris-1600x800.png` | FB Event 2 cover (Ferris Wheel) |
 

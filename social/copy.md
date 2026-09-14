@@ -84,6 +84,22 @@ Arrange a workshop: brickandmotorlabs.com
 
 #stemschool #roboticseducation #schoolworkshop #camps #community #ottawaschools #stemeducation
 
+### 6. Ottawa Parent & Child Expo → `post-expo-1080x1350.png`
+🎪 Ottawa Parent & Child Expo: BrickAndMotorLabs is on site!
+
+🗓 Sunday, October 18, 2026
+🕘 9:00 AM to 4:00 PM (expo runs Sat Oct 17 & Sun Oct 18)
+📍 Nepean Sportsplex, 1701 Woodroffe Ave, Nepean, ON (Entrance 4, rear parking)
+
+A weekend of family fun: demos, workshops and exhibitors. Come see the Blix kits in action and build with us.
+
+Tickets: parentandchildexpo.ca (or at the door) · Free parking
+brickandmotorlabs.com
+
+#parentandchildexpo #ottawaevents #nepean #stem #robotics #kidsengineering #ottawafamily
+
+**IG version:** same copy, shorter hashtag set: `#blix #stem #robotics #ottawaevents #nepean #ottawafamily #canadianbusiness`
+
 ## Facebook Events (both published 2026-09-09)
 
 **Event 1: Family Bazaar: Kids' STEM & Robotics Workshops**
