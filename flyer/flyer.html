@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BrickAndMotorLabs — A4 Flyer (Build. Learn. Play.)</title>
-<meta name="description" content="Hands-on STEM & robotics kits for kids — see what they can build, and join our October events: Family Bazaar (Gloucester), Build a Ferris Wheel (Casselman) & Ottawa Parent & Child Expo.">
+<title>BrickAndMotorLabs A4 Flyer (Build. Learn. Play.)</title>
+<meta name="description" content="Hands-on STEM & robotics kits, ages 5+. See what they can build, and join our October events: Family Bazaar (Gloucester), Build a Ferris Wheel (Casselman) & Ottawa Parent & Child Expo.">
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:opsz,wght@14..32,700;14..32,900&family=Pacifico&display=swap");
   :root {
@@ -38,20 +38,11 @@
     transform: rotate(180deg);
     background: linear-gradient(90deg, var(--navy) 0%, var(--navy-deep) 45%, var(--orange) 100%);
   }
-  .content { padding: 34px 64px 22px; }
+  .content { padding: 32px 64px 20px; }
 
   /* hero */
   .hero { margin-bottom: 16px; }
-  .kicker {
-    margin: 0 0 8px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2.2px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .kicker span { color: var(--orange); }
-  .hero h1, .event h1 {
+  .hero h1 {
     font-family: "Archivo Black", Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
     font-size: 66px;
     line-height: 0.98;
@@ -59,13 +50,15 @@
     color: var(--navy);
     letter-spacing: 0.5px;
   }
-  .hero h1 { white-space: nowrap; }
-  .hero h1 .script, .script {
+  .hero h1 .script {
+    display: block;
     font-family: "Pacifico", cursive;
-    font-size: 0.62em;
+    font-size: 46px;
+    line-height: 1.15;
     color: var(--orange);
     font-weight: 400;
     letter-spacing: 0;
+    margin-top: 2px;
   }
   .lead {
     margin: 12px 0 0;
@@ -84,11 +77,10 @@
     font-size: 14px;
     letter-spacing: 2.5px;
     padding: 8px 26px;
-    transform: rotate(-1.2deg);
     clip-path: polygon(1.5% 18%, 2.5% 46%, 1.5% 82%, 2% 92%, 12% 88%, 26% 94%, 40% 87%, 55% 95%, 70% 88%, 84% 94%, 97% 86%, 98.5% 62%, 99% 30%, 97% 12%, 86% 18%, 70% 10%, 54% 17%, 38% 9%, 22% 16%, 8% 10%);
   }
 
-  /* photo strip */
+  /* product photo strip */
   .photos {
     display: flex;
     gap: 12px;
@@ -101,16 +93,18 @@
     border-radius: 9px;
     padding: 8px;
     box-shadow: 0 3px 8px rgba(20, 58, 140, 0.08);
-    transform: rotate(-1deg);
   }
-  .photo:nth-child(2) { transform: rotate(0.8deg); margin-top: 6px; }
-  .photo:nth-child(3) { transform: rotate(-0.6deg); }
-  .photo:nth-child(4) { transform: rotate(1deg); margin-top: 5px; }
-  .photo:nth-child(5) { transform: rotate(-0.8deg); }
-  .photo img { width: 100%; height: 84px; object-fit: cover; border-radius: 5px; display: block; }
+  .photo img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 5px;
+    display: block;
+  }
   .photo figcaption {
-    margin-top: 5px;
-    font-size: 9.5px;
+    margin-top: 6px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.3px;
     color: var(--muted);
@@ -136,21 +130,6 @@
   .icon h3 { margin: 0 0 3px; font-size: 12.5px; font-weight: 800; color: var(--navy); }
   .icon p { margin: 0; font-size: 10.5px; color: var(--muted); line-height: 1.35; }
 
-  /* family strip */
-  .family {
-    margin: 14px 0 0;
-    background: var(--orange-soft);
-    border: 1px solid #ffd9bf;
-    border-left: 4px solid var(--orange);
-    border-radius: 7px;
-    padding: 8px 14px;
-    font-size: 11.5px;
-    line-height: 1.4;
-    color: var(--ink);
-  }
-  .family b { color: var(--orange-deep); }
-  .family .strong { color: var(--navy); font-weight: 800; }
-
   /* events */
   .events-head {
     text-align: center;
@@ -159,7 +138,12 @@
     color: var(--navy);
     margin: 16px 0 10px;
   }
-  .events-head .script { font-size: 0.85em; }
+  .events-head .script {
+    font-family: "Pacifico", cursive;
+    font-size: 0.85em;
+    color: var(--orange);
+    font-weight: 400;
+  }
   .events {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -184,11 +168,16 @@
     letter-spacing: 1.2px;
     padding: 4px 10px;
     border-radius: 4px;
-    transform: rotate(-1.5deg);
     margin-bottom: 8px;
   }
-  .event h1 { font-size: 17px; line-height: 1.12; margin: 0 0 8px; }
-  .event .when { font-size: 11.5px; font-weight: 800; color: var(--orange-deep); margin: 0 0 3px; }
+  .event h1 {
+    font-family: "Archivo Black", Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.12;
+    color: var(--navy);
+    margin: 0 0 8px;
+  }
+  .event .when { font-size: 11.5px; font-weight: 800; color: var(--orange-deep); margin: 0 0 4px; }
   .event .where, .event .detail, .event .note {
     font-size: 10.5px;
     color: var(--muted);
@@ -215,7 +204,12 @@
     margin: 0 0 5px;
     color: #fff;
   }
-  .workshop .w-title .script { font-size: 0.8em; color: var(--orange); }
+  .workshop .w-title .script {
+    font-family: "Pacifico", cursive;
+    font-size: 0.8em;
+    color: var(--orange);
+    font-weight: 400;
+  }
   .workshop ul { margin: 0; padding: 0; list-style: none; }
   .workshop li {
     font-size: 11px;
@@ -235,14 +229,21 @@
     white-space: nowrap;
   }
   .footer-line {
-    margin-top: 8px;
+    margin-top: 10px;
     text-align: center;
     font-size: 10px;
     letter-spacing: 1.6px;
     text-transform: uppercase;
     color: var(--muted);
   }
-  .footer-line .script { text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--orange); }
+  .footer-line .script {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    color: var(--orange);
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+  }
 </style>
 </head>
 <body>
@@ -250,35 +251,34 @@
   <div class="content">
 
     <div class="hero">
-      <p class="kicker">Ottawa &middot; Gloucester &middot; Casselman &mdash; <span>Canada</span></p>
       <h1>See You at Our <span class="script">October Events</span></h1>
-      <p class="lead"><b>Hands-on STEM &amp; robotics kits</b> for kids 5+ &mdash; real gears, real motors, no screens. Come see what your child can build &mdash; and meet us in person this October.</p>
+      <p class="lead"><b>Hands-on STEM &amp; robotics kits, ages 5+</b> with real gears, real motors, no screens. Come see what your child can build, and meet us in person this October.</p>
       <span class="brush-banner">15 BLIX STEM &amp; ROBOTICS KITS</span>
     </div>
 
     <div class="photos">
-      <figure class="photo"><img src="../images/youtube-crawlers.jpg" alt="Crawlers"><figcaption>Crawlers</figcaption></figure>
-      <figure class="photo"><img src="../images/youtube-rc-megastructures.jpg" alt="RC Megastructures"><figcaption>RC Megastructures</figcaption></figure>
-      <figure class="photo"><img src="../images/youtube-amusement-park.jpg" alt="Amusement Park"><figcaption>Amusement Park</figcaption></figure>
-      <figure class="photo"><img src="../images/youtube-power-screw.jpg" alt="Power Screw &amp; Robot"><figcaption>Power Screw</figcaption></figure>
-      <figure class="photo"><img src="../images/youtube-ferris-wheel.jpg" alt="Ferris Wheel"><figcaption>Ferris Wheel</figcaption></figure>
+      <figure class="photo"><img src="../images/Rc_Megastructure.jpg" alt="RC Megastructures"><figcaption>RC Megastructures</figcaption></figure>
+      <figure class="photo"><img src="../images/Discovering_Motions.png" alt="Discovering Motions"><figcaption>Discovering Motions</figcaption></figure>
+      <figure class="photo"><img src="../images/Amusement_Park_1.jpg" alt="Amusement Park"><figcaption>Amusement Park</figcaption></figure>
+      <figure class="photo"><img src="../images/Crawlers.jpg" alt="Crawlers"><figcaption>Crawlers</figcaption></figure>
+      <figure class="photo"><img src="../images/power-screw_1.jpg" alt="Power Screw"><figcaption>Power Screw</figcaption></figure>
     </div>
 
     <div class="icons">
       <div class="icon">
         <div class="circle c-orange"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></div>
         <h3>Real Gears &amp; Motors</h3>
-        <p>True mechanical motion &mdash; not a toy on rails</p>
+        <p>True mechanical motion, not a toy on rails</p>
       </div>
       <div class="icon">
         <div class="circle c-navy"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="7" y="7" width="10" height="14" rx="2.5"/><path d="M10 7V4h4v3M12 11v5"/></svg></div>
         <h3>2.4&nbsp;GHz Remote Control</h3>
-        <p>Build it &mdash; then drive it around the house</p>
+        <p>Build it, then drive it around the house</p>
       </div>
       <div class="icon">
         <div class="circle c-orange"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
         <h3>Step-by-Step Manuals</h3>
-        <p>Every kit, every step &mdash; built by the kid</p>
+        <p>Every kit, every step, built by the kid</p>
       </div>
       <div class="icon">
         <div class="circle c-navy"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div>
@@ -287,23 +287,19 @@
       </div>
     </div>
 
-    <div class="family">
-      <b>In the family:</b> RC Megastructures &middot; <b>8 models</b> &nbsp;|&nbsp; Discovering Motions &middot; 13 &nbsp;|&nbsp; Amusement Park &middot; 7 &nbsp;|&nbsp; Crawlers &middot; 8 &nbsp;|&nbsp; Power Screw &middot; 7 &nbsp;&mdash;&nbsp; <span class="strong">plus 10 more. All 15 kits on the website, each with its own build page.</span>
-    </div>
-
     <h2 class="events-head">See us in <span class="script">October 2026</span></h2>
     <div class="events">
       <div class="event">
         <span class="date">SAT &middot; OCT 10</span>
-        <h1>Family Bazaar &mdash; Kids' STEM &amp; Robotics</h1>
-        <p class="when">11:30 AM &ndash; 4:15 PM</p>
+        <h1>Family Bazaar &middot; Kids' STEM &amp; Robotics</h1>
+        <p class="when">11:30 AM to 4:15 PM</p>
         <p class="where">Pineview Community Hub, 1700 Blair Rd, Gloucester</p>
-        <p class="detail">Free entry &mdash; vendors, henna, coffee &amp; more</p>
+        <p class="detail">Free entry &middot; vendors, henna, coffee &amp; more</p>
         <p class="note"><b>RSVP:</b> brickandmotorlabs@gmail.com</p>
       </div>
       <div class="event">
         <span class="date">SAT &middot; OCT 17</span>
-        <h1>Kids Workshop &mdash; Build a Ferris Wheel!</h1>
+        <h1>Kids Workshop &middot; Build a Ferris Wheel!</h1>
         <p class="when">1:30 PM</p>
         <p class="where">J.R. Brisston Rec Complex, Casselman</p>
         <p class="detail">Ages 5+ &middot; every child builds a working ferris wheel</p>
@@ -311,8 +307,8 @@
       </div>
       <div class="event">
         <span class="date">SUN &middot; OCT 18</span>
-        <h1>Ottawa Parent &amp; Child Expo &mdash; we're on site</h1>
-        <p class="when">9:00 AM &ndash; 4:00 PM</p>
+        <h1>Ottawa Parent &amp; Child Expo &middot; We're On Site</h1>
+        <p class="when">9:00 AM to 4:00 PM</p>
         <p class="where">Nepean Sportsplex, 1701 Woodroffe Ave</p>
         <p class="detail">Sat + Sun &middot; live builds &amp; hands-on demos</p>
         <p class="note"><b>Tickets:</b> parentandchildexpo.ca</p>
@@ -323,8 +319,8 @@
       <div>
         <p class="w-title">Bring the <span class="script">workshop</span> to you</p>
         <ul>
-          <li><b>Max 4 students per kit</b> &mdash; every child builds, no spectators</li>
-          <li>We bring all kits, parts &amp; manuals &mdash; you bring the kids &middot; Ages 5+ &middot; real gears, motors &amp; RC</li>
+          <li><b>Max 4 students per kit</b> &middot; every child builds, no spectators</li>
+          <li>We bring all kits, parts &amp; manuals &middot; you bring the kids &middot; Ages 5+ &middot; real gears, motors &amp; RC</li>
         </ul>
       </div>
       <div class="w-cta">Arrange a workshop &rarr; brickandmotorlabs.com</div>
