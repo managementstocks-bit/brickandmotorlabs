@@ -41,7 +41,10 @@
   .content { padding: 32px 64px 20px; }
 
   /* hero */
-  .hero { margin-bottom: 16px; }
+  .hero { margin-bottom: 16px; position: relative; }
+  .hero-qr { position: absolute; top: 0; right: 0; text-align: right; }
+  .hero-qr img { width: 64px; height: 64px; display: block; margin-left: auto; }
+  .hero-qr span { font-size: 8px; font-weight: 700; color: var(--muted); line-height: 1.35; margin-top: 3px; }
   .hero h1 {
     font-family: "Archivo Black", Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
     font-size: 66px;
@@ -255,6 +258,7 @@
       <h1>See You at Our <span class="script">October Events</span></h1>
       <p class="lead"><b>Hands-on STEM &amp; robotics kits, ages 5+</b> with real gears, real motors, no screens. Come see what your child can build, and meet us in person this October.</p>
       <span class="brush-banner">15 BLIX STEM &amp; ROBOTICS KITS</span>
+      <div class="hero-qr"><img src="qrcode.png" alt="QR code to brickandmotorlabs.com"><span>Scan to see<br>all 15 kits</span></div>
     </div>
 
     <div class="photos">
