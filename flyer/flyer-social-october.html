@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrickAndMotorLabs — October Events Flyer (1080x1350)</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:opsz,wght@14..32,700;14..32,800;14..32,900&family=Pacifico&display=swap");
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #143a8c;
+    --navy-deep: #0e2a68;
+    --orange: #ff6b1a;
+    --orange-deep: #e85d0f;
+    --ink: #22314e;
+    --muted: #5b6b8c;
+    --line: #d9e2f2;
+    --green: #1d9e57;
+    --red: #e23b3b;
+    --purple: #7b4fc0;
+  }
+  html, body { width: 1080px; }
+  body {
+    height: 1350px;
+    overflow: hidden;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    color: var(--ink);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+  .canvas { width: 1080px; height: 1350px; display: flex; flex-direction: column; }
+
+  /* ============ 1. HERO ============ */
+  .hero { position: relative; height: 180px; flex-shrink: 0; }
+  .hero img.photo {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .hero .veil {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(14,42,104,0.72) 0%, rgba(14,42,104,0.10) 42%, rgba(14,42,104,0.06) 70%, rgba(255,255,255,0.92) 100%);
+  }
+  .hero .brand {
+    position: absolute; top: 20px; left: 24px;
+    background: #fff; border-radius: 14px; padding: 8px 12px;
+    display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 4px 14px rgba(10,25,60,0.35);
+  }
+  .hero .brand img { width: 62px; height: 50px; display: block; }
+  .hero .brand .name { font-weight: 900; font-size: 26px; color: var(--navy); letter-spacing: -0.3px; line-height: 1.05; }
+  .hero .brand .name span { display: block; font-size: 15px; font-weight: 800; color: var(--orange); letter-spacing: 2.2px; }
+  .hero .script {
+    position: absolute; top: 26px; right: 30px;
+    font-family: "Pacifico", cursive;
+    font-size: 34px; color: #fff;
+    transform: rotate(-3deg);
+    text-shadow: 0 2px 10px rgba(10,25,60,0.55);
+    line-height: 1.15;
+  }
+
+  /* ============ 2. HEADLINE ============ */
+  .headline { padding: 10px 48px 0; flex-shrink: 0; }
+  .kicker {
+    font-size: 22px; font-weight: 800; color: var(--navy);
+    letter-spacing: 4.5px;
+  }
+  .kicker b { color: var(--orange-deep); }
+  .big1 {
+    font-family: "Archivo Black", Inter, sans-serif;
+    font-size: 118px; line-height: 0.94; letter-spacing: 1px;
+    color: var(--navy); margin-top: 2px;
+  }
+  .big2 {
+    display: inline-block;
+    margin-top: 2px;
+    background: var(--orange);
+    color: #fff;
+    font-family: "Archivo Black", Inter, sans-serif;
+    font-size: 88px; line-height: 1.06; letter-spacing: 3px;
+    padding: 2px 34px 6px;
+    clip-path: polygon(0.8% 22%, 2% 50%, 1% 78%, 2% 94%, 9% 88%, 18% 96%, 30% 88%, 42% 97%, 55% 89%, 67% 97%, 79% 88%, 90% 96%, 98% 86%, 99.2% 55%, 98.6% 28%, 99.5% 10%, 90% 16%, 78% 8%, 66% 15%, 54% 7%, 41% 14%, 29% 6%, 17% 14%, 6% 8%);
+  }
+
+  /* ============ 3. TAGLINE BAND ============ */
+  .tagband {
+    margin: 12px 0 0;
+    background: var(--navy);
+    color: #fff;
+    text-align: center;
+    font-size: 24px; font-weight: 900; letter-spacing: 2px;
+    padding: 11px 20px;
+    clip-path: polygon(0 24%, 0.6% 10%, 9% 17%, 22% 9%, 36% 15%, 50% 8%, 64% 15%, 77% 8%, 89% 15%, 99.4% 9%, 100% 24%, 100% 76%, 99.4% 90%, 89% 83%, 77% 90%, 64% 85%, 50% 91%, 36% 85%, 22% 90%, 9% 83%, 0.6% 88%, 0 74%);
+  }
+  .tagband b { color: var(--orange); }
+
+  /* ============ 4. EVENTS ============ */
+  .events { padding: 12px 40px 0; flex-shrink: 0; }
+  .ev {
+    height: 150px;
+    background: #fff;
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    display: flex; overflow: hidden;
+    box-shadow: 0 4px 12px rgba(20,58,140,0.10);
+  }
+  .ev + .ev { margin-top: 14px; }
+  .ev .date {
+    width: 150px; flex-shrink: 0;
+    background: var(--orange);
+    color: #fff;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .ev:nth-child(2) .date { background: var(--navy); }
+  .ev .date .d { font-size: 25px; font-weight: 900; letter-spacing: 2.5px; line-height: 1; }
+  .ev .date .n { font-family: "Archivo Black", sans-serif; font-size: 76px; line-height: 1.02; }
+  .ev .date .m { font-size: 25px; font-weight: 900; letter-spacing: 2.5px; line-height: 1; }
+  .ev .body { flex: 1; padding: 13px 22px 12px 24px; display: flex; flex-direction: column; justify-content: center; }
+  .ev .row1 { display: flex; align-items: center; gap: 14px; }
+  .ev h1 {
+    font-size: 34px; font-weight: 900; letter-spacing: -0.4px;
+    color: var(--navy); line-height: 1.08;
+  }
+  .ev .chip {
+    flex-shrink: 0;
+    background: var(--orange); color: #fff;
+    font-size: 16px; font-weight: 900; letter-spacing: 1.2px;
+    padding: 4px 12px; border-radius: 6px; white-space: nowrap;
+  }
+  .ev:nth-child(2) .chip { background: var(--navy); }
+  .ev .when { margin-top: 5px; font-size: 25px; font-weight: 800; color: var(--orange-deep); line-height: 1.1; }
+  .ev .where { margin-top: 3px; font-size: 22px; font-weight: 700; color: var(--muted); line-height: 1.15; }
+
+  /* ============ 5. ICONS ============ */
+  .icons {
+    display: flex; gap: 18px;
+    padding: 12px 52px 0;
+    flex-shrink: 0;
+  }
+  .icon { flex: 1; text-align: center; }
+  .icon .c {
+    width: 64px; height: 64px; border-radius: 50%;
+    margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 3px 8px rgba(20,58,140,0.18);
+  }
+  .icon .c svg { width: 32px; height: 32px; }
+  .icon h3 { margin-top: 8px; font-size: 19px; font-weight: 900; color: var(--navy); line-height: 1.12; letter-spacing: 0.2px; }
+  .icon p { margin-top: 2px; font-size: 16px; font-weight: 700; color: var(--muted); line-height: 1.15; }
+
+  /* ============ 6. FOOTER ============ */
+  .footer {
+    margin-top: 12px;
+    background: var(--navy-deep);
+    color: #fff;
+    padding: 16px 48px;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    flex-shrink: 0;
+  }
+  .footer .url {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 40px; letter-spacing: 0.5px; color: #fff; line-height: 1;
+  }
+  .footer .sub { margin-top: 7px; font-size: 21px; font-weight: 700; color: #cdd9f5; }
+  .footer .qrbox {
+    flex-shrink: 0;
+    background: #fff; border-radius: 12px; padding: 8px 14px 8px 8px;
+    display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .footer .qrbox img { width: 92px; height: 92px; display: block; }
+  .footer .qrbox .q { font-size: 17px; font-weight: 900; color: var(--navy); line-height: 1.25; letter-spacing: 0.4px; }
+  .footer .qrbox .q span { color: var(--orange-deep); }
+
+  /* ============ 7. HASHTAGS ============ */
+  .tags {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 30px 12px;
+    font-size: 21px; font-weight: 800; color: var(--navy); letter-spacing: 0.3px;
+  }
+  .tags b { color: var(--orange-deep); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+
+    <!-- 1. HERO -->
+    <div class="hero">
+      <img class="photo" src="../images/hero.jpg" alt="RC Megastructures crane build">
+      <div class="veil"></div>
+      <div class="brand">
+        <img src="../images/baml1-logo.png" alt="Brick And Motor Labs logo">
+        <div class="name">BRICK AND MOTOR LABS<span>STEM · ROBOTICS · AGES 5+</span></div>
+      </div>
+      <div class="script">Build. Learn. Play.</div>
+    </div>
+
+    <!-- 2. HEADLINE -->
+    <div class="headline">
+      <div class="kicker">MEET US IN OTTAWA &nbsp;·&nbsp; <b>OCTOBER 2026</b></div>
+      <div class="big1">OCTOBER</div>
+      <div class="big2">EVENTS</div>
+    </div>
+
+    <!-- 3. TAGLINE BAND -->
+    <div class="tagband">REAL GEARS &nbsp;·&nbsp; REAL MOTORS &nbsp;·&nbsp; <b>NO SCREENS</b> &nbsp;·&nbsp; AGES 5+</div>
+
+    <!-- 4. EVENTS -->
+    <div class="events">
+      <div class="ev">
+        <div class="date"><div class="d">SAT</div><div class="n">10</div><div class="m">OCT</div></div>
+        <div class="body">
+          <div class="row1"><h1>Family Bazaar</h1><span class="chip">FREE ENTRY</span></div>
+          <div class="when">11:30 AM to 4:15 PM · Kids' STEM &amp; Robotics</div>
+          <div class="where">Pineview Community Hub, 1700 Blair Rd, Gloucester</div>
+        </div>
+      </div>
+      <div class="ev">
+        <div class="date"><div class="d">SAT</div><div class="n">17</div><div class="m">OCT</div></div>
+        <div class="body">
+          <div class="row1"><h1>Build a Ferris Wheel</h1><span class="chip">RSVP</span></div>
+          <div class="when">1:30 PM Workshop · Every child builds a working wheel</div>
+          <div class="where">J.R. Brisston Rec Complex, Casselman</div>
+        </div>
+      </div>
+      <div class="ev">
+        <div class="date"><div class="d">SUN</div><div class="n">18</div><div class="m">OCT</div></div>
+        <div class="body">
+          <div class="row1"><h1>Ottawa Parent &amp; Child Expo</h1><span class="chip">TICKETS</span></div>
+          <div class="when">9:00 AM to 4:00 PM · Live builds &amp; hands-on demos</div>
+          <div class="where">Nepean Sportsplex, 1701 Woodroffe Ave, Nepean</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. ICONS -->
+    <div class="icons">
+      <div class="icon">
+        <div class="c" style="background:var(--orange)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></div>
+        <h3>Real Gears<br>&amp; Motors</h3>
+        <p>true mechanical motion</p>
+      </div>
+      <div class="icon">
+        <div class="c" style="background:var(--navy)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="7" y="7" width="10" height="14" rx="2.5"/><path d="M10 7V4h4v3M12 11v5"/></svg></div>
+        <h3>2.4 GHz<br>Remote Control</h3>
+        <p>build it, then drive it</p>
+      </div>
+      <div class="icon">
+        <div class="c" style="background:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
+        <h3>Step-by-Step<br>Manuals</h3>
+        <p>built by the kid</p>
+      </div>
+      <div class="icon">
+        <div class="c" style="background:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div>
+        <h3>Ages 5+</h3>
+        <p>every child builds</p>
+      </div>
+      <div class="icon">
+        <div class="c" style="background:var(--purple)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M10 18h4M4 4l16 16"/></svg></div>
+        <h3>No Screens</h3>
+        <p>hands on real machines</p>
+      </div>
+    </div>
+
+    <!-- 6. FOOTER -->
+    <div class="footer">
+      <div>
+        <div class="url">brickandmotorlabs.com</div>
+        <div class="sub">15 BLIX STEM &amp; Robotics Kits · Ships in Canada</div>
+      </div>
+      <div class="qrbox">
+        <img src="qrcode.png" alt="QR code to brickandmotorlabs.com">
+        <div class="q">SCAN TO SEE<br><span>ALL 15 KITS</span></div>
+      </div>
+    </div>
+
+    <!-- 7. HASHTAGS -->
+    <div class="tags"><span><b>#BrickAndMotorLabs</b>&nbsp; #BlixKits&nbsp; #STEM&nbsp; #KidsEngineering&nbsp; #Ottawa&nbsp; #BuildLearnPlay</span></div>
+
+  </div>
+</body>
+</html>
