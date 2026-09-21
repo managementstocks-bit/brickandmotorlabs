@@ -2270,6 +2270,22 @@ p {
   color: var(--gray);
 }
 
+/* Inside the footer bottom bar the trust line must sit flush with the
+   copyright / tagline text (no extra top margin). */
+.footer__bottom .footer__trustline {
+  margin: 0;
+}
+
+.subscribe-form select.subscribe-form__input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
 .footer__lock {
   width: 14px;
   height: 14px;

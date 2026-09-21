@@ -830,12 +830,18 @@ function wireSubscribeForms() {
     }
     const payload = { email, source: (window.location.pathname.split('/').pop() || 'page').replace(/\.html?$/, '') };
     if (nameInput && nameInput.value.trim()) payload.name = nameInput.value.trim();
+    const interestInput = form.querySelector('select[name="interest"]');
+    if (interestInput && interestInput.value) payload.interest = interestInput.value;
     const qs = new URLSearchParams(window.location.search);
     if (qs.get('source')) payload.source = qs.get('source').slice(0, 60);
     if (btn) btn.disabled = true;
     try {
-      const apiBase = (typeof window.BML_API_BASE !== 'undefined' ? window.BML_API_BASE : 'https://api.brickandmotorlabs.com');
-      const res = await fetch(apiBase + '/api/subscribe', {
+      // Mirror the cart's base: same BML_API_BASE override, same workers.dev default
+      // (API_BASE inside the cart IIFE is not visible from this scope).
+      const apiBase = (typeof window.BML_API_BASE !== 'undefined')
+        ? window.BML_API_BASE
+        : 'https://brickandmotorlabs-checkout.brickandmotorlabs.workers.dev/api';
+      const res = await fetch(apiBase + '/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

@@ -70,6 +70,13 @@
         <input class="subscribe-form__input" id="sub-email" type="email" name="email" placeholder="Your email address" autocomplete="email" required>
         <label class="visually-hidden" for="sub-name">First name (optional)</label>
         <input class="subscribe-form__input" id="sub-name" type="text" name="name" placeholder="First name (optional)" autocomplete="given-name" style="flex:1 1 180px;">
+        <label class="visually-hidden" for="sub-interest">What are you most excited about?</label>
+        <select class="subscribe-form__input" id="sub-interest" name="interest" style="flex:1 1 100%;">
+          <option value="">What are you most excited about?</option>
+          <option value="new-kits">&#129302; New kits first</option>
+          <option value="events">&#127882; Bazaar &amp; event invites</option>
+          <option value="both">&#128588;&#65039; Both, please</option>
+        </select>
         <button class="btn btn--accent subscribe-form__btn" type="submit">Sign Me Up</button>
         <p class="subscribe-form__status" role="status" aria-live="polite"></p>
       </form>
