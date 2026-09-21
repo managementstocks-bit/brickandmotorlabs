@@ -362,6 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="cart-rate-options" hidden></div>
         </div>
         <button class="btn btn--primary cart-checkout" style="width:100%;justify-content:center;">Proceed to Checkout</button>
+        <p class="cart-secure"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a3.5 3.5 0 0 0-3.5 3.5V6H4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-.5V4.5A3.5 3.5 0 0 0 8 1Zm-2 3.5a2 2 0 1 1 4 0V6H6V4.5Zm2 5a1.25 1.25 0 0 1 .75 2.26V13a.75.75 0 0 1-1.5 0v-1.24A1.25 1.25 0 0 1 8 10Z"/></svg> Secured by <strong>Stripe</strong> · Visa · Mastercard · Amex · Interac</p>
         <p class="cart-note">Prefer to pay by Interac e-Transfer? <a href="contact.html" class="cart-etransfer">Contact us to order by email</a>.</p>
         <p class="cart-error" hidden></p>
       </div>`;
@@ -744,4 +745,137 @@ document.addEventListener('DOMContentLoaded', () => {
     loadStock();
     loadCanonicalPrices();
   });
+})();
+
+// ===== Meta Pixel + Purchase Event =====================================
+
+// Meta Pixel: set the ID here once Meta Business Suite provides one.
+// Empty string = pixel disabled (no requests sent).
+const META_PIXEL_ID = '';
+
+function loadMetaPixel() {
+  if (!META_PIXEL_ID || window.fbq) return;
+  window.fbq = function () {
+    window.fbq.call
+      ? window.fbq.call.apply(window.fbq, arguments)
+      : (window.fbq.queue = window.fbq.queue || []).push(arguments);
+  };
+  window.fbq('init', META_PIXEL_ID);
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+  document.head.appendChild(s);
+}
+
+loadMetaPixel();
+if (window.fbq) window.fbq('track', 'PageView');
+
+// Order success page: fire GA4 + Meta purchase events with the order value
+// (appended to the success URL by the Worker from PRICE_AMOUNTS).
+(function firePurchaseEvent() {
+  if (!/order-success\.html$/.test(window.location.pathname)) return;
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id') || '';
+  const value = parseFloat(params.get('value') || '0');
+  if (!sessionId && !(value > 0)) return;
+  if (window.gtag) window.gtag('event', 'purchase', { transaction_id: sessionId, value: value || 0, currency: 'CAD', items: [] });
+  if (window.fbq) window.fbq('track', 'Purchase', { value: value || 0, currency: 'CAD' });
+})();
+
+// ===== Email Capture (footer band + subscribe page) ====================
+
+function buildSubscribeBand() {
+  if (document.body.hasAttribute('data-subscribe-page') || document.querySelector('[data-subscribe-band]')) return;
+  const footer = document.querySelector('footer.footer') || document.querySelector('footer');
+  if (!footer) return;
+  const band = document.createElement('div');
+  band.className = 'subscribe-band';
+  band.setAttribute('data-subscribe-band', '');
+  band.innerHTML =
+    '<div class="container">' +
+    '  <div class="subscribe-band__inner">' +
+    '    <div class="subscribe-band__text">' +
+    '      <h2 class="subscribe-band__title">Stay in the loop</h2>' +
+    '      <p class="subscribe-band__copy">Event dates, new kits and offers. We only email when it matters.</p>' +
+    '    </div>' +
+    '    <form class="subscribe-form" data-subscribe-form novalidate>' +
+    '      <label class="visually-hidden" for="subscribe-email">Email address</label>' +
+    '      <input class="subscribe-form__input" id="subscribe-email" type="email" name="email" placeholder="Your email address" autocomplete="email" required>' +
+    '      <button class="btn btn--primary subscribe-form__btn" type="submit">Sign Me Up</button>' +
+    '      <p class="subscribe-form__status" role="status" aria-live="polite"></p>' +
+    '    </form>' +
+    '  </div>' +
+    '</div>';
+  footer.before(band);
+}
+
+function wireSubscribeForms() {
+  document.addEventListener('submit', async (e) => {
+    const form = e.target && e.target.closest ? e.target.closest('[data-subscribe-form]') : null;
+    if (!form) return;
+    e.preventDefault();
+    const input = form.querySelector('input[name="email"]');
+    const nameInput = form.querySelector('input[name="name"]');
+    const status = form.querySelector('.subscribe-form__status');
+    const btn = form.querySelector('button[type="submit"]');
+    const email = (input && input.value || '').trim();
+    const say = (msg, isErr) => {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = 'subscribe-form__status ' + (isErr ? 'subscribe-form__status--error' : 'subscribe-form__status--ok');
+    };
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      say('Please enter a valid email address.', true);
+      return;
+    }
+    const payload = { email, source: (window.location.pathname.split('/').pop() || 'page').replace(/\.html?$/, '') };
+    if (nameInput && nameInput.value.trim()) payload.name = nameInput.value.trim();
+    const qs = new URLSearchParams(window.location.search);
+    if (qs.get('source')) payload.source = qs.get('source').slice(0, 60);
+    if (btn) btn.disabled = true;
+    try {
+      const apiBase = (typeof window.BML_API_BASE !== 'undefined' ? window.BML_API_BASE : 'https://api.brickandmotorlabs.com');
+      const res = await fetch(apiBase + '/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        form.innerHTML = '<p class="subscribe-form__thanks">You\'re on the list! We\'ll be in touch soon. 🎉</p>';
+      } else {
+        say(data.error || 'Something went wrong. Please try again in a bit.', true);
+        if (btn) btn.disabled = false;
+      }
+    } catch (err) {
+      say('Could not reach our server — please email brickandmotorlabs@gmail.com instead.', true);
+      if (btn) btn.disabled = false;
+    }
+  });
+}
+
+function buildTrustLine() {
+  const bottom = document.querySelector('.footer__bottom');
+  if (!bottom || bottom.querySelector('[data-trust-line]')) return;
+  const el = document.createElement('p');
+  el.className = 'footer__trustline';
+  el.setAttribute('data-trust-line', '');
+  el.innerHTML =
+    '<svg class="footer__lock" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a3.5 3.5 0 0 0-3.5 3.5V6H4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-.5V4.5A3.5 3.5 0 0 0 8 1Zm-2 3.5a2 2 0 1 1 4 0V6H6V4.5Zm2 5a1.25 1.25 0 0 1 .75 2.26V13a.75.75 0 0 1-1.5 0v-1.24A1.25 1.25 0 0 1 8 10Z"/></svg>' +
+    'Secure checkout by <strong>Stripe</strong> · Visa · Mastercard · Amex · Interac';
+  bottom.appendChild(el);
+}
+
+wireSubscribeForms();
+
+(function initSubscribeUI() {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      buildSubscribeBand();
+      buildTrustLine();
+    });
+  } else {
+    buildSubscribeBand();
+    buildTrustLine();
+  }
 })();

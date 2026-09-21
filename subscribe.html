@@ -9,35 +9,38 @@
   gtag('js', new Date());
 
   gtag('config', 'G-VJJ1KVW9LM');
-  gtag('event', 'page_view', { page_title: "FAQ - BrickAndMotorLabs | Common Questions About Our STEM Kits" });
+  gtag('event', 'page_view', { page_title: "Newsletter - BrickAndMotorLabs | Event Alerts & New Kits" });
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ - BrickAndMotorLabs | Common Questions About Our STEM Kits</title>
-  <meta name="description" content="Frequently asked questions about BrickAndMotorLabs STEM robotics kits: age ranges, ordering, shipping, and more.">
-  <link rel="canonical" href="https://brickandmotorlabs.com/faq.html">
-  <meta property="og:title" content="FAQ - BrickAndMotorLabs | Common Questions About Our STEM Kits">
-  <meta property="og:description" content="Frequently asked questions about BrickAndMotorLabs STEM robotics kits: age ranges, ordering, shipping, and more.">
+  <title>Newsletter - BrickAndMotorLabs | Event Alerts & New Kits</title>
+  <meta name="description" content="Sign up for BrickAndMotorLabs updates: event dates, new STEM robotics kits and member-only offers. Unsubscribe any time.">
+  <link rel="canonical" href="https://brickandmotorlabs.com/subscribe.html">
+  <meta property="og:title" content="Newsletter - BrickAndMotorLabs | Event Alerts & New Kits">
+  <meta property="og:description" content="Sign up for BrickAndMotorLabs updates: event dates, new STEM robotics kits and member-only offers. Unsubscribe any time.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://brickandmotorlabs.com/faq.html">
+  <meta property="og:url" content="https://brickandmotorlabs.com/subscribe.html">
   <meta property="og:image" content="https://brickandmotorlabs.com/images/hero.jpg">
   <meta property="og:site_name" content="BrickAndMotorLabs">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FAQ - BrickAndMotorLabs | Common Questions About Our STEM Kits">
-  <meta name="twitter:description" content="Frequently asked questions about BrickAndMotorLabs STEM robotics kits: age ranges, ordering, shipping, and more.">
+  <meta name="twitter:title" content="Newsletter - BrickAndMotorLabs | Event Alerts & New Kits">
+  <meta name="twitter:description" content="Sign up for BrickAndMotorLabs updates: event dates, new STEM robotics kits and member-only offers.">
   <meta name="twitter:image" content="https://brickandmotorlabs.com/images/hero.jpg">
+  <meta name="theme-color" content="#1a73e8">
   <link rel="icon" type="image/svg+xml" href="images/favicon-baml.png?v=4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebPage","name":"FAQ - BrickAndMotorLabs | Common Questions About Our STEM Kits","url":"https://brickandmotorlabs.com/faq.html","description":"Frequently asked questions about BrickAndMotorLabs STEM robotics kits: age ranges, ordering, shipping, and more.","isPartOf":{"@type":"WebSite","name":"BrickAndMotorLabs","url":"https://brickandmotorlabs.com/"}}
+  {"@context":"https://schema.org","@type":"WebPage","name":"Newsletter - BrickAndMotorLabs | Event Alerts & New Kits","url":"https://brickandmotorlabs.com/subscribe.html","description":"Sign up for BrickAndMotorLabs updates: event dates, new STEM robotics kits and member-only offers.","isPartOf":{"@type":"WebSite","name":"BrickAndMotorLabs","url":"https://brickandmotorlabs.com/"}}
   </script>
 </head>
-<body>
+<body data-subscribe-page>
+
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Navigation -->
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="navbar__logo"><img src="images/baml1-logo.png" alt="BrickAndMotorLabs logo">BrickAndMotor<span>Labs</span></a>
@@ -47,77 +50,55 @@
         <li><a href="index.html#products" class="navbar__link">Kits</a></li>
         <li><a href="events.html" class="navbar__link">Events</a></li>
         <li><a href="contact.html" class="navbar__link">Contact</a></li>
-        <li><a href="contact.html" class="navbar__cta">Get In Touch</a></li>
       </ul>
       <button class="navbar__hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navbar-menu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   </nav>
 
-  <section class="hero">
+  <!-- Subscribe Hero -->
+  <section class="subscribe-page-hero" id="main-content">
     <div class="container">
-      <div class="hero__content" style="max-width:700px;">
-        <span class="hero__badge">FAQ</span>
-        <h1 class="hero__title">Frequently Asked <span>Questions</span></h1>
-      </div>
+      <span class="hero__badge">Newsletter</span>
+      <h1 class="hero__title" style="color:#fff;">Get The Latest<br><span>From The Lab</span></h1>
+      <p class="hero__description" style="color:rgba(255,255,255,0.85); max-width:56ch; margin:0 auto;">Event dates before anyone else, new STEM robotics kits, and offers you won't find anywhere else.</p>
+      <form class="subscribe-form" data-subscribe-form novalidate>
+        <label class="visually-hidden" for="sub-email">Email address</label>
+        <input class="subscribe-form__input" id="sub-email" type="email" name="email" placeholder="Your email address" autocomplete="email" required>
+        <label class="visually-hidden" for="sub-name">First name (optional)</label>
+        <input class="subscribe-form__input" id="sub-name" type="text" name="name" placeholder="First name (optional)" autocomplete="given-name" style="flex:1 1 180px;">
+        <button class="btn btn--accent subscribe-form__btn" type="submit">Sign Me Up</button>
+        <p class="subscribe-form__status" role="status" aria-live="polite"></p>
+      </form>
+      <p style="margin:1.25rem 0 0; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+        We only email when there's something worth knowing. No spam, ever.
+        <a href="privacy.html" style="color:rgba(255,255,255,0.85);">Privacy policy</a> · Unsubscribe with one click.
+      </p>
     </div>
   </section>
 
-  <section class="section" id="main-content">
-    <div class="container" style="max-width:750px;">
-
-      <details class="faq-item">
-        <summary>What age are your kits suitable for?</summary>
-        <p>Our kits range from ages 3+ to 14+. The simpler Blix Minis line is perfect for ages 3-5, while the more advanced RC and engineering kits are designed for ages 6-14. Each kit page lists the recommended age range.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Do the kits require batteries?</summary>
-        <p>Some kits require batteries (especially the RC kits with motors). Battery requirements are listed on each product page. Most kits use common AA or AAA batteries that are not included.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>How do I place an order?</summary>
-        <p>Click the price on any kit to go to our <a href="contact.html">contact page</a>, or email us directly at <a href="mailto:brickandmotorlabs@gmail.com">brickandmotorlabs@gmail.com</a> with the kit name and your shipping address. We will review your order, confirm shipping costs, and send you payment details via email.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Do you ship across Canada?</summary>
-        <p>Yes! We ship across Canada. Shipping costs vary by location. Contact us with your address and we will provide a shipping quote.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>What if my kit arrives with missing or broken pieces?</summary>
-        <p>Contact us within 7 days of delivery and we will send replacement parts at no cost. We stand behind the quality of every kit we ship.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can schools order in bulk?</summary>
-        <p>Absolutely! We offer school and classroom packages. <a href="contact.html">Reach out to us</a> with your requirements and we will work out a custom arrangement.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Are the kits safe for young children?</summary>
-        <p>Yes. All kits are made from non-toxic, certified materials. Kits for ages 3+ do not contain small parts that pose a choking hazard. Older kits may include small pieces and require adult supervision.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Do the kits come with instructions?</summary>
-        <p>Every kit includes a step-by-step illustrated instruction manual. The instructions guide the builder through the process, but kids are encouraged to experiment and rebuild beyond the manual.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can I return a kit if my child doesn't like it?</summary>
-        <p>Unused kits in original condition can be returned within 14 days for a full refund minus shipping costs. See our <a href="shipping.html">shipping page</a> for full return policy details.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Where are the kits made?</summary>
-        <p>Our Blix kits are designed and manufactured in India using high-quality, certified materials. They have been classroom-tested and trusted by educators for years before we brought them to Canada.</p>
-      </details>
-
-      <p style="margin-top:40px; text-align:center;">Still have questions? <a href="contact.html">Get in touch</a> and we will help you out.</p>
+  <!-- What You Get -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:0.5rem;">What You'll Hear From Us</h2>
+      <p style="text-align:center; color:var(--gray); max-width:60ch; margin:0 auto;">A short list — we'd rather earn your attention than buy it.</p>
+      <div class="subscribe-page-points">
+        <div class="point-card">
+          <h3>📅 Event Alerts</h3>
+          <p>Be the first to know when we're at a bazaar, expo or community event — including early-bird info and what we'll be bringing.</p>
+        </div>
+        <div class="point-card">
+          <h3>🤖 New Kits</h3>
+          <p>Hands-on STEM build kits for ages 10+, from electric bikes to RC megastructures. Find out what's building next.</p>
+        </div>
+        <div class="point-card">
+          <h3>🎁 Member-Only Offers</h3>
+          <p>The occasional special deal for subscribers before it goes public. That's it — no daily blast, no fluff.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -145,7 +126,6 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="events.html">Events</a></li>
-            <li><a href="subscribe.html">Newsletter</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -174,7 +154,6 @@
       </div>
     </div>
   </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

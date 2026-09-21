@@ -9,8 +9,9 @@ let warnings = 0;
 function getAllHtml(dir, prefix = '') {
   let files = [];
   // social/ = social-media asset canvases (story cards, reels) — not site pages
+  // flyer/ = print-canvas flyer pages (not served) — not site pages
   for (const f of fs.readdirSync(dir)) {
-    if (f === 'social') continue;
+    if (f === 'social' || f === 'flyer') continue;
     const full = path.join(dir, f);
     if (fs.statSync(full).isDirectory()) {
       files = files.concat(getAllHtml(full, prefix + f + '/'));
