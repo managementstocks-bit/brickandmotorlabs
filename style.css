@@ -1346,6 +1346,18 @@ p {
     text-align: center;
   }
 
+  /* Mobile keeps the natural DOM order (copyright, tagline, trust
+     line) and lets the trust line flow as a centered sentence instead
+     of wrapping as discrete flex chunks. */
+  .footer__bottom .footer__trustline {
+    display: block;
+  }
+
+  .footer__bottom .footer__trustline svg {
+    display: inline-block;
+    vertical-align: -3px;
+  }
+
   .testimonial-grid {
     grid-template-columns: 1fr;
   }
@@ -2270,10 +2282,44 @@ p {
   color: var(--gray);
 }
 
-/* Inside the footer bottom bar the trust line must sit flush with the
-   copyright / tagline text (no extra top margin). */
+/* Inside the footer bottom bar all three items share one line on
+   desktop. The two static paragraphs inherit the base `p`
+   margin-bottom, which inflates their flex margin-boxes relative to
+   the trust line: the trust line gets pushed 8px out of line, and
+   when the line runs tight it orphans onto its own row. Zero the
+   margins so all three margin-boxes match, keep the short paragraphs
+   at natural width, and let ONLY the trust line yield horizontal
+   space (its text wraps, the line never does). */
+.footer__bottom > p {
+  margin: 0;
+}
+
+/* The two short paragraphs keep their natural width; the trust line
+   absorbs ALL horizontal slack (flex-basis 0 + grow). This matters
+   because flex line-breaking uses unshrunk basis sizes, so `flex-shrink`
+   alone could not stop an orphan row — with a 0 basis the trust line
+   always fits and its text simply wraps (centered) when space runs
+   out, instead of the whole line orphaning. */
+.footer__bottom > p:not(.footer__trustline) {
+  flex: 0 0 auto;
+}
+
 .footer__bottom .footer__trustline {
   margin: 0;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Desktop only: read order copyright | trust line | tagline, with the
+   trust text centered in its variable-width slot. */
+@media (min-width: 769px) {
+  .footer__bottom > p:nth-child(2) {
+    order: 2;
+  }
+
+  .footer__bottom .footer__trustline {
+    justify-content: center;
+  }
 }
 
 .subscribe-form select.subscribe-form__input {
