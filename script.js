@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitting = false;
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
-        status.textContent = 'Sorry, your message couldn\'t be sent. Please check your connection and try again, or email us at brickandmotorlabs@gmail.com.';
+        status.textContent = 'Sorry, your message couldn\'t be sent. Please check your connection and try again, or email us at info@brickandmotorlabs.com.';
         status.classList.add('form-alert--error');
         status.hidden = false;
       }, 12000);
@@ -854,7 +854,7 @@ function wireSubscribeForms() {
         if (btn) btn.disabled = false;
       }
     } catch (err) {
-      say('Could not reach our server — please email brickandmotorlabs@gmail.com instead.', true);
+      say('Could not reach our server — please email info@brickandmotorlabs.com instead.', true);
       if (btn) btn.disabled = false;
     }
   });
