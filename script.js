@@ -771,7 +771,8 @@ loadMetaPixel();
 if (window.fbq) window.fbq('track', 'PageView');
 
 // Order success page: fire GA4 + Meta purchase events with the order value
-// (appended to the success URL by the Worker from PRICE_AMOUNTS).
+// (appended to the success URL by the Worker from Stripe price objects,
+// plus the shipping rate when exactly one option is known server-side).
 (function firePurchaseEvent() {
   if (!/order-success\.html$/.test(window.location.pathname)) return;
   const params = new URLSearchParams(window.location.search);
