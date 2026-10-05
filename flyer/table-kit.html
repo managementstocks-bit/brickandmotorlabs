@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Table Kit &middot; BrickAndMotorLabs</title>
+<meta name="description" content="Print-ready event table kit: scan-to-order cards for every Blix kit, order card, subscribe card and workshop card.">
+<link rel="canonical" href="https://brickandmotorlabs.com/flyer/table-kit.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* Print pack: A4, no printer margins, mm-based so it prints at true size.
+     Sheets: 1 order card, 1 subscribe+workshop card, 3 sheets of kit cards (6 per sheet). */
+  :root{
+    --navy:#224092; --blue:#1a73e8; --accent:#ff6d00; --ink:#1f2933; --line:#c9d2e0;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  @page{ size:A4 portrait; margin:0; }
+  html,body{ font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--ink); background:#e9edf3; }
+  body{ padding:16px; }
+  .sheet{
+    width:210mm; height:296mm; background:#fff; margin:0 auto 10mm; padding:10mm;
+    display:flex; flex-direction:column; gap:6mm; page-break-after:always; overflow:hidden;
+  }
+  .sheet:last-child{ page-break-after:auto; margin-bottom:0; }
+  .brandbar{ display:flex; align-items:center; gap:6mm; border-bottom:1.4mm solid var(--blue); padding-bottom:4mm; }
+  .brandbar img{ height:14mm; width:auto; }
+  .brandbar .name{ font-weight:900; font-size:15px; color:var(--navy); letter-spacing:.2px; }
+  .brandbar .tag{ font-size:11px; color:#5b6b7d; }
+  .sheet__note{ font-size:9.5px; color:#7a8794; }
+
+  /* ---------- ORDER CARD (top half) + SUBSCRIBE CARD (bottom half) ---------- */
+  .bigcard{ flex:1; border-radius:6mm; padding:12mm 12mm 10mm; display:flex; gap:10mm; align-items:center; }
+  .bigcard--order{ background:linear-gradient(135deg,#f2f7ff,#ffffff 60%); border:1mm solid var(--blue); }
+  .bigcard--subscribe{ background:linear-gradient(135deg,#fff4ec,#ffffff 60%); border:1mm solid var(--accent); }
+  .bigcard__text{ flex:1; }
+  .bigcard h1{ font-size:38px; line-height:1.05; color:var(--navy); font-weight:900; }
+  .bigcard h1 em{ font-style:normal; color:var(--accent); }
+  .bigcard p{ font-size:15px; margin-top:4mm; max-width:112mm; }
+  .bigcard ul{ list-style:none; margin-top:5mm; }
+  .bigcard li{ font-size:13.5px; font-weight:700; color:var(--navy); margin-bottom:2.2mm; }
+  .bigcard .from{ display:inline-block; background:var(--accent); color:#fff; font-weight:900; font-size:16px; padding:2.4mm 5mm; border-radius:3mm; margin-bottom:3mm; }
+  .qrbox{ width:52mm; text-align:center; }
+  .qrbox img{ width:46mm; height:46mm; image-rendering:pixelated; }
+  .qrbox .cap{ font-size:11.5px; font-weight:800; color:var(--ink); margin-top:1.5mm; }
+  .cutline{ border-top:1px dashed var(--line); margin:1mm 0; }
+
+  /* ---------- KIT CARDS: 2 x 3 grid = 6 per sheet ---------- */
+  .grid{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows:repeat(3, 1fr); gap:5mm; flex:1; }
+  .kit{
+    border:1px dashed var(--line); border-radius:4mm; padding:4mm 5mm; display:flex; gap:5mm; align-items:center;
+    break-inside:avoid;
+  }
+  .kit__photo{ width:34mm; height:34mm; border-radius:3mm; object-fit:cover; background:#f3f5f8; flex:none; }
+  .kit__mid{ flex:1; min-width:0; }
+  .kit__name{ font-weight:900; font-size:15px; color:var(--navy); line-height:1.15; }
+  .kit__age{ display:inline-block; margin-top:2mm; font-size:10.5px; font-weight:800; color:#1c4f2c; background:#e3f4e8; border-radius:2mm; padding:1mm 2.5mm; }
+  .kit__price{ font-size:20px; font-weight:900; color:var(--accent); margin-top:2.5mm; }
+  .kit__price small{ font-size:10.5px; font-weight:700; color:#6b7885; }
+  .kit__qr{ width:30mm; flex:none; text-align:center; }
+  .kit__qr img{ width:28mm; height:28mm; image-rendering:pixelated; }
+  .kit__qr span{ display:block; font-size:9.5px; font-weight:800; color:var(--navy); margin-top:1mm; }
+  .sheet__head{ display:flex; justify-content:space-between; align-items:baseline; }
+  .sheet__head h2{ font-size:13px; font-weight:900; color:var(--navy); text-transform:uppercase; letter-spacing:.6px; }
+  .footer{ font-size:9.5px; color:#7a8794; }
+  @media print{ body{ padding:0; background:#fff; } .sheet{ margin:0; } }
+</style>
+</head>
+<body>
+
+<!-- SHEET 1: the card that sits flat on the table -->
+<section class="sheet">
+  <div class="brandbar">
+    <img src="../images/baml1-logo.png" alt="BrickAndMotorLabs logo">
+    <div>
+      <div class="name">BrickAndMotorLabs</div>
+      <div class="tag">Blix hands-on STEM &amp; robotics kits &middot; ages 3+ &middot; Ottawa, ON</div>
+    </div>
+  </div>
+
+  <div class="bigcard bigcard--order">
+    <div class="bigcard__text">
+      <span class="from">Kits from $12.78</span>
+      <h1>Scan to order &mdash;<br><em>we build it together</em></h1>
+      <p>Point your phone camera at the code. Pick your kit, enter your postal code for a real shipping price, and pay by card. No app, no account.</p>
+      <ul>
+        <li>$5 hand delivery in Ottawa &amp; the GTA &middot; Canada Post everywhere else</li>
+        <li>Prefer Interac e-Transfer? Order by email: info@brickandmotorlabs.com</li>
+        <li>Workshops for schools, camps &amp; groups &mdash; we bring everything</li>
+      </ul>
+    </div>
+    <div class="qrbox"><img src="table-kit/qr/home.png" alt="QR code to brickandmotorlabs.com"><div class="cap">brickandmotorlabs.com</div></div>
+  </div>
+
+  <div class="cutline"></div>
+
+  <div class="bigcard bigcard--subscribe">
+    <div class="bigcard__text">
+      <h1>Get the <em>next workshop</em> first</h1>
+      <p>Leave your email and we will tell you about the next build day, when new kits land, and when workshop seats open. One short note a month, no spam.</p>
+      <ul>
+        <li>Build-day videos, new kit drops, workshop seats</li>
+        <li>Ask for a school or camp workshop while you are here</li>
+      </ul>
+    </div>
+    <div class="qrbox"><img src="table-kit/qr/subscribe.png" alt="QR code to the subscribe page"><div class="cap">Scan to subscribe</div></div>
+  </div>
+
+  <div class="footer">Sheet 1 of 5 &middot; print at 100% (no scaling), A4 &middot; cut on the dashed line</div>
+</section>
+
+<!-- SHEET 2: workshop card (B2B) + a spare order card for the other side of the table -->
+<section class="sheet">
+  <div class="bigcard bigcard--order" style="background:linear-gradient(135deg,#eef3fb,#ffffff 60%);">
+    <div class="bigcard__text">
+      <span class="from">Schools &middot; Camps &middot; Groups</span>
+      <h1>Bring the <em>build workshop</em> to you</h1>
+      <p>A BrickAndMotorLabs workshop runs in your classroom, camp or group: we bring every kit, part and manual, you bring the kids. Maximum 4 students per kit, so every child builds. Ages 5+, no screens.</p>
+      <ul>
+        <li>90 minute build session &middot; gears, cams, motors, linkages</li>
+        <li>Take-home option: add kits for each build team</li>
+        <li>Scan to see the offer and request a date</li>
+      </ul>
+    </div>
+    <div class="qrbox"><img src="table-kit/qr/workshops.png" alt="QR code to the workshops page"><div class="cap">brickandmotorlabs.com/workshops</div></div>
+  </div>
+
+  <div class="cutline"></div>
+
+  <div class="bigcard bigcard--subscribe" style="background:linear-gradient(135deg,#f2f7ff,#ffffff 60%);border-color:var(--blue);">
+    <div class="bigcard__text">
+      <span class="from" style="background:var(--blue);">Scan the kit cards</span>
+      <h1>Each kit on the table has <em>its own code</em></h1>
+      <p>Flip through the cards on the back of the table: every kit has a photo, the price, the age, and a code that opens that exact kit on the website. Scan the one your child is holding.</p>
+      <ul>
+        <li>Ask us anything: stock, ages, what is in the box</li>
+        <li>Hand delivery in Ottawa this week for $5</li>
+      </ul>
+    </div>
+    <div class="qrbox"><img src="table-kit/qr/home.png" alt="QR code to brickandmotorlabs.com"><div class="cap">All 15 kits</div></div>
+  </div>
+
+  <div class="footer">Sheet 2 of 5 &middot; print at 100% (no scaling), A4</div>
+</section>
+
+<!-- SHEETS 3-5: per-kit scan cards (6 per sheet) -->
+<section class="sheet">
+  <div class="sheet__head"><h2>Kit cards &middot; scan to open this exact kit</h2><span class="sheet__note">Sheet 3 of 5</span></div>
+  <div class="grid">
+    <div class="kit"><img class="kit__photo" src="../images/Blix_Minis_Bike.png" alt="Blix Minis Bike"><div class="kit__mid"><div class="kit__name">Blix Minis &mdash; Bike</div><span class="kit__age">Age 5+</span><div class="kit__price">$12.78 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/bike.png" alt="QR for Blix Minis Bike"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/Blix_Minis_Ferris_Wheel.png" alt="Blix Minis Ferris Wheel"><div class="kit__mid"><div class="kit__name">Blix Minis &mdash; Ferris Wheel</div><span class="kit__age">Age 5+</span><div class="kit__price">$12.78 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/ferris-wheel.png" alt="QR for Ferris Wheel"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/BlixQueakyCharge-Sleepy1.png" alt="Queaky Charge Sleepy"><div class="kit__mid"><div class="kit__name">Queaky Charge &mdash; Sleepy</div><span class="kit__age">Age 3+</span><div class="kit__price">$24.99 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/queaky-charge.png" alt="QR for Queaky Charge"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/blix_buddy.jpg" alt="Blix Buddy"><div class="kit__mid"><div class="kit__name">Blix Buddy</div><span class="kit__age">Age 5+</span><div class="kit__price">$28.40 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/buddy.png" alt="QR for Blix Buddy"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/Crawlers.jpg" alt="Crawlers"><div class="kit__mid"><div class="kit__name">Crawlers</div><span class="kit__age">Age 8+</span><div class="kit__price">$49.70 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/crawlers.png" alt="QR for Crawlers"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/Rover.1.jpg" alt="Rover"><div class="kit__mid"><div class="kit__name">Rover</div><span class="kit__age">Age 8+</span><div class="kit__price">$53.96 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/rover.png" alt="QR for Rover"><span>Scan</span></div></div>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="sheet__head"><h2>Kit cards &middot; scan to open this exact kit</h2><span class="sheet__note">Sheet 4 of 5</span></div>
+  <div class="grid">
+    <div class="kit"><img class="kit__photo" src="../images/Gear-box.jpg" alt="Gear Box"><div class="kit__mid"><div class="kit__name">Gear Box</div><span class="kit__age">Age 8+</span><div class="kit__price">$69.57 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/gear-box.png" alt="QR for Gear Box"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/Blix_Forklift_Power.png" alt="Forklift Power"><div class="kit__mid"><div class="kit__name">Forklift Power</div><span class="kit__age">Age 8+</span><div class="kit__price">$76.68 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/forklift-power.png" alt="QR for Forklift Power"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/power-screw_1.jpg" alt="Power Screw"><div class="kit__mid"><div class="kit__name">Power Screw</div><span class="kit__age">Age 8+</span><div class="kit__price">$80.93 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/power-screw.png" alt="QR for Power Screw"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/Marble_Run_2.png" alt="Blix Marble Run 2"><div class="kit__mid"><div class="kit__name">Blix Marble Run 2</div><span class="kit__age">Age 8+</span><div class="kit__price">$107.92 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/marble-run-2.png" alt="QR for Marble Run 2"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/Blix_RC_Explorers.png" alt="RC Explorers"><div class="kit__mid"><div class="kit__name">RC Explorers</div><span class="kit__age">Age 8+</span><div class="kit__price">$115.02 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/rc-explorers.png" alt="QR for RC Explorers"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/Blix_RC_Rover_1.png" alt="RC Rover"><div class="kit__mid"><div class="kit__name">RC Rover</div><span class="kit__age">Age 8+</span><div class="kit__price">$115.02 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/rc-rover.png" alt="QR for RC Rover"><span>Scan</span></div></div>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="sheet__head"><h2>Kit cards &middot; scan to open this exact kit</h2><span class="sheet__note">Sheet 5 of 5</span></div>
+  <div class="grid">
+    <div class="kit"><img class="kit__photo" src="../images/Amusement_Park_1.jpg" alt="Amusement Park"><div class="kit__mid"><div class="kit__name">Amusement Park</div><span class="kit__age">Age 8+</span><div class="kit__price">$115.02 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/amusement-park.png" alt="QR for Amusement Park"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/Discovering_Motions.png" alt="Discovering Motions"><div class="kit__mid"><div class="kit__name">Discovering Motions</div><span class="kit__age">Age 8+</span><div class="kit__price">$134.90 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/discovering-motions.png" alt="QR for Discovering Motions"><span>Scan</span></div></div>
+    <div class="kit"><img class="kit__photo" src="../images/Rc_Megastructure.jpg" alt="RC Megastructures"><div class="kit__mid"><div class="kit__name">RC Megastructures</div><span class="kit__age">Age 8+</span><div class="kit__price">$268.38 <small>CAD</small></div></div><div class="kit__qr"><img src="table-kit/qr/rc-megastructures.png" alt="QR for RC Megastructures"><span>Scan</span></div></div>
+  </div>
+  <div class="sheet__note" style="margin-top:4mm">Prices in CAD, printed 2026-10-05. Live prices come from Stripe: check brickandmotorlabs.com before reprinting.</div>
+</section>
+
+</body>
+</html>

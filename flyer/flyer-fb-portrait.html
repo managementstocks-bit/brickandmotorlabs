@@ -1,0 +1,290 @@
+<!doctype html>
+<!--
+  BrickAndMotorLabs — October flyer, FB portrait post template (896x1200 design, rendered 4x)
+  Rebuilt from the Canva export "Clean Robotics Flyer Facebook Post Template" (2026-10-01).
+  Changes vs. Canva source:
+    - 4th kit card: "Crawlers" -> "Ferris Wheel" (Blix Minis Ferris Wheel, ages 5+) so the
+      "ROBOTICS KITS FOR AGES 5+" section label matches the featured kits.
+    - Workshop time kept at 1:30 PM (verified to match the live Facebook event, 2026-10-01).
+    - Removed the stray Canva "T" badge in the bottom-right corner.
+  Render: node render/render-portrait.mjs  ->  flyer-fb-post-3584x4800.png + flyer-fb-post.pdf
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BrickAndMotorLabs — October FB Flyer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --navy:#001e6e;
+  --navy-2:#1a2a6e;
+  --orange:#f25302;
+  --bg:#fdfdfd;
+  --ink:#232f66;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#888;}
+body{display:flex;justify-content:center;}
+.page{position:relative;width:896px;height:1200px;background:var(--bg);color:var(--navy);
+  font-family:'Inter',sans-serif;overflow:hidden;flex:0 0 auto;}
+.page img{display:block;}
+
+/* ---------- brand row ---------- */
+.logo{position:absolute;left:28px;top:33px;width:64px;height:57px;object-fit:contain;}
+.wordmark{position:absolute;left:100px;top:40px;font:700 37px/1 'Poppins',sans-serif;letter-spacing:-0.5px;}
+.wordmark .labs{color:var(--orange);}
+.tagline{position:absolute;left:99px;top:96px;font:italic 600 19px/1 'Poppins',sans-serif;color:var(--orange);}
+
+/* ---------- QR card ---------- */
+.qr-card{position:absolute;right:33px;top:22px;width:204px;background:#fff;border:1px solid #e8e9ef;
+  border-radius:14px;box-shadow:0 1px 5px rgba(20,30,80,.08);text-align:center;padding:13px 10px 12px;}
+.qr-card img{width:150px;height:150px;margin:0 auto;}
+.qr-card .cap{margin-top:9px;font:700 15px/1.2 'Poppins',sans-serif;color:var(--navy);}
+
+/* ---------- headline + intro ---------- */
+.headline{position:absolute;left:25px;top:141px;font:800 57px/1.04 'Poppins',sans-serif;letter-spacing:-1px;}
+.headline .l2{color:var(--orange);}
+.intro{position:absolute;left:25px;top:307px;width:312px;font:500 17px/1.55 'Inter',sans-serif;color:var(--navy-2);}
+
+/* ---------- learn / solve / build ---------- */
+.learn-row{position:absolute;left:33px;top:395px;width:300px;display:flex;justify-content:space-between;text-align:center;}
+.learn-col{width:84px;}
+.learn-col img{width:44px;height:56px;object-fit:contain;margin:0 auto 2px;}
+.learn-col .t{font:700 15.5px/1.15 'Poppins',sans-serif;color:var(--navy);}
+.learn-col .s{font:400 13.5px/1.25 'Inter',sans-serif;color:var(--navy-2);margin-top:2px;}
+
+/* ---------- robot hero ---------- */
+.robot{position:absolute;left:373px;top:75px;width:372px;}
+
+/* ---------- events panel ---------- */
+.panel{position:absolute;left:29px;top:529px;width:771px;height:293px;background:var(--navy);border-radius:18px;}
+.panel-title{position:absolute;top:14px;left:0;width:100%;text-align:center;color:#fff;
+  font:800 33px/1 'Poppins',sans-serif;letter-spacing:1px;}
+.panel-title .chev{color:var(--orange);font-size:26px;vertical-align:3px;padding:0 10px;}
+.cards{position:absolute;top:44px;left:16px;right:16px;bottom:8px;display:flex;gap:10px;}
+.card{flex:1;background:#fff;border-radius:12px;padding:14px 12px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;}
+.chip{display:inline-block;background:var(--orange);color:#fff;font:700 14px/1 'Poppins',sans-serif;
+  padding:6px 14px;border-radius:8px;letter-spacing:.5px;}
+.card-title{margin-top:10px;font:700 17.5px/1.18 'Poppins',sans-serif;color:var(--navy);}
+.card-title.side{margin-top:0;text-align:left;}
+.card-mid{margin-top:10px;display:flex;align-items:center;gap:10px;width:100%;flex:1;}
+.card-mid .icon{width:44px;height:54px;object-fit:contain;flex:0 0 auto;}
+.card-mid .ferris{height:150px;object-fit:contain;flex:0 0 auto;}
+.meta{flex:1;text-align:left;}
+.time{font:700 16px/1.2 'Poppins',sans-serif;color:var(--orange);white-space:nowrap;}
+.venue{margin-top:7px;font:500 12px/1.38 'Inter',sans-serif;color:var(--navy-2);}
+.venue .pin{width:11px;height:13px;object-fit:contain;vertical-align:-1px;margin-right:2px;}
+.note{margin-top:9px;font:500 12px/1.38 'Inter',sans-serif;color:var(--navy-2);}
+.spacer{flex:1;}
+
+/* ---------- CTA band ---------- */
+.cta{position:absolute;left:124px;top:831px;width:648px;height:36px;background:var(--orange);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;
+  font:700 18.5px/1 'Poppins',sans-serif;letter-spacing:.4px;}
+.cta .star{font-size:15px;padding:0 9px;}
+
+/* ---------- kits ---------- */
+.kits-head{position:absolute;top:877px;left:0;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;}
+.kits-head .line{width:44px;height:2px;background:var(--orange);border-radius:2px;}
+.kits-head h2{font:700 22px/1 'Poppins',sans-serif;color:var(--navy);letter-spacing:.2px;white-space:nowrap;}
+.kits-row{position:absolute;left:25px;top:908px;width:556px;display:flex;gap:8px;}
+.kit{width:134px;text-align:center;}
+.kit .img{height:96px;display:flex;align-items:center;justify-content:center;}
+.kit .img img{max-height:96px;max-width:128px;object-fit:contain;}
+.kit-name{margin-top:6px;font:700 14.5px/1.2 'Poppins',sans-serif;color:var(--navy);}
+.kit-desc{margin-top:4px;font:400 12px/1.38 'Inter',sans-serif;color:var(--ink);}
+
+/* ---------- shop card ---------- */
+.shop-card{position:absolute;left:581px;top:898px;width:249px;height:166px;background:#fff;
+  border:2px solid var(--orange);border-radius:14px;text-align:center;}
+.shop-top{display:flex;align-items:center;gap:10px;padding:16px 14px 0;}
+.shop-top img{width:40px;height:40px;flex:0 0 auto;}
+.shop-top .txt{text-align:left;}
+.shop-top .t1{font:700 14px/1.25 'Poppins',sans-serif;color:var(--navy);}
+.shop-top .t2{font:400 12.5px/1.3 'Inter',sans-serif;color:var(--navy-2);}
+.shop-div{width:74px;height:1px;background:#d8dce8;margin:13px auto 0;}
+.ship{margin-top:12px;font:700 15px/1.3 'Poppins',sans-serif;color:var(--navy);}
+
+/* ---------- navy band ---------- */
+.navy-band{position:absolute;left:0;top:1080px;width:896px;height:62px;background:var(--navy);
+  display:flex;align-items:center;}
+.nb-col{flex:1;display:flex;align-items:center;gap:10px;padding:0 18px;border-right:1px solid rgba(255,255,255,.22);}
+.nb-col:last-child{border-right:none;}
+.nb-col img{width:30px;height:32px;object-fit:contain;flex:0 0 auto;}
+.nb-col .t{font:700 13.5px/1.2 'Poppins',sans-serif;color:#fff;white-space:nowrap;}
+.nb-col .s{font:400 10.8px/1.25 'Inter',sans-serif;color:#c9d2ec;margin-top:2px;}
+
+/* ---------- orange band ---------- */
+.orange-band{position:absolute;left:0;top:1146px;width:896px;height:54px;background:var(--orange);
+  display:flex;align-items:center;justify-content:space-between;padding:0 26px;color:#fff;
+  font:700 13.5px/1.2 'Poppins',sans-serif;}
+.ob-item{display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.ob-item svg{flex:0 0 auto;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- brand row -->
+  <img class="logo" src="logo.png" alt="BrickAndMotorLabs logo">
+  <div class="wordmark">BrickAndMotor<span class="labs">Labs</span></div>
+  <div class="tagline">Spark Real Minds.</div>
+
+  <!-- QR card -->
+  <div class="qr-card">
+    <img src="assets-portrait/qr-homepage.png" alt="QR code: brickandmotorlabs.com">
+    <div class="cap">Scan to see all kits</div>
+  </div>
+
+  <!-- headline / intro -->
+  <h1 class="headline">Building Young<br><span class="l2">Innovators.</span></h1>
+  <p class="intro">We are robotics trainers who inspire young minds with hands-on learning in STEM, engineering and creativity.</p>
+
+  <!-- learn / solve / build -->
+  <div class="learn-row">
+    <div class="learn-col">
+      <img src="assets-portrait/icon-learn.png" alt="">
+      <div class="t">Learn</div><div class="s">with Creativity</div>
+    </div>
+    <div class="learn-col">
+      <img src="assets-portrait/icon-solve.png" alt="">
+      <div class="t">Solve</div><div class="s">Real Problems</div>
+    </div>
+    <div class="learn-col">
+      <img src="assets-portrait/icon-build.png" alt="">
+      <div class="t">Build</div><div class="s">Confidence</div>
+    </div>
+  </div>
+
+  <!-- robot hero -->
+  <img class="robot" src="assets-portrait/robot-hero.png" alt="Blix robotics kit model">
+
+  <!-- events panel -->
+  <div class="panel">
+    <div class="panel-title"><span class="chev">&raquo;</span>OCTOBER EVENTS<span class="chev">&laquo;</span></div>
+    <div class="cards">
+      <!-- card 1 -->
+      <div class="card">
+        <div class="chip">SAT &bull; OCT 10</div>
+        <div class="card-title">Family Bazaar &bull;<br>Kids' STEM &amp; Robotics</div>
+        <div class="card-mid">
+          <img class="icon" src="assets-portrait/icon-family.png" alt="">
+          <div class="meta">
+            <div class="time">11:30 AM to 4:15 PM</div>
+            <div class="venue"><img class="pin" src="assets-portrait/icon-pin.png" alt="">Pineview Community Hub,<br>1700 Blair Rd, Gloucester</div>
+          </div>
+        </div>
+      </div>
+      <!-- card 2 -->
+      <div class="card">
+        <div class="chip">SAT &bull; OCT 17</div>
+        <div class="card-mid">
+          <img class="ferris" src="assets-portrait/ferris-event.png" alt="Mini ferris wheel build">
+          <div class="meta">
+            <div class="card-title side">Kids Workshop &bull;<br>Build a Ferris Wheel!</div>
+            <div class="time" style="margin-top:8px;">1:30 PM</div>
+            <div class="venue"><img class="pin" src="assets-portrait/icon-pin.png" alt="">J.R. Brisson Complexe,<br>Casselman</div>
+            <div class="note">Ages 5+ &bull; Every child builds a working ferris wheel</div>
+          </div>
+        </div>
+      </div>
+      <!-- card 3 -->
+      <div class="card">
+        <div class="chip">SUN &bull; OCT 18</div>
+        <div class="card-title">Ottawa Parent &amp; Child<br>Expo &bull; We're On Site</div>
+        <div class="card-mid">
+          <img class="icon" src="assets-portrait/icon-handshake.png" alt="">
+          <div class="meta">
+            <div class="time">9:00 AM to 4:00 PM</div>
+            <div class="venue"><img class="pin" src="assets-portrait/icon-pin.png" alt="">Nepean Sportsplex,<br>1701 Woodroffe Ave</div>
+            <div class="note">Sunday only &bull; Live builds &amp; hands-on demos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta"><span class="star">&#9733;</span>COME BUILD, PLAY &amp; GET INSPIRED WITH US THIS OCTOBER!<span class="star">&#9733;</span></div>
+
+  <!-- kits -->
+  <div class="kits-head">
+    <span class="line"></span><h2>ROBOTICS KITS FOR AGES 5+</h2><span class="line"></span>
+  </div>
+  <div class="kits-row">
+    <div class="kit">
+      <div class="img"><img src="assets-portrait/kit-rc-mega.png" alt="RC Megastructures kit"></div>
+      <div class="kit-name">RC Megastructures</div>
+      <div class="kit-desc">Build big, motorized models with advanced mechanisms.</div>
+    </div>
+    <div class="kit">
+      <div class="img"><img src="assets-portrait/kit-discovering.png" alt="Discovering Motions kit"></div>
+      <div class="kit-name">Discovering Motions</div>
+      <div class="kit-desc">Explore simple machines and basic physics through fun builds.</div>
+    </div>
+    <div class="kit">
+      <div class="img"><img src="assets-portrait/kit-amusement.png" alt="Amusement Park kit"></div>
+      <div class="kit-name">Amusement Park</div>
+      <div class="kit-desc">Create exciting rides and moving attractions with gears and motors.</div>
+    </div>
+    <div class="kit">
+      <div class="img"><img src="../images/Blix_Minis_Ferris_Wheel.png" alt="Ferris Wheel kit"></div>
+      <div class="kit-name">Ferris Wheel</div>
+      <div class="kit-desc">Build a mini ferris wheel that spins with a simple turn of the lever.</div>
+    </div>
+  </div>
+
+  <!-- shop card -->
+  <div class="shop-card">
+    <div class="shop-top">
+      <img src="assets-portrait/icon-cart.png" alt="">
+      <div class="txt">
+        <div class="t1">Shop all kits online!</div>
+        <div class="t2">brickandmotorlabs.com</div>
+      </div>
+    </div>
+    <div class="shop-div"></div>
+    <div class="ship">Kits ship<br>across Canada!</div>
+  </div>
+
+  <!-- navy band -->
+  <div class="navy-band">
+    <div class="nb-col">
+      <img src="assets-portrait/band-icon-people.png" alt="">
+      <div><div class="t">Hands-On Learning</div><div class="s">Kids build real models that move and work.</div></div>
+    </div>
+    <div class="nb-col">
+      <img src="assets-portrait/band-icon-gear.png" alt="">
+      <div><div class="t">Real Parts</div><div class="s">Real gears, motors and RC control.</div></div>
+    </div>
+    <div class="nb-col">
+      <img src="assets-portrait/band-icon-cap.png" alt="">
+      <div><div class="t">Expert Trainers</div><div class="s">Experienced educators who inspire.</div></div>
+    </div>
+    <div class="nb-col">
+      <img src="assets-portrait/band-icon-heart.png" alt="">
+      <div><div class="t">Fun &amp; Engaging</div><div class="s">Workshops kids love, skills they keep.</div></div>
+    </div>
+  </div>
+
+  <!-- orange band -->
+  <div class="orange-band">
+    <div class="ob-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c2.5 2.7 4 6.3 4 10s-1.5 7.3-4 10c-2.5-2.7-4-6.3-4-10s1.5-7.3 4-10z"/></svg>
+      Learn more &amp; shop: brickandmotorlabs.com
+    </div>
+    <div class="ob-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+      info@brickandmotorlabs.com
+    </div>
+    <div class="ob-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.5-1.5H16V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4V11H7.5v3h2.3v7h3.7z"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="#fff" stroke="none"/></svg>
+      @brickandmotorlabs
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
