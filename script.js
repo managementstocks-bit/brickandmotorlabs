@@ -737,6 +737,20 @@ document.addEventListener('DOMContentLoaded', () => {
     cta.appendChild(btn);
   }
 
+  // Direct-buy deep link: ?add=<slug> puts that kit in the cart and opens the
+  // drawer immediately. Used by the event table QR cards, social/ad links and
+  // marketplace links so a phone visitor is one tap from checkout.
+  function applyDirectBuyParam() {
+    const params = new URLSearchParams(location.search);
+    const slug = (params.get('add') || '').toLowerCase();
+    if (!CATALOG[slug]) return;
+    addToCart(slug, null);
+    // Drop ?add= so a reload or a shared URL never duplicates the item.
+    params.delete('add');
+    const q = params.toString();
+    history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     injectNavCart();
     injectCardButtons();
@@ -744,6 +758,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCount();
     loadStock();
     loadCanonicalPrices();
+    applyDirectBuyParam();
   });
 })();
 
