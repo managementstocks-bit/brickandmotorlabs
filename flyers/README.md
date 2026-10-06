@@ -36,8 +36,9 @@ cd /workspace/temp/money
 node gen-stickers.mjs                        # rebuild price-stickers.html from kit-data.json
 node flyer-render/render/render-kit.mjs      # table-kit.pdf + overflow / broken-image checks
 node flyer-render/render/render-extras.mjs   # schools-camps.pdf + price-stickers.pdf
+./flyer-render/recompress.sh                 # 300 ppi at print size (6.8 MB -> 635 KB for table-kit)
 node flyer-render/qc/qr-print-report.mjs     # decode every code out of the PDFs at 300 dpi -> PRINT QC: PASS
 pdffonts flyers/table-kit.pdf                # want CID TrueType, emb sub uni = yes yes yes
 ```
 
-Then copy the three PDFs into this folder and commit them here.
+The recompression step is not optional if these files are going into this folder: Chromium writes the kit photos at their source resolution (~1280 ppi when a 1000 px photo is drawn at 20 mm), which is 4x more than a printer can resolve. Recompress to 300 ppi, then run the QC and a 300-dpi crop compare against the uncompressed render (expect 0 differing pixels) before committing. Copy the recompressed files here so the working print copies and the public ones are the same bytes.
