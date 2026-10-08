@@ -940,7 +940,7 @@ p {
 .build-hero__product {
   width: 100%;
   max-width: 640px;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   background: var(--white);
   margin: 0 auto 30px;
   border-radius: var(--radius-md);
