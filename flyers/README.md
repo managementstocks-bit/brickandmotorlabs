@@ -26,10 +26,18 @@ Generated 2026-10-05, re-verified 2026-10-06 after font and layout fixes:
 - Text is embedded as **subsetted CID TrueType Inter**, not bitmap (Type 3) glyph runs, so it stays crisp at 600 dpi.
 - Prices and ages come from the live price feed and the maker-confirmed age labels: 3+ (Queaky Charge - Sleepy), 5+ (Bike, Ferris Wheel, Blix Buddy), 8+ for the rest.
 
+## Flyer sources in this folder
+
+- `flyer.html` — main A4 product flyer (source of truth; live at /flyers/flyer.html)
+- `flyer-social-october.html` — 1080×1350 social post canvas (same events, for FB/IG)
+- `logo.png` — brick+gear brand mark used by both flyer canvases
+- `qrcode.png` — QR to the homepage (used on the flyer)
+
 ## If a price changes
 
-The source HTML and the build/QC scripts are kept with the working print setup (not in this repo,
-because a rendered PDF is a build artifact and the render tooling pulls site images):
+The table-kit / schools-camps / price-stickers source HTML and the build/QC scripts are kept with
+the working print setup (not in this repo, because a rendered PDF is a build artifact and the
+render tooling pulls site images):
 
 ```
 cd /workspace/temp/money

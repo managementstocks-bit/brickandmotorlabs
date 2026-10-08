@@ -16,7 +16,7 @@ fix-paths.js
 ANIMATION_STATE.md
 
 # Print flyer (source HTML committed; rendered PDF is a local build artifact)
-flyer/flyer.pdf
+flyers/flyer.pdf
 
 # Local-only media and build artifacts — deliberately NOT part of the deployed site
 # (raw phone footage, reels, tablecloth/banner artwork, flyer render outputs, helper scripts)
@@ -24,7 +24,7 @@ videos/build-videos/
 videos/*.mov
 videos/*.MOV
 videos/reel-*.mp4
-flyer/assets-oct/
-flyer/assets-portrait/
-flyer/render/
+flyers/assets-oct/
+flyers/assets-portrait/
+flyers/render/
 images/tablecloth-*
