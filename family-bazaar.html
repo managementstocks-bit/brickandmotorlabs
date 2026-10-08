@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJJ1KVW9LM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VJJ1KVW9LM');
+  gtag('event', 'page_view', { page_title: "Family Bazaar - Prices & QR Codes - BrickAndMotorLabs" });
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Bazaar - Prices &amp; QR Codes - BrickAndMotorLabs</title>
+  <meta name="description" content="Family Bazaar, Sat Oct 10 at Pineview Community Hub (Gloucester): full price list of all 15 BrickAndMotorLabs STEM kits with QR codes — scan any code to see the kit, its specs and order it.">
+  <link rel="canonical" href="https://brickandmotorlabs.com/family-bazaar.html">
+  <meta property="og:title" content="Family Bazaar - Prices &amp; QR Codes - BrickAndMotorLabs">
+  <meta property="og:description" content="All 15 STEM kit prices with QR codes. Scan to see each kit, its specs and order it online.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brickandmotorlabs.com/family-bazaar.html">
+  <meta property="og:image" content="https://brickandmotorlabs.com/images/hero.jpg">
+  <meta property="og:site_name" content="BrickAndMotorLabs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Family Bazaar - Prices &amp; QR Codes - BrickAndMotorLabs">
+  <meta name="twitter:description" content="All 15 STEM kit prices with QR codes. Scan to see each kit, its specs and order it online.">
+  <meta name="twitter:image" content="https://brickandmotorlabs.com/images/hero.jpg">
+  <meta name="theme-color" content="#1a73e8">
+  <link rel="icon" type="image/svg+xml" href="images/favicon-baml.png?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <style>
+/* --- Family Bazaar price & QR page --- */
+.bz-event {
+  display: flex; flex-wrap: wrap; gap: 1.25rem 2.5rem;
+  background: var(--white); border: 2px solid var(--gray-light);
+  border-radius: var(--radius-md); padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem; box-shadow: var(--shadow-sm);
+}
+.bz-event__item strong { display: block; color: var(--primary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+.bz-event__item span { color: var(--dark); font-weight: 500; }
+.bz-toolbar { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.bz-toolbar p { color: var(--gray); max-width: 640px; }
+.bz-grid {
+  display: grid; gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+.bz-card {
+  background: var(--white); border: 1px solid var(--gray-light);
+  border-radius: var(--radius-md); overflow: hidden;
+  box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.bz-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.bz-card__img { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--light); }
+.bz-card__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bz-card__body { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem; flex: 1; }
+.bz-card__head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+.bz-card__name { font-size: 1rem; line-height: 1.25; }
+.bz-card__age { flex-shrink: 0; font-size: 0.72rem; font-weight: 700; color: var(--primary-dark); background: rgba(26, 115, 232, 0.1); padding: 2px 8px; border-radius: 999px; }
+.bz-card__price { font-size: 1.45rem; font-weight: 800; color: var(--dark); margin: 0; }
+.bz-card__price--soft { font-size: 0.95rem; font-weight: 600; color: var(--gray); }
+.bz-card__qrwrap { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; margin-top: 0.25rem; }
+.bz-card__qr { width: 108px; height: 108px; image-rendering: pixelated; border: 1px solid var(--gray-light); border-radius: 4px; padding: 4px; background: #fff; }
+.bz-card__qrhint { font-size: 0.72rem; color: var(--gray); }
+.bz-card__link { margin-top: auto; align-self: flex-start; font-weight: 600; color: var(--primary); text-decoration: none; }
+.bz-card__link:hover { text-decoration: underline; }
+.bz-card--extra { border-style: dashed; }
+.bz-card--extra .bz-card__body { min-height: 100%; justify-content: center; }
+
+/* --- Print: one A4 sheet, QR 30 mm, photos off --- */
+@media print {
+  @page { size: A4 portrait; margin: 9mm; }
+  body { background: #fff !important; }
+  .navbar, .footer, .subscribe-band, .hero, .bz-toolbar, .section--light, .skip-link { display: none !important; }
+  .section { padding: 0 !important; }
+  .bz-event { border: 1.5pt solid #16283f; border-radius: 4pt; box-shadow: none; padding: 6pt 8pt; margin: 0 0 8pt; gap: 4pt 14pt; }
+  .bz-event__item strong { font-size: 6.5pt; margin-bottom: 0; }
+  .bz-event__item span { font-size: 8pt; }
+  .bz-grid { grid-template-columns: repeat(3, 1fr); gap: 5pt; }
+  .bz-card { border: 1pt solid #16283f; border-radius: 3pt; box-shadow: none; flex-direction: row; align-items: center; gap: 5pt; padding: 4pt; break-inside: avoid; }
+  .bz-card__img { display: none; }
+  .bz-card__body { padding: 0; gap: 2pt; flex: 1; }
+  .bz-card__name { font-size: 8.5pt; font-weight: 700; }
+  .bz-card__age { font-size: 6.5pt; padding: 1pt 5pt; }
+  .bz-card__price { font-size: 10.5pt; margin: 0; }
+  .bz-card__price--soft { font-size: 7pt; }
+  .bz-card__qrwrap { flex-direction: row; align-items: center; gap: 3pt; margin: 0; }
+  .bz-card__qr { width: 30mm; height: 30mm; padding: 1mm; border: none; border-radius: 0; }
+  .bz-card__qrhint { font-size: 6pt; max-width: 18mm; }
+  .bz-card__link { margin-top: 0; font-size: 6.5pt; color: #16283f !important; }
+  .bz-card--extra { border-style: dashed; }
+}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"Family Bazaar - Prices & QR Codes - BrickAndMotorLabs","url":"https://brickandmotorlabs.com/family-bazaar.html","description":"Full price list of all 15 BrickAndMotorLabs STEM kits with QR codes for the Family Bazaar on Sat Oct 10, 2026 at Pineview Community Hub, Gloucester.","isPartOf":{"@type":"WebSite","name":"BrickAndMotorLabs","url":"https://brickandmotorlabs.com/"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ItemList","name":"BrickAndMotorLabs kits","itemListElement":[{"@type":"Product","position":1,"name":"Blix Minis - Bike","image":"https://brickandmotorlabs.com/images/Blix_Minis_Bike.png","url":"https://brickandmotorlabs.com/builds/bike.html","offers":{"@type":"Offer","price":"12.78","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":2,"name":"Blix Minis - Ferris Wheel","image":"https://brickandmotorlabs.com/images/Blix_Minis_Ferris_Wheel.png","url":"https://brickandmotorlabs.com/builds/ferris-wheel.html","offers":{"@type":"Offer","price":"12.78","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":3,"name":"Queaky Charge - Sleepy","image":"https://brickandmotorlabs.com/images/BlixQueakyCharge-Sleepy1.png","url":"https://brickandmotorlabs.com/builds/queaky-charge.html","offers":{"@type":"Offer","price":"24.99","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":4,"name":"Blix Buddy","image":"https://brickandmotorlabs.com/images/blix_buddy.jpg","url":"https://brickandmotorlabs.com/builds/buddy.html","offers":{"@type":"Offer","price":"28.40","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":5,"name":"Crawlers","image":"https://brickandmotorlabs.com/images/Crawlers.jpg","url":"https://brickandmotorlabs.com/builds/crawlers.html","offers":{"@type":"Offer","price":"49.70","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":6,"name":"Rover","image":"https://brickandmotorlabs.com/images/Rover.1.jpg","url":"https://brickandmotorlabs.com/builds/rover.html","offers":{"@type":"Offer","price":"53.96","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":7,"name":"Gear Box","image":"https://brickandmotorlabs.com/images/Gear-box.jpg","url":"https://brickandmotorlabs.com/builds/gear-box.html","offers":{"@type":"Offer","price":"69.57","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":8,"name":"Forklift Power","image":"https://brickandmotorlabs.com/images/Blix_Forklift_Power.png","url":"https://brickandmotorlabs.com/builds/forklift-power.html","offers":{"@type":"Offer","price":"76.68","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":9,"name":"Power Screw","image":"https://brickandmotorlabs.com/images/power-screw_1.jpg","url":"https://brickandmotorlabs.com/builds/power-screw.html","offers":{"@type":"Offer","price":"80.93","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":10,"name":"Blix Marble Run 2","image":"https://brickandmotorlabs.com/images/Marble_Run_2.png","url":"https://brickandmotorlabs.com/builds/marble-run-2.html","offers":{"@type":"Offer","price":"107.92","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":11,"name":"Amusement Park","image":"https://brickandmotorlabs.com/images/Amusement_Park_1.jpg","url":"https://brickandmotorlabs.com/builds/amusement-park.html","offers":{"@type":"Offer","price":"115.02","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":12,"name":"RC Explorers","image":"https://brickandmotorlabs.com/images/Blix_RC_Explorers.png","url":"https://brickandmotorlabs.com/builds/rc-explorers.html","offers":{"@type":"Offer","price":"115.02","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":13,"name":"RC Rover","image":"https://brickandmotorlabs.com/images/Blix_RC_Rover_1.png","url":"https://brickandmotorlabs.com/builds/rc-rover.html","offers":{"@type":"Offer","price":"115.02","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":14,"name":"Discovering Motions","image":"https://brickandmotorlabs.com/images/Discovering_Motions.png","url":"https://brickandmotorlabs.com/builds/discovering-motions.html","offers":{"@type":"Offer","price":"134.90","priceCurrency":"CAD","availability":"https://schema.org/InStock"}},{"@type":"Product","position":15,"name":"RC Megastructures","image":"https://brickandmotorlabs.com/images/Rc_Megastructure.jpg","url":"https://brickandmotorlabs.com/builds/rc-megastructures.html","offers":{"@type":"Offer","price":"268.38","priceCurrency":"CAD","availability":"https://schema.org/InStock"}}]}
+  </script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar__logo"><img src="images/baml1-logo.png" alt="BrickAndMotorLabs logo">BrickAndMotor<span>Labs</span></a>
+      <ul class="navbar__menu" id="navbar-menu">
+        <li><a href="index.html" class="navbar__link">Home</a></li>
+        <li><a href="about.html" class="navbar__link">About</a></li>
+        <li><a href="index.html#products" class="navbar__link">Kits</a></li>
+        <li><a href="events.html" class="navbar__link">Events</a></li>
+        <li><a href="contact.html" class="navbar__link">Contact</a></li>
+        <li><a href="contact.html" class="navbar__cta">Get In Touch</a></li>
+      </ul>
+      <button class="navbar__hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navbar-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__content" style="max-width: 760px;">
+        <span class="hero__badge">Family Bazaar &middot; Sat Oct 10</span>
+        <h1 class="hero__title">Kit Prices &amp; <span>QR Codes</span> for the Family Bazaar</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Price list -->
+  <section id="main-content" class="section">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__subtitle">Saturday, October 10, 2026</p>
+        <h2 class="section__title">Full Price List</h2>
+        <p class="section__description">All 15 kits in one place. Every price below is the online price — what you see is what you pay. Scan a code with your phone to open that kit's page with photos, specs, and the "Add to Kit Bag" button; or ask our team at the table and we'll set it up.</p>
+      </div>
+
+      <div class="bz-event" role="note" aria-label="Event details">
+        <div class="bz-event__item"><strong>When</strong><span>Saturday, October 10, 2026 &middot; 11:30 AM &ndash; 4:15 PM</span></div>
+        <div class="bz-event__item"><strong>Where</strong><span>Pineview Community Hub &mdash; Gloucester &amp; Meadowbrook Room, 1700 Blair Rd, Gloucester, ON K1B 4E6</span></div>
+        <div class="bz-event__item"><strong>Entry</strong><span>Free &middot; Everyone welcome</span></div>
+      </div>
+
+      <div class="bz-toolbar">
+        <p>Prices in CAD. Our workshop tables are right here &mdash; see the kits in action all day.</p>
+        <button class="btn btn--accent" onclick="window.print()" type="button">Print this page (A4)</button>
+      </div>
+
+      <div class="bz-grid">
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/bike.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Blix_Minis_Bike.png" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Blix Minis - Bike</h3>
+            <span class="bz-card__age">Ages 5+</span>
+          </div>
+          <p class="bz-card__price">$12.78</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-bike.png" width="480" height="480" alt="QR code: opens the Blix Minis - Bike product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/bike.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/ferris-wheel.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Blix_Minis_Ferris_Wheel.png" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Blix Minis - Ferris Wheel</h3>
+            <span class="bz-card__age">Ages 5+</span>
+          </div>
+          <p class="bz-card__price">$12.78</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-ferris-wheel.png" width="480" height="480" alt="QR code: opens the Blix Minis - Ferris Wheel product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/ferris-wheel.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/queaky-charge.html" tabindex="-1" aria-hidden="true">
+          <img src="images/BlixQueakyCharge-Sleepy1.png" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Queaky Charge - Sleepy</h3>
+            <span class="bz-card__age">Ages 3+</span>
+          </div>
+          <p class="bz-card__price">$24.99</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-queaky-charge.png" width="480" height="480" alt="QR code: opens the Queaky Charge - Sleepy product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/queaky-charge.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/buddy.html" tabindex="-1" aria-hidden="true">
+          <img src="images/blix_buddy.jpg" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Blix Buddy</h3>
+            <span class="bz-card__age">Ages 5+</span>
+          </div>
+          <p class="bz-card__price">$28.40</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-buddy.png" width="480" height="480" alt="QR code: opens the Blix Buddy product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/buddy.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/crawlers.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Crawlers.jpg" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Crawlers</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$49.70</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-crawlers.png" width="480" height="480" alt="QR code: opens the Crawlers product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/crawlers.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/rover.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Rover.1.jpg" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Rover</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$53.96</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-rover.png" width="480" height="480" alt="QR code: opens the Rover product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/rover.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/gear-box.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Gear-box.jpg" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Gear Box</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$69.57</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-gear-box.png" width="480" height="480" alt="QR code: opens the Gear Box product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/gear-box.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/forklift-power.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Blix_Forklift_Power.png" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Forklift Power</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$76.68</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-forklift-power.png" width="480" height="480" alt="QR code: opens the Forklift Power product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/forklift-power.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/power-screw.html" tabindex="-1" aria-hidden="true">
+          <img src="images/power-screw_1.jpg" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Power Screw</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$80.93</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-power-screw.png" width="480" height="480" alt="QR code: opens the Power Screw product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/power-screw.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/marble-run-2.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Marble_Run_2.png" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Blix Marble Run 2</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$107.92</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-marble-run-2.png" width="480" height="480" alt="QR code: opens the Blix Marble Run 2 product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/marble-run-2.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/amusement-park.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Amusement_Park_1.jpg" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Amusement Park</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$115.02</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-amusement-park.png" width="480" height="480" alt="QR code: opens the Amusement Park product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/amusement-park.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/rc-explorers.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Blix_RC_Explorers.png" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">RC Explorers</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$115.02</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-rc-explorers.png" width="480" height="480" alt="QR code: opens the RC Explorers product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/rc-explorers.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/rc-rover.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Blix_RC_Rover_1.png" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">RC Rover</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$115.02</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-rc-rover.png" width="480" height="480" alt="QR code: opens the RC Rover product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/rc-rover.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/discovering-motions.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Discovering_Motions.png" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Discovering Motions</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$134.90</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-discovering-motions.png" width="480" height="480" alt="QR code: opens the Discovering Motions product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/discovering-motions.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card">
+        <a class="bz-card__img" href="builds/rc-megastructures.html" tabindex="-1" aria-hidden="true">
+          <img src="images/Rc_Megastructure.jpg" alt="" loading="lazy">
+        </a>
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">RC Megastructures</h3>
+            <span class="bz-card__age">Ages 8+</span>
+          </div>
+          <p class="bz-card__price">$268.38</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-rc-megastructures.png" width="480" height="480" alt="QR code: opens the RC Megastructures product page">
+            <span class="bz-card__qrhint">Scan for full details &amp; specs</span>
+          </div>
+          <a class="bz-card__link" href="builds/rc-megastructures.html">View kit page &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bz-card bz-card--extra">
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Event details &amp; RSVP</h3>
+          </div>
+          <p class="bz-card__price bz-card__price--soft">All three October events</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-events.png" width="480" height="480" alt="QR code: opens the events page">
+            <span class="bz-card__qrhint">Scan for dates, venues &amp; RSVP</span>
+          </div>
+          <a class="bz-card__link" href="events.html?src=bazaar">Events page &rarr;</a>
+        </div>
+      </article>
+      <article class="bz-card bz-card--extra">
+        <div class="bz-card__body">
+          <div class="bz-card__head">
+            <h3 class="bz-card__name">Get event invites</h3>
+          </div>
+          <p class="bz-card__price bz-card__price--soft">News &amp; early-bird info</p>
+          <div class="bz-card__qrwrap">
+            <img class="bz-card__qr" src="images/qrcodes/bazaar-subscribe.png" width="480" height="480" alt="QR code: opens the newsletter sign-up">
+            <span class="bz-card__qrhint">Scan to subscribe</span>
+          </div>
+          <a class="bz-card__link" href="subscribe.html?src=bazaar">Subscribe &rarr;</a>
+        </div>
+      </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Want to Host a BrickAndMotorLabs Event?</h2>
+        <p class="section__description">Whether it's a school workshop, a community build day, or a corporate STEM outreach, we'd love to collaborate. Reach out to us and let's spark something together.</p>
+        <a href="contact.html" class="btn btn--primary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">BrickAndMotor<span>Labs</span></div>
+          <p>Hands-on STEM robotics kits that turn curiosity into creation.</p>
+          <div class="footer__trust">
+            <span>Canadian Family Business</span>
+          </div>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/brickandmotorlabs" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+            </a>
+            <a href="https://www.instagram.com/brickandmotorlabs" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 4.42 3.58 8 8 8s8-3.58 8-8C16 3.58 12.42 0 8 0zM8 1.44c3.64 0 6.56 2.92 6.56 6.56S11.64 14.56 8 14.56 1.44 11.64 1.44 8 4.36 1.44 8 1.44zM12.78 5.45h.01c.34 0 .62.28.62.62v4.86c0 .34-.28.62-.62.62H5.82c-.34 0-.62-.28-.62-.62V6.07c0-.34.28-.62.62-.62h6.96c.34 0 .62.28.62.62zM6.44 12h7.12c.1 0 .18-.08.18-.18V6.78c0-.1-.08-.18-.18-.18H6.44c-.1 0-.18.08-.18.18v5.04c0 .1.08.18.18.18zM8 5.16A2.84 2.84 0 0 0 5.16 8c0 1.57 1.27 2.84 2.84 2.84S10.84 9.57 10.84 8A2.84 2.84 0 0 0 8 5.16zm0 4.67A1.83 1.83 0 0 1 6.17 8C6.17 6.87 7.04 6 8 6s1.83.87 1.83 1.83S9.13 9.83 8 9.83zm3.5-3.38c-.31 0-.56.25-.56.56s.25.56.56.56.56-.25.56-.56-.25-.56-.56-.56z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="subscribe.html">Newsletter</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Kits</h4>
+          <ul class="footer__links">
+            <li><a href="builds/bike.html">Blix Minis - Bike</a></li>
+            <li><a href="builds/forklift-power.html">Forklift Power</a></li>
+            <li><a href="builds/rc-megastructures.html">RC Megastructures</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Support</h4>
+          <ul class="footer__links">
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="shipping.html">Shipping</a></li>
+            <li><a href="terms.html">Terms of Sale</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="mailto:info@brickandmotorlabs.com">Email Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 BrickAndMotorLabs. All rights reserved.</p>
+        <p>Built with passion for STEM education.</p>
+      </div>
+    </div>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>

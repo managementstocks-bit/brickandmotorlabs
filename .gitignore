@@ -28,3 +28,8 @@ flyers/assets-oct/
 flyers/assets-portrait/
 flyers/render/
 images/tablecloth-*
+
+# images/qrcodes: only the Family Bazaar QRs are served by the site.
+# The price-card / sticker QR sources are local-only print assets.
+/images/qrcodes/*
+!/images/qrcodes/bazaar-*.png
