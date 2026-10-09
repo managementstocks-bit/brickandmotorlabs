@@ -55,21 +55,21 @@ BrickAndMotorLabs.com/
 ```
 
 ## Product Catalog (15 kits, sorted by price low-to-high)
-1. Blix Minis Bike - $12.78 CAD, Age 5+, 45+ parts
-2. Blix Minis Ferris Wheel - $12.78 CAD, Age 5+, 50+ parts
-3. Queaky Charge - $24.99 CAD, Age 3+
-4. Blix Buddy - $28.40 CAD, Age 5+, 61 parts
-5. Blix Crawler - $49.70 CAD, Age 8+, 70+ parts
-6. Blix Rover - $53.96 CAD, Age 8+, 150+ parts
-7. Blix Gear Box - $69.57 CAD, Age 8+, 100+ parts
-8. Forklift Power - $76.68 CAD, Age 8+, 180+ parts
-9. Power Screw - $80.93 CAD, Age 8+, 200+ parts
-10. Blix Marble Run 2 - $107.92 CAD, Age 8+, 220+ parts
-11. RC Explorers - $115.02 CAD, Age 8+, 120+ parts
-12. RC Rover - $115.02 CAD, Age 8+, 180+ parts
-13. Amusement Park - $115.02 CAD, Age 8+, 340+ parts
-14. Blix Discovering Motions - $134.90 CAD, Age 8+, 176 parts
-15. RC Megastructures - $268.38 CAD, Age 8+, 750+ parts
+1. Blix Minis Bike - $12 CAD, Age 5+, 45+ parts
+2. Blix Minis Ferris Wheel - $12 CAD, Age 5+, 50+ parts
+3. Queaky Charge - $24 CAD, Age 3+
+4. Blix Buddy - $28 CAD, Age 5+, 61 parts
+5. Blix Crawler - $49 CAD, Age 8+, 70+ parts
+6. Blix Rover - $53 CAD, Age 8+, 150+ parts
+7. Blix Gear Box - $69 CAD, Age 8+, 100+ parts
+8. Forklift Power - $76 CAD, Age 8+, 180+ parts
+9. Power Screw - $80 CAD, Age 8+, 200+ parts
+10. Blix Marble Run 2 - $107 CAD, Age 8+, 220+ parts
+11. RC Explorers - $115 CAD, Age 8+, 120+ parts
+12. RC Rover - $115 CAD, Age 8+, 180+ parts
+13. Amusement Park - $115 CAD, Age 8+, 340+ parts
+14. Blix Discovering Motions - $134 CAD, Age 8+, 176 parts
+15. RC Megastructures - $268 CAD, Age 8+, 750+ parts
 
 ## Key Features
 - Landing page: Product grid with age filter (All/3+/5+/8+) and price sort (low-high default, high-low option)

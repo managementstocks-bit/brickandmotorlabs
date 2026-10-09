@@ -198,21 +198,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // === Cart & Checkout ===
 (() => {
   const CATALOG = {
-    'bike':                 { name: 'Blix Minis - Bike',            price: 12.78,  img: 'Blix_Minis_Bike.png',            age: 5 },
-    'ferris-wheel':         { name: 'Blix Minis - Ferris Wheel',    price: 12.78,  img: 'Blix_Minis_Ferris_Wheel.png',    age: 5 },
-    'queaky-charge':        { name: 'Queaky Charge - Sleepy',       price: 24.99,  img: 'BlixQueakyCharge-Sleepy1.png',   age: 3 },
-    'buddy':                { name: 'Blix Buddy',                   price: 28.40,  img: 'blix_buddy.jpg',                age: 5 },
-    'crawlers':             { name: 'Crawlers',                     price: 49.70,  img: 'Crawlers.jpg',                  age: 8 },
-    'rover':                { name: 'Rover',                        price: 53.96,  img: 'Rover.1.jpg',                   age: 8 },
-    'gear-box':             { name: 'Gear Box',                     price: 69.57,  img: 'Gear-box.jpg',                  age: 8 },
-    'forklift-power':       { name: 'Forklift Power',               price: 76.68,  img: 'Blix_Forklift_Power.png',       age: 8 },
-    'power-screw':          { name: 'Power Screw',                  price: 80.93,  img: 'power-screw_1.jpg',             age: 8 },
-    'marble-run-2':         { name: 'Blix Marble Run 2',            price: 107.92, img: 'Marble_Run_2.png',              age: 8 },
-    'rc-explorers':         { name: 'RC Explorers',                 price: 115.02, img: 'Blix_RC_Explorers.png',         age: 8 },
-    'rc-rover':             { name: 'RC Rover',                     price: 115.02, img: 'Blix_RC_Rover_1.png',           age: 8 },
-    'amusement-park':       { name: 'Amusement Park',               price: 115.02, img: 'Amusement_Park_1.jpg',          age: 8 },
-    'discovering-motions':  { name: 'Discovering Motions',          price: 134.90, img: 'Discovering_Motions.png',       age: 8 },
-    'rc-megastructures':    { name: 'RC Megastructures',            price: 268.38, img: 'Rc_Megastructure.jpg',          age: 8 },
+    'bike':                 { name: 'Blix Minis - Bike',            price: 12,  img: 'Blix_Minis_Bike.png',            age: 5 },
+    'ferris-wheel':         { name: 'Blix Minis - Ferris Wheel',    price: 12,  img: 'Blix_Minis_Ferris_Wheel.png',    age: 5 },
+    'queaky-charge':        { name: 'Queaky Charge - Sleepy',       price: 24,  img: 'BlixQueakyCharge-Sleepy1.png',   age: 3 },
+    'buddy':                { name: 'Blix Buddy',                   price: 28,  img: 'blix_buddy.jpg',                age: 5 },
+    'crawlers':             { name: 'Crawlers',                     price: 49,  img: 'Crawlers.jpg',                  age: 8 },
+    'rover':                { name: 'Rover',                        price: 53,  img: 'Rover.1.jpg',                   age: 8 },
+    'gear-box':             { name: 'Gear Box',                     price: 69,  img: 'Gear-box.jpg',                  age: 8 },
+    'forklift-power':       { name: 'Forklift Power',               price: 76,  img: 'Blix_Forklift_Power.png',       age: 8 },
+    'power-screw':          { name: 'Power Screw',                  price: 80,  img: 'power-screw_1.jpg',             age: 8 },
+    'marble-run-2':         { name: 'Blix Marble Run 2',            price: 107, img: 'Marble_Run_2.png',              age: 8 },
+    'rc-explorers':         { name: 'RC Explorers',                 price: 115, img: 'Blix_RC_Explorers.png',         age: 8 },
+    'rc-rover':             { name: 'RC Rover',                     price: 115, img: 'Blix_RC_Rover_1.png',           age: 8 },
+    'amusement-park':       { name: 'Amusement Park',               price: 115, img: 'Amusement_Park_1.jpg',          age: 8 },
+    'discovering-motions':  { name: 'Discovering Motions',          price: 134, img: 'Discovering_Motions.png',       age: 8 },
+    'rc-megastructures':    { name: 'RC Megastructures',            price: 268, img: 'Rc_Megastructure.jpg',          age: 8 },
   };
 
   const API_BASE = (typeof window.BML_API_BASE !== 'undefined')
