@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BrickAndMotorLabs table banner (print A4 landscape, 3 sheets)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=Pacifico&display=swap">
+<style>
+/* Table banner (stands in for the ordered banner that has not arrived).
+   PRINT: A4 LANDSCAPE, 100% / "Actual size" — never "Fit to page". Borderless not needed.
+   Sheet 1 + sheet 2 butt/tape together = one 554 x 190 mm banner (21.8 x 7.5 in).
+   Sheet 3 = stand-alone banner for a smaller table. Artwork sits 10 mm inside each sheet. */
+:root {
+  --navy: #143a8c; --navy-deep: #0e2a68;
+  --orange: #ff6b1a; --orange-deep: #e85d0f; --orange-soft: #fff3ec;
+  --ink: #22314e; --muted: #5b6b8c; --line: #dfe7f5;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #e9eef6; }
+body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif; color: var(--ink); }
+.display { font-family: "Archivo Black", Inter, sans-serif; letter-spacing: -0.022em; }
+.script { font-family: "Pacifico", cursive; }
+
+.sheet { width: 297mm; height: 210mm; position: relative; overflow: hidden; background: #fff; }
+@media screen { .sheet { margin: 14px auto; box-shadow: 0 6px 26px rgba(20,58,140,.18); } }
+@media print { html, body { background: #fff; } .sheet { page-break-after: always; box-shadow: none; } }
+
+.band { position: absolute; inset: 10mm; border: 1.4pt solid var(--navy); border-radius: 3mm; overflow: hidden;
+        background: linear-gradient(100deg, #ffffff 0%, #f3f7ff 48%, var(--orange-soft) 100%);
+        display: grid; grid-template-rows: 13mm 2.6mm 1fr auto; }
+.kicker { display: flex; align-items: center; gap: 7mm; padding: 0 8mm; background: var(--navy); color: #fff; }
+.kicker span { font-size: 10.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; white-space: nowrap; }
+.kicker .dot { color: var(--orange); }
+.stripe { background: var(--orange); }
+
+.main { display: grid; grid-template-columns: 1fr 52mm; gap: 10mm; padding: 7mm 8mm 4mm; align-items: center; }
+.left { display: flex; flex-direction: column; gap: 5mm; }
+.right { display: flex; flex-direction: column; align-items: center; gap: 4mm; }
+
+.brand { font-size: 54pt; line-height: 1.0; color: var(--navy-deep); }
+.brand em { font-style: normal; color: var(--orange); }
+.brand.sm { font-size: 42pt; }
+.tag { font-size: 30pt; color: var(--navy); line-height: 1.1; }
+.head { font-size: 31pt; line-height: 1.22; color: var(--navy-deep); }
+.chips { display: flex; gap: 3mm; flex-wrap: wrap; }
+.chip { border: 1.2pt solid var(--navy); background: #fff; border-radius: 999px; padding: 1.6mm 4.2mm;
+        font-size: 11pt; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; color: var(--navy-deep); }
+.chip.alt { border-color: var(--orange); color: var(--orange-deep); }
+.copy { font-size: 14.5pt; line-height: 1.5; max-width: 150mm; }
+.copy b { font-weight: 800; color: var(--navy-deep); }
+
+.qr { width: 52mm; height: 52mm; border: 1.6pt solid var(--navy-deep); padding: 2mm; background: #fff; }
+.qr img { width: 100%; height: 100%; image-rendering: pixelated; }
+.qrcap { font-size: 10pt; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; text-align: center; line-height: 1.35; }
+.badge { width: 52mm; border: 1.5pt solid var(--orange); border-radius: 2.5mm; padding: 2.5mm 2mm; text-align: center; }
+.badge strong { display: block; font-size: 22pt; line-height: 1.05; color: var(--orange-deep); }
+.badge span { display: block; font-size: 10pt; font-weight: 700; color: var(--ink); margin-top: 1.5mm; line-height: 1.3; }
+
+.foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 8mm; padding: 0 8mm 4mm; }
+.url { font-size: 19pt; font-weight: 800; color: var(--navy); letter-spacing: -0.01em; }
+.url small { display: block; font-size: 11pt; font-weight: 700; color: var(--muted); letter-spacing: 0.02em; margin-top: 1mm; }
+.logo { width: 44mm; }
+.logo img { width: 100%; display: block; }
+.hint { position: absolute; left: 10mm; bottom: 2.6mm; font-size: 6pt; color: #97a4b8; }
+
+@page { size: A4 landscape; margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- ===== SHEET 1 of 2 — left half of the wide banner (identity) ===== -->
+<div class="sheet">
+  <div class="band">
+    <div class="kicker"><span>Blix hands-on STEM &amp; robotics kits</span><span class="dot">•</span><span>Ages 5+</span><span class="dot">•</span><span>Ottawa, ON</span><span class="dot">•</span><span>We travel to you</span></div>
+    <div class="stripe"></div>
+    <div class="main">
+      <div class="left">
+        <div class="brand display">BrickAndMotor<em>Labs</em></div>
+        <div class="tag script">Spark Real Minds.</div>
+        <div class="chips"><span class="chip">Real gears</span><span class="chip">Real motors</span><span class="chip alt">No screens</span><span class="chip">15 kits from $12</span></div>
+        <div class="copy"><b>Children build a mechanism that actually moves</b> — gears and cams, linkages, drive trains, structure — with an illustrated manual and a builder at the table to help. They take it home.</div>
+      </div>
+      <div class="right">
+        <div class="badge"><strong>$5</strong><span>hand delivery in Ottawa this week · Canada Post everywhere else</span></div>
+        <div class="qr"><img src="../images/qrcodes/bazaar-bike.png" alt="QR code"></div>
+        <div class="qrcap">Scan to see<br>all 15 kits</div>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="url">brickandmotorlabs.com<small>Card payment on the site · no account needed</small></div>
+      <div class="logo"><img src="logo.png" alt="BrickAndMotorLabs logo"></div>
+    </div>
+  </div>
+  <div class="hint">Sheet 1 of 2 — print A4 landscape at 100% / actual size, butt-tape against sheet 2 (this sheet on the left).</div>
+</div>
+
+<!-- ===== SHEET 2 of 2 — right half (today's offer + sign-up) ===== -->
+<div class="sheet">
+  <div class="band">
+    <div class="kicker"><span>Free build tables today</span><span class="dot">•</span><span>Family Bazaar · Sat Oct 10</span><span class="dot">•</span><span>11:30 AM – 4:15 PM</span></div>
+    <div class="stripe"></div>
+    <div class="main">
+      <div class="left">
+        <div class="head display">Come build with us.<br>Every child finishes<br>something that moves.</div>
+        <div class="chips"><span class="chip">Ages 5 – 12 welcome</span><span class="chip alt">Free to join</span><span class="chip">Take it home</span></div>
+        <div class="copy"><b>Hand the child the partly built kit and say “want to finish this?”</b> — that is the whole pitch. Ask us about a build day at your school, camp or community group: we bring every kit, part, tool and manual.</div>
+      </div>
+      <div class="right">
+        <div class="badge"><strong>$12</strong><span>15 Blix kits · ages 5+ · whole-dollar prices</span></div>
+        <div class="qr"><img src="../images/qrcodes/bazaar-subscribe.png" alt="QR code"></div>
+        <div class="qrcap">Scan for the next<br>build day</div>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="url">Pineview Community Hub<small>Gloucester &amp; Meadowbrook Room · 1700 Blair Rd, Gloucester, ON</small></div>
+      <div class="logo"><img src="logo.png" alt="BrickAndMotorLabs logo"></div>
+    </div>
+  </div>
+  <div class="hint">Sheet 2 of 2 — print A4 landscape at 100% / actual size, butt-tape against sheet 1 (this sheet on the right).</div>
+</div>
+
+<!-- ===== SHEET 3 — stand-alone banner for a smaller table ===== -->
+<div class="sheet">
+  <div class="band">
+    <div class="kicker"><span>Free build tables</span><span class="dot">•</span><span>Kids build &amp; take it home</span><span class="dot">•</span><span>Ages 5+</span></div>
+    <div class="stripe"></div>
+    <div class="main">
+      <div class="left">
+        <div class="brand sm display">BrickAndMotor<em>Labs</em></div>
+        <div class="tag script" style="font-size: 26pt;">Spark Real Minds.</div>
+        <div class="chips"><span class="chip">15 kits from $12</span><span class="chip alt">No screens</span><span class="chip">Real gears &amp; motors</span></div>
+        <div class="copy"><b>Scan the code</b> to see all 15 kits with real shipping prices and pay by card — or ask us at the table about a 90 minute build workshop for your class or camp.</div>
+      </div>
+      <div class="right">
+        <div class="qr"><img src="../images/qrcodes/bazaar-bike.png" alt="QR code"></div>
+        <div class="qrcap">Scan to see<br>all 15 kits</div>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="url">brickandmotorlabs.com<small>$5 hand delivery in Ottawa · Canada Post everywhere else</small></div>
+      <div class="logo"><img src="logo.png" alt="BrickAndMotorLabs logo"></div>
+    </div>
+  </div>
+  <div class="hint">Sheet 3 — stand-alone banner for a small table. Print A4 landscape at 100% / actual size.</div>
+</div>
+
+</body>
+</html>

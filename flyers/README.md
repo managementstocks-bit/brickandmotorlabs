@@ -71,3 +71,23 @@ working directory, and the print render is 1 A4 page (cards 103 x 42 mm, QR 36 m
 224 mm + 15 mm event bar inside a 281 mm printable height). QR PNGs are the tracked
 `images/qrcodes/bazaar-*.png`; all 15 decode to their product pages. `bazaar-events.png`
 and `bazaar-subscribe.png` are kept for printed cards but no longer appear on the sheet.
+
+---
+
+# Table banner (for when an ordered banner has not arrived)
+
+`table-banner.html` -> `table-banner.pdf`, 3 sheets, **A4 LANDSCAPE**, print at 100% / "Actual size" (never "Fit to page"; borderless printing is not needed because the artwork sits 10 mm inside each sheet).
+
+| Sheet | What it is |
+|---|---|
+| 1 | left half of the wide banner — brand, tagline, what the kits are |
+| 2 | right half — today's offer, chips, QR, venue |
+| 3 | stand-alone banner for a smaller table |
+
+Sheet 1 + sheet 2 butt/tape together into **one 554 × 190 mm banner (21.8 × 7.5 in)**. Each sheet says which side it goes on. Type sizes: wordmark 54 pt, headlines 31 pt, chips 11 pt, body 14.5 pt.
+QRs reuse the tracked `/images/qrcodes/*` PNGs (480 px, crisp to 41 mm at 300 ppi). Regenerate: `node /workspace/temp/print-pack/render-banner.mjs`.
+
+# Lead list + A4 version of the main flyer
+
+* `lead-list.html` -> `lead-list.pdf` (1 page, A4 landscape): 40 contact rows for the 26 confirmed + 9 hold schools/camps — name, organisation, city, contact, source, status, blank phone / email / notes columns, 26 rows to write on, in 3 sections. On the table next to the banner for warm follow-ups.
+* `flyer.html` -> `flyer-a4.pdf` (1 page, A4 portrait): the current flyer with **whole-dollar prices and the current date**. Note `flyer.pdf` in this folder is gitignored and was generated 2026-10-06 from `index.html`; the prices in it are stale (the 9.99 band was floored to 10 on 2026-10-09).
