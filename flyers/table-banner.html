@@ -62,6 +62,10 @@ body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, s
 .chip.alt { border-color: var(--orange); color: var(--orange-deep); }
 .copy { font-size: var(--copy-pt); line-height: 1.5; }
 .copy b { font-weight: 800; color: var(--navy-deep); }
+/* sheet 2 carries less body text than sheet 1, so its type is scaled up to fill the same band */
+.sheet--b .copy { font-size: calc(var(--copy-pt) + 2.5pt); }
+.sheet--b .chips { gap: 3.5mm; }
+.sheet--b .chip { font-size: calc(var(--chip-pt) + 0.5pt); padding: 1.8mm 4.5mm; }
 
 .qr { width: 52mm; height: 52mm; border: 1.6pt solid var(--navy-deep); padding: 2mm; background: #fff; }
 .qr img { width: 100%; height: 100%; image-rendering: pixelated; }
@@ -93,7 +97,7 @@ body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, s
     </div>
     <div class="main">
       <div class="left">
-        <div class="chips"><span class="chip">Real gears</span><span class="chip">Real motors</span><span class="chip alt">No screens</span><span class="chip">15 kits from $12</span><span class="chip alt">$5 Ottawa delivery</span></div>
+        <div class="chips"><span class="chip">Real gears</span><span class="chip">Real motors</span><span class="chip alt">No screens</span><span class="chip">Starting from $12</span><span class="chip alt">$5 Ottawa delivery</span></div>
         <div class="copy"><b>Children build a mechanism that actually moves</b> — gears and cams, linkages, drive trains, structure — with an illustrated manual and a builder at the table to help. They take it home.</div>
       </div>
       <div class="right">
@@ -110,9 +114,9 @@ body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, s
 </div>
 
 <!-- ===== SHEET 2 of 2 — right half (today's offer + sign-up) ===== -->
-<div class="sheet">
+<div class="sheet sheet--b">
   <div class="band">
-    <div class="kicker"><span>Free build tables today</span><span class="dot">•</span><span>Family Bazaar · Sat Oct 10</span><span class="dot">•</span><span>11:30 AM – 4:15 PM</span></div>
+    <div class="kicker"><span>Buy your kit, build it here</span><span class="dot">•</span><span>Family Bazaar · Sat Oct 10</span><span class="dot">•</span><span>11:30 AM – 4:15 PM</span></div>
     <div class="stripe"></div>
     <div class="title">
       <div class="brand display">Come build <em>with us.</em></div>
@@ -120,8 +124,8 @@ body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, s
     </div>
     <div class="main">
       <div class="left">
-        <div class="chips"><span class="chip">Ages 5 – 12 welcome</span><span class="chip alt">Free to join</span><span class="chip">Take it home</span><span class="chip">15 kits from $12</span></div>
-        <div class="copy"><b>Hand the child the partly built kit and say “want to finish this?”</b> — that is the whole pitch. Ask us about a build day at your school, camp or community group: we bring every kit, part, tool and manual.</div>
+        <div class="chips"><span class="chip">Ages 5+ welcome</span><span class="chip">Take it home</span><span class="chip alt">Starting from $12</span></div>
+        <div class="copy"><b>Ask us about a build day</b> at your school, camp or community group: we bring every kit, part, tool and manual.</div>
       </div>
       <div class="right">
         <div class="qr"><img src="../images/qrcodes/bazaar-subscribe.png" alt="QR code"></div>
@@ -139,7 +143,7 @@ body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, s
 <!-- ===== SHEET 3 — stand-alone banner for a smaller table ===== -->
 <div class="sheet">
   <div class="band">
-    <div class="kicker"><span>Free build tables</span><span class="dot">•</span><span>Kids build &amp; take it home</span><span class="dot">•</span><span>Ages 5+</span></div>
+    <div class="kicker"><span>Buy a kit, build it here</span><span class="dot">•</span><span>Kids build &amp; take it home</span><span class="dot">•</span><span>Ages 5+</span></div>
     <div class="stripe"></div>
     <div class="title">
       <div class="brand sm display">BrickAndMotor<em>Labs</em></div>
@@ -147,7 +151,7 @@ body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, s
     </div>
     <div class="main">
       <div class="left">
-        <div class="chips"><span class="chip">15 kits from $12</span><span class="chip alt">No screens</span><span class="chip">Real gears &amp; motors</span></div>
+        <div class="chips"><span class="chip">Starting from $12</span><span class="chip alt">No screens</span><span class="chip">Real gears &amp; motors</span></div>
         <div class="copy"><b>Scan the code</b> to see all 15 kits with real shipping prices and pay by card — or ask us at the table about a 90 minute build workshop for your class or camp.</div>
       </div>
       <div class="right">
