@@ -46,6 +46,8 @@ node flyer-render/render/render-kit.mjs      # table-kit.pdf + overflow / broken
 node flyer-render/render/render-extras.mjs   # schools-camps.pdf + price-stickers.pdf
 ./flyer-render/recompress.sh                 # 300 ppi at print size (6.8 MB -> 635 KB for table-kit)
 node flyer-render/qc/qr-print-report.mjs     # decode every code out of the PDFs at 300 dpi -> PRINT QC: PASS
+node print-pack/render-banner.mjs          # table-banner.pdf (A4) + table-banner-letter.pdf (Letter), from flyers/table-banner.html
+node flyers/print-check.mjs                # measures real ink extent vs paper edges on those two PDFs -> SAFE
 pdffonts flyers/table-kit.pdf                # want CID TrueType, emb sub uni = yes yes yes
 ```
 
@@ -76,19 +78,32 @@ and `bazaar-subscribe.png` are kept for printed cards but no longer appear on th
 
 # Table banner (for when an ordered banner has not arrived)
 
-`table-banner.html` -> `table-banner.pdf`, 3 sheets, **A4 LANDSCAPE**, print at 100% / "Actual size" (never "Fit to page"; borderless printing is not needed because the artwork sits 10 mm inside each sheet).
+`### table-banner.pdf + table-banner-letter.pdf  (3 sheets each — the table banner)
+Stand-in for the ordered banner that has not arrived. Sheets 1+2 butt-tape into one wide banner;
+sheet 3 is a stand-alone banner for a smaller table.
 
-| Sheet | What it is |
-|---|---|
-| 1 | left half of the wide banner — brand, tagline, what the kits are |
-| 2 | right half — today's offer, chips, QR, venue |
-| 3 | stand-alone banner for a smaller table |
+**Print the PDF, not table-banner.html.** Pick the file that matches the paper:
 
-Sheet 1 + sheet 2 butt/tape together into **one 554 × 190 mm banner (21.8 × 7.5 in)**. Each sheet says which side it goes on. Type sizes: wordmark 54 pt, headlines 31 pt, chips 11 pt, body 14.5 pt.
-QRs reuse the tracked `/images/qrcodes/*` PNGs (480 px, crisp to 41 mm at 300 ppi). Regenerate: `node /workspace/temp/print-pack/render-banner.mjs`.
+| File | Paper | One joined banner (sheets 1+2) |
+|---|---|---|
+| `table-banner.pdf` | A4 landscape 297 x 210 mm | **520 x 174 mm** (20.5 x 6.9 in) |
+| `table-banner-letter.pdf` | Letter landscape 8.5 x 11 in | **486 x 180 mm** (19.1 x 7.1 in) |
 
-# Lead list + A4 version of the main flyer
+Print settings — this is what was wrong the first time:
+- Orientation **LANDSCAPE**. Paper size matching the file (A4 file -> A4 paper, Letter file -> Letter paper).
+- Margins: **Default**. Do **not** choose None/0 — the page margin *is* the safety buffer that keeps the
+  wordmark out of the printer's unprintable edge.
+- Scale **100% / Actual size** when offered. If the printer clips anyway, use Fit-to-page instead: both
+  sheets scale by the same factor, so the tape seam still lines up.
+- Both sheets must use the same paper size and the same scale, or the seam will not match.
+- Tape along the seam on the back; no cut lines needed (artwork never reaches the sheet edge).
 
-* `lead-list.html` -> `lead-list.pdf` (1 page, A4 landscape): **blank visitor lead sheet** — 18 rows to write on at the table, columns NAME / PHONE OR EMAIL / CHILD AGE / KIT BUILT OR WANTS / CITY OR POSTAL / BOUGHT? / SCHOOL OR CAMP?, plus the two lines to say out loud ("want us to tell you about the next build day?" and "$5 hand delivery in Ottawa this week"). It is a capture sheet, **not** a pre-filled contact list; print 2 copies. (The 26 confirmed + 9 hold schools/camps contacts live in `temp/manuals/OUTREACH.md`, outside the repo.)
-  * Correction: the commit that added this file (`3800ba3`) described it as a 40-row outreach contact list. It is not — this line is accurate.
-* `flyer.html` -> `flyer-a4.pdf` (1 page, A4 portrait): the current flyer with **whole-dollar prices and the current date**. Note `flyer.pdf` in this folder is gitignored and was generated 2026-10-06 from `index.html`; the prices in it are stale (the 9.99 band was floored to 10 on 2026-10-09).
+Verified with `node print-check.mjs` (needs poppler `pdftoppm` + `pngjs`): 3 pages each, and the
+outermost ink is >= 15.1 mm from every paper edge on every page (the band itself starts at 19 mm; only
+the tiny "Sheet 1 of 2" hint sits at 15 mm). No element overflows its frame, no broken images, and both
+QRs decode at printed size (43-46 mm modules): home page, and /subscribe.html?src=bazaar.
+
+Layout trap that caused the first clipped print: a grid `1fr` column cannot shrink below its content's
+min-content width (`min-width:auto`), so a 50 pt single-word wordmark forced the row 15 mm wider than its
+frame and spilled past the printed area. The wordmark now has its own full-width row, the text column is
+`minmax(0,1fr)`, and `print-check.mjs` measures the real ink extent on the rendered PDF.
