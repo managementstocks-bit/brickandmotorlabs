@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /family-bazaar.html
 
 Sitemap: https://brickandmotorlabs.com/sitemap.xml

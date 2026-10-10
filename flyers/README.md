@@ -50,3 +50,24 @@ pdffonts flyers/table-kit.pdf                # want CID TrueType, emb sub uni = 
 ```
 
 The recompression step is not optional if these files are going into this folder: Chromium writes the kit photos at their source resolution (~1280 ppi when a 1000 px photo is drawn at 20 mm), which is 4x more than a printer can resolve. Recompress to 300 ppi, then run the QC and a 300-dpi crop compare against the uncompressed render (expect 0 differing pixels) before committing. Copy the recompressed files here so the working print copies and the public ones are the same bytes.
+
+## Family Bazaar price sheet (`/family-bazaar.html`) — internal, not linked
+
+`../family-bazaar.html` is the **internal** price + QR sheet: 15 kits, name / price /
+age / 36 mm QR, no descriptions, no links to the page. It prints as **one A4 sheet**
+(3 x 5 grid) and is deliberately not linked from `events.html`, not in `sitemap.xml`,
+`noindex, nofollow`, and `robots.txt` has `Disallow: /family-bazaar.html`.
+
+Rebuild it after any price change (prices come from the live worker, so the sheet
+cannot drift from Stripe):
+
+```
+node flyers/gen-bazaar-sheet.mjs          # rewrites family-bazaar.html from the kit table
+node flyers/gen-bazaar-sheet.mjs --check  # 15 QR pngs present + prices match live /api/prices
+```
+
+Verified 2026-10-09: the generator reproduces the committed page byte-for-byte from any
+working directory, and the print render is 1 A4 page (cards 103 x 42 mm, QR 36 mm, grid
+224 mm + 15 mm event bar inside a 281 mm printable height). QR PNGs are the tracked
+`images/qrcodes/bazaar-*.png`; all 15 decode to their product pages. `bazaar-events.png`
+and `bazaar-subscribe.png` are kept for printed cards but no longer appear on the sheet.

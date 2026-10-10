@@ -1,4 +1,55 @@
-<!DOCTYPE html>
+#!/usr/bin/env node
+/*
+ * Generates BrickAndMotorLabs.com/family-bazaar.html — the INTERNAL one-page
+ * price + QR sheet (print target: single A4 sheet, 3 x 5 grid, no descriptions).
+ *
+ *   node flyers/gen-bazaar-sheet.mjs          -> writes family-bazaar.html (repo root)
+ *   node flyers/gen-bazaar-sheet.mjs --check   -> verifies the 15 QR pngs + prices against live /api/prices
+ *
+ * Prices here must stay in sync with Stripe PRICE_MAP (worker repo price-map.json),
+ * the site script.js CATALOG and the print flyers. Floor to whole dollars (no cents).
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const SITE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const OUT = path.join(SITE, 'family-bazaar.html');
+
+// slug, display name, age band, price (CAD, whole dollars), QR png (images/qrcodes/)
+const KITS = [
+  ['bike',                'Blix Minis - Bike',      '5+',  12],
+  ['ferris-wheel',        'Blix Minis - Ferris Wheel','5+', 12],
+  ['queaky-charge',       'Queaky Charge - Sleepy', '3+',  24],
+  ['buddy',               'Blix Buddy',             '5+',  28],
+  ['crawlers',            'Crawlers',               '8+',  49],
+  ['rover',               'Rover',                  '8+',  53],
+  ['gear-box',           'Gear Box',                '8+',  69],
+  ['forklift-power',      'Forklift Power',         '8+',  76],
+  ['power-screw',        'Power Screw',             '8+',  80],
+  ['marble-run-2',        'Blix Marble Run 2',      '8+',  107],
+  ['amusement-park',      'Amusement Park',         '8+',  115],
+  ['rc-explorers',        'RC Explorers',           '8+',  115],
+  ['rc-rover',            'RC Rover',               '8+',  115],
+  ['discovering-motions', 'Discovering Motions',    '8+',  134],
+  ['rc-megastructures',   'RC Megastructures',      '8+',  268],
+];
+
+const EVENT = {
+  when: 'Saturday, October 10, 2026 &middot; 11:30 AM &ndash; 4:15 PM',
+  where: 'Pineview Community Hub &mdash; Gloucester &amp; Meadowbrook Room, 1700 Blair Rd, Gloucester, ON K1B 4E6',
+  entry: 'Free &middot; Everyone welcome',
+};
+
+const cards = KITS.map(([slug, name, age, price]) => `      <article class="bz-card">
+        <div class="bz-card__text">
+          <h3 class="bz-card__name">${name}</h3>
+          <p class="bz-card__meta"><span class="bz-card__price">$${price}</span><span class="bz-card__age">Ages ${age}</span></p>
+        </div>
+        <img class="bz-card__qr" src="images/qrcodes/bazaar-${slug}.png" width="480" height="480" alt="QR code for ${name}">
+      </article>`).join('\n');
+
+const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -98,119 +149,15 @@
       </div>
 
       <div class="bz-event" role="note" aria-label="Event details">
-        <div class="bz-event__item"><strong>When</strong><span>Saturday, October 10, 2026 &middot; 11:30 AM &ndash; 4:15 PM</span></div>
-        <div class="bz-event__item"><strong>Where</strong><span>Pineview Community Hub &mdash; Gloucester &amp; Meadowbrook Room, 1700 Blair Rd, Gloucester, ON K1B 4E6</span></div>
-        <div class="bz-event__item"><strong>Entry</strong><span>Free &middot; Everyone welcome</span></div>
+        <div class="bz-event__item"><strong>When</strong><span>${EVENT.when}</span></div>
+        <div class="bz-event__item"><strong>Where</strong><span>${EVENT.where}</span></div>
+        <div class="bz-event__item"><strong>Entry</strong><span>${EVENT.entry}</span></div>
         <div class="bz-event__item"><strong>Prices</strong><span>CAD &middot; online prices, whole dollars</span></div>
       </div>
 
       <div class="bz-grid">
 
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Blix Minis - Bike</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$12</span><span class="bz-card__age">Ages 5+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-bike.png" width="480" height="480" alt="QR code for Blix Minis - Bike">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Blix Minis - Ferris Wheel</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$12</span><span class="bz-card__age">Ages 5+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-ferris-wheel.png" width="480" height="480" alt="QR code for Blix Minis - Ferris Wheel">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Queaky Charge - Sleepy</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$24</span><span class="bz-card__age">Ages 3+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-queaky-charge.png" width="480" height="480" alt="QR code for Queaky Charge - Sleepy">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Blix Buddy</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$28</span><span class="bz-card__age">Ages 5+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-buddy.png" width="480" height="480" alt="QR code for Blix Buddy">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Crawlers</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$49</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-crawlers.png" width="480" height="480" alt="QR code for Crawlers">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Rover</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$53</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-rover.png" width="480" height="480" alt="QR code for Rover">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Gear Box</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$69</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-gear-box.png" width="480" height="480" alt="QR code for Gear Box">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Forklift Power</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$76</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-forklift-power.png" width="480" height="480" alt="QR code for Forklift Power">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Power Screw</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$80</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-power-screw.png" width="480" height="480" alt="QR code for Power Screw">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Blix Marble Run 2</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$107</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-marble-run-2.png" width="480" height="480" alt="QR code for Blix Marble Run 2">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Amusement Park</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$115</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-amusement-park.png" width="480" height="480" alt="QR code for Amusement Park">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">RC Explorers</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$115</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-rc-explorers.png" width="480" height="480" alt="QR code for RC Explorers">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">RC Rover</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$115</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-rc-rover.png" width="480" height="480" alt="QR code for RC Rover">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">Discovering Motions</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$134</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-discovering-motions.png" width="480" height="480" alt="QR code for Discovering Motions">
-      </article>
-      <article class="bz-card">
-        <div class="bz-card__text">
-          <h3 class="bz-card__name">RC Megastructures</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$268</span><span class="bz-card__age">Ages 8+</span></p>
-        </div>
-        <img class="bz-card__qr" src="images/qrcodes/bazaar-rc-megastructures.png" width="480" height="480" alt="QR code for RC Megastructures">
-      </article>
+${cards}
       </div>
     </div>
   </section>
@@ -254,3 +201,21 @@
 <script src="script.js"></script>
 </body>
 </html>
+`;
+
+if (process.argv.includes('--check')) {
+  let bad = 0;
+  for (const [slug, name] of KITS) {
+    const p = path.join(SITE, 'images/qrcodes', `bazaar-${slug}.png`);
+    if (!fs.existsSync(p)) { console.log(`MISSING QR: ${p}`); bad++; }
+  }
+  const live = await (await fetch('https://brickandmotorlabs-checkout.brickandmotorlabs.workers.dev/api/prices')).json();
+  for (const [slug, name, , price] of KITS) {
+    if (live[slug] !== price * 100) { console.log(`PRICE DRIFT ${slug}: page $${price}, worker ${live[slug]} cents`); bad++; }
+  }
+  console.log(bad === 0 ? `OK: 15 QR files present, 15 prices match the live worker (${KITS.length} kits).` : `${bad} problem(s).`);
+  process.exit(bad === 0 ? 0 : 1);
+}
+
+fs.writeFileSync(OUT, html);
+console.log(`wrote ${OUT} (${KITS.length} kits, ${html.split('\n').length} lines)`);
