@@ -89,5 +89,6 @@ QRs reuse the tracked `/images/qrcodes/*` PNGs (480 px, crisp to 41 mm at 300 pp
 
 # Lead list + A4 version of the main flyer
 
-* `lead-list.html` -> `lead-list.pdf` (1 page, A4 landscape): 40 contact rows for the 26 confirmed + 9 hold schools/camps — name, organisation, city, contact, source, status, blank phone / email / notes columns, 26 rows to write on, in 3 sections. On the table next to the banner for warm follow-ups.
+* `lead-list.html` -> `lead-list.pdf` (1 page, A4 landscape): **blank visitor lead sheet** — 18 rows to write on at the table, columns NAME / PHONE OR EMAIL / CHILD AGE / KIT BUILT OR WANTS / CITY OR POSTAL / BOUGHT? / SCHOOL OR CAMP?, plus the two lines to say out loud ("want us to tell you about the next build day?" and "$5 hand delivery in Ottawa this week"). It is a capture sheet, **not** a pre-filled contact list; print 2 copies. (The 26 confirmed + 9 hold schools/camps contacts live in `temp/manuals/OUTREACH.md`, outside the repo.)
+  * Correction: the commit that added this file (`3800ba3`) described it as a 40-row outreach contact list. It is not — this line is accurate.
 * `flyer.html` -> `flyer-a4.pdf` (1 page, A4 portrait): the current flyer with **whole-dollar prices and the current date**. Note `flyer.pdf` in this folder is gitignored and was generated 2026-10-06 from `index.html`; the prices in it are stale (the 9.99 band was floored to 10 on 2026-10-09).
