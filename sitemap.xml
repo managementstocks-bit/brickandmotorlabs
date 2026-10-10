@@ -66,8 +66,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://brickandmotorlabs.com/builds/build-a-machine.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://brickandmotorlabs.com/builds/crawlers.html</loc>
     <lastmod>2026-08-24</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://brickandmotorlabs.com/builds/disco-bot.html</loc>
+    <lastmod>2026-10-10</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
@@ -78,6 +88,11 @@
   <url>
     <loc>https://brickandmotorlabs.com/builds/gear-box.html</loc>
     <lastmod>2026-08-24</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://brickandmotorlabs.com/builds/logic-blocks.html</loc>
+    <lastmod>2026-10-10</lastmod>
     <priority>0.9</priority>
   </url>
   <url>

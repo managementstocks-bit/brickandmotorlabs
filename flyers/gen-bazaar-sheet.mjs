@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 /*
  * Generates BrickAndMotorLabs.com/family-bazaar.html — the INTERNAL one-page
- * price + QR sheet (print target: single A4 sheet, 3 x 5 grid, no descriptions).
+ * price + QR sheet (print target: single A4 sheet, 3 x 6 grid, no descriptions).
  *
  *   node flyers/gen-bazaar-sheet.mjs          -> writes family-bazaar.html (repo root)
- *   node flyers/gen-bazaar-sheet.mjs --check   -> verifies the 15 QR pngs + prices against live /api/prices
+ *   node flyers/gen-bazaar-sheet.mjs --check   -> verifies the 18 QR pngs + online prices against live /api/prices
  *
  * Prices here must stay in sync with Stripe PRICE_MAP (worker repo price-map.json),
  * the site script.js CATALOG and the print flyers. Floor to whole dollars (no cents).
+ * Kits marked online=false are event-only: priced by hand, no Stripe record yet.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -16,23 +17,28 @@ import { fileURLToPath } from 'node:url';
 const SITE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(SITE, 'family-bazaar.html');
 
-// slug, display name, age band, price (CAD, whole dollars), QR png (images/qrcodes/)
+// slug, display name, age band, price (CAD, whole dollars), on-hand qty (null = not counted), online?
+// stock is printed on this INTERNAL sheet only - it is what we physically have at the table.
+// eventOnly kits have no Stripe price yet (ordered 2026-10-10, sold at the table / by email).
 const KITS = [
-  ['bike',                'Blix Minis - Bike',      '5+',  12],
-  ['ferris-wheel',        'Blix Minis - Ferris Wheel','5+', 12],
-  ['queaky-charge',       'Queaky Charge - Sleepy', '3+',  24],
-  ['buddy',               'Blix Buddy',             '5+',  28],
-  ['crawlers',            'Crawlers',               '8+',  49],
-  ['rover',               'Rover',                  '8+',  53],
-  ['gear-box',           'Gear Box',                '8+',  69],
-  ['forklift-power',      'Forklift Power',         '8+',  76],
-  ['power-screw',        'Power Screw',             '8+',  80],
-  ['marble-run-2',        'Blix Marble Run 2',      '8+',  107],
-  ['amusement-park',      'Amusement Park',         '8+',  115],
-  ['rc-explorers',        'RC Explorers',           '8+',  115],
-  ['rc-rover',            'RC Rover',               '8+',  115],
-  ['discovering-motions', 'Discovering Motions',    '8+',  134],
-  ['rc-megastructures',   'RC Megastructures',      '8+',  268],
+  ['bike',                'Blix Minis - Bike',      '5+',  12,  null, true],
+  ['ferris-wheel',        'Blix Minis - Ferris Wheel','5+', 12,  null, true],
+  ['disco-bot',           'Blix Minis - Disco Bot',  '5+',  12,  5,    false],
+  ['queaky-charge',       'Queaky Charge - Sleepy', '3+',  24,  null, true],
+  ['buddy',               'Blix Buddy',             '5+',  28,  null, true],
+  ['build-a-machine',     'Blix Build-A-Machine',   '5+',  38,  4,    false],
+  ['crawlers',            'Crawlers',               '8+',  49,  null, true],
+  ['rover',               'Rover',                  '8+',  53,  null, true],
+  ['gear-box',           'Gear Box',                '8+',  69,  null, true],
+  ['forklift-power',      'Forklift Power',         '8+',  76,  null, true],
+  ['power-screw',        'Power Screw',             '8+',  80,  null, true],
+  ['marble-run-2',        'Blix Marble Run 2',      '8+',  107, null, true],
+  ['amusement-park',      'Amusement Park',         '8+',  115, null, true],
+  ['rc-explorers',        'RC Explorers',           '8+',  115, null, true],
+  ['rc-rover',            'RC Rover',               '8+',  115, null, true],
+  ['discovering-motions', 'Discovering Motions',    '8+',  134, null, true],
+  ['logic-blocks',        'Blix Logic Blocks',      '8+',  268, 2,    false],
+  ['rc-megastructures',   'RC Megastructures',      '8+',  268, null, true],
 ];
 
 const EVENT = {
@@ -41,10 +47,11 @@ const EVENT = {
   entry: 'Free &middot; Everyone welcome',
 };
 
-const cards = KITS.map(([slug, name, age, price]) => `      <article class="bz-card">
+const cards = KITS.map(([slug, name, age, price, stock, online]) => `      <article class="bz-card">
         <div class="bz-card__text">
           <h3 class="bz-card__name">${name}</h3>
-          <p class="bz-card__meta"><span class="bz-card__price">$${price}</span><span class="bz-card__age">Ages ${age}</span></p>
+          <p class="bz-card__meta"><span class="bz-card__price">$${price}</span><span class="bz-card__age">Ages ${age}</span>${stock !== null ? `<span class="bz-card__stock">${stock} on hand</span>` : ''}</p>
+          <p class="bz-card__note">${online ? 'Buy online' : 'At our table today'}</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-${slug}.png" width="480" height="480" alt="QR code for ${name}">
       </article>`).join('\n');
@@ -65,7 +72,7 @@ const html = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Family Bazaar - Price Sheet - BrickAndMotorLabs</title>
-  <meta name="description" content="Internal price sheet: all 15 BrickAndMotorLabs STEM kits with price and QR code, laid out for a single A4 sheet.">
+  <meta name="description" content="Internal price sheet: all 18 BrickAndMotorLabs STEM kits with price, on-hand count and QR code, laid out for a single A4 sheet.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://brickandmotorlabs.com/family-bazaar.html">
   <meta name="theme-color" content="#1a73e8">
@@ -90,28 +97,33 @@ const html = `<!DOCTYPE html>
 .bz-card__meta { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
 .bz-card__price { font-size: 1.5rem; font-weight: 800; color: var(--dark); }
 .bz-card__age { font-size: 0.72rem; font-weight: 700; color: var(--primary-dark); background: rgba(26, 115, 232, 0.1); padding: 2px 8px; border-radius: 999px; }
+.bz-card__stock { font-size: 0.72rem; font-weight: 700; color: #7a4c00; background: rgba(240, 163, 26, 0.16); padding: 2px 8px; border-radius: 999px; }
+.bz-card__note { font-size: 0.68rem; color: var(--gray); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
 .bz-card__qr { width: 118px; height: 118px; flex-shrink: 0; image-rendering: pixelated; border: 1px solid var(--gray-light); border-radius: 4px; padding: 4px; background: #fff; }
 @media (max-width: 900px) { .bz-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) { .bz-grid { grid-template-columns: 1fr; } }
 
-/* --- Print: exactly one A4 sheet, 3 x 5, 30 mm codes --- */
+/* --- Print: exactly one A4 sheet, 3 x 6, 30 mm codes --- */
 @media print {
-  @page { size: A4 portrait; margin: 8mm; }
+  @page { size: A4 portrait; margin: 9mm; }
   body { background: #fff !important; }
   .navbar, .footer, .subscribe-band, .skip-link, .bz-print { display: none !important; }
   .section { padding: 0 !important; }
   .container { max-width: none !important; }
-  .bz-sheet__head { margin-bottom: 4mm; }
-  .bz-sheet__head h1 { font-size: 13pt; }
-  .bz-event { border: 1pt solid #16283f; border-radius: 2pt; padding: 2mm 3mm; margin: 0 0 3mm; gap: 1mm 10mm; }
+  .bz-sheet__head { margin-bottom: 2mm; }
+  .bz-sheet__head h1 { font-size: 12pt; }
+  .bz-event { border: 1pt solid #16283f; border-radius: 2pt; padding: 1mm 2.5mm; margin: 0 0 2mm; gap: 0.5mm 8mm; }
+  .bz-event__item { flex: 1 1 28%; }
   .bz-event__item strong { font-size: 6pt; }
   .bz-event__item span { font-size: 7.5pt; }
-  .bz-grid { grid-template-columns: repeat(3, 1fr); gap: 4mm; }
-  .bz-card { border: 0.6pt solid #16283f; border-radius: 2pt; box-shadow: none; padding: 2.5mm; gap: 3mm; break-inside: avoid; page-break-inside: avoid; }
-  .bz-card__name { font-size: 10pt; margin-bottom: 1mm; }
-  .bz-card__price { font-size: 13pt; }
-  .bz-card__age { font-size: 7pt; padding: 0 4pt; }
-  .bz-card__qr { width: 36mm; height: 36mm; border: none; border-radius: 0; padding: 0; }
+  .bz-grid { grid-template-columns: repeat(3, 1fr); gap: 2.5mm; }
+  .bz-card { border: 0.6pt solid #16283f; border-radius: 2pt; box-shadow: none; padding: 2mm; gap: 2mm; break-inside: avoid; page-break-inside: avoid; align-items: center; }
+  .bz-card__name { font-size: 9.5pt; line-height: 1.2; margin-bottom: 0.8mm; }
+  .bz-card__price { font-size: 12.5pt; }
+  .bz-card__age { font-size: 6.5pt; padding: 0 4pt; }
+  .bz-card__stock { font-size: 6.5pt; padding: 0 4pt; }
+  .bz-card__note { font-size: 6pt; margin-top: 0.6mm; }
+  .bz-card__qr { width: 27mm; height: 27mm; border: none; border-radius: 0; padding: 0; }
   a[href]::after { content: "" !important; }
 }
   </style>
@@ -152,7 +164,8 @@ const html = `<!DOCTYPE html>
         <div class="bz-event__item"><strong>When</strong><span>${EVENT.when}</span></div>
         <div class="bz-event__item"><strong>Where</strong><span>${EVENT.where}</span></div>
         <div class="bz-event__item"><strong>Entry</strong><span>${EVENT.entry}</span></div>
-        <div class="bz-event__item"><strong>Prices</strong><span>CAD &middot; online prices, whole dollars</span></div>
+        <div class="bz-event__item"><strong>Prices</strong><span>CAD &middot; whole dollars &middot; buy online or at our table</span></div>
+        <div class="bz-event__item"><strong>New today</strong><span>Disco Bot &times;5 &middot; Build-A-Machine &times;4 &middot; Logic Blocks &times;2</span></div>
       </div>
 
       <div class="bz-grid">
@@ -210,10 +223,12 @@ if (process.argv.includes('--check')) {
     if (!fs.existsSync(p)) { console.log(`MISSING QR: ${p}`); bad++; }
   }
   const live = await (await fetch('https://brickandmotorlabs-checkout.brickandmotorlabs.workers.dev/api/prices')).json();
-  for (const [slug, name, , price] of KITS) {
+  // Only kits that are actually sold online have a worker price; the event-only kits are priced by hand.
+  for (const [slug, name, , price, , online] of KITS) {
+    if (!online) continue;
     if (live[slug] !== price * 100) { console.log(`PRICE DRIFT ${slug}: page $${price}, worker ${live[slug]} cents`); bad++; }
   }
-  console.log(bad === 0 ? `OK: 15 QR files present, 15 prices match the live worker (${KITS.length} kits).` : `${bad} problem(s).`);
+  console.log(bad === 0 ? `OK: ${KITS.length} QR files present, ${KITS.filter(k => k[5]).length} online prices match the live worker (${KITS.length} kits).` : `${bad} problem(s).`);
   process.exit(bad === 0 ? 0 : 1);
 }
 

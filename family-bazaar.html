@@ -14,7 +14,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Family Bazaar - Price Sheet - BrickAndMotorLabs</title>
-  <meta name="description" content="Internal price sheet: all 15 BrickAndMotorLabs STEM kits with price and QR code, laid out for a single A4 sheet.">
+  <meta name="description" content="Internal price sheet: all 18 BrickAndMotorLabs STEM kits with price, on-hand count and QR code, laid out for a single A4 sheet.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://brickandmotorlabs.com/family-bazaar.html">
   <meta name="theme-color" content="#1a73e8">
@@ -39,28 +39,33 @@
 .bz-card__meta { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
 .bz-card__price { font-size: 1.5rem; font-weight: 800; color: var(--dark); }
 .bz-card__age { font-size: 0.72rem; font-weight: 700; color: var(--primary-dark); background: rgba(26, 115, 232, 0.1); padding: 2px 8px; border-radius: 999px; }
+.bz-card__stock { font-size: 0.72rem; font-weight: 700; color: #7a4c00; background: rgba(240, 163, 26, 0.16); padding: 2px 8px; border-radius: 999px; }
+.bz-card__note { font-size: 0.68rem; color: var(--gray); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
 .bz-card__qr { width: 118px; height: 118px; flex-shrink: 0; image-rendering: pixelated; border: 1px solid var(--gray-light); border-radius: 4px; padding: 4px; background: #fff; }
 @media (max-width: 900px) { .bz-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) { .bz-grid { grid-template-columns: 1fr; } }
 
-/* --- Print: exactly one A4 sheet, 3 x 5, 30 mm codes --- */
+/* --- Print: exactly one A4 sheet, 3 x 6, 30 mm codes --- */
 @media print {
-  @page { size: A4 portrait; margin: 8mm; }
+  @page { size: A4 portrait; margin: 9mm; }
   body { background: #fff !important; }
   .navbar, .footer, .subscribe-band, .skip-link, .bz-print { display: none !important; }
   .section { padding: 0 !important; }
   .container { max-width: none !important; }
-  .bz-sheet__head { margin-bottom: 4mm; }
-  .bz-sheet__head h1 { font-size: 13pt; }
-  .bz-event { border: 1pt solid #16283f; border-radius: 2pt; padding: 2mm 3mm; margin: 0 0 3mm; gap: 1mm 10mm; }
+  .bz-sheet__head { margin-bottom: 2mm; }
+  .bz-sheet__head h1 { font-size: 12pt; }
+  .bz-event { border: 1pt solid #16283f; border-radius: 2pt; padding: 1mm 2.5mm; margin: 0 0 2mm; gap: 0.5mm 8mm; }
+  .bz-event__item { flex: 1 1 28%; }
   .bz-event__item strong { font-size: 6pt; }
   .bz-event__item span { font-size: 7.5pt; }
-  .bz-grid { grid-template-columns: repeat(3, 1fr); gap: 4mm; }
-  .bz-card { border: 0.6pt solid #16283f; border-radius: 2pt; box-shadow: none; padding: 2.5mm; gap: 3mm; break-inside: avoid; page-break-inside: avoid; }
-  .bz-card__name { font-size: 10pt; margin-bottom: 1mm; }
-  .bz-card__price { font-size: 13pt; }
-  .bz-card__age { font-size: 7pt; padding: 0 4pt; }
-  .bz-card__qr { width: 36mm; height: 36mm; border: none; border-radius: 0; padding: 0; }
+  .bz-grid { grid-template-columns: repeat(3, 1fr); gap: 2.5mm; }
+  .bz-card { border: 0.6pt solid #16283f; border-radius: 2pt; box-shadow: none; padding: 2mm; gap: 2mm; break-inside: avoid; page-break-inside: avoid; align-items: center; }
+  .bz-card__name { font-size: 9.5pt; line-height: 1.2; margin-bottom: 0.8mm; }
+  .bz-card__price { font-size: 12.5pt; }
+  .bz-card__age { font-size: 6.5pt; padding: 0 4pt; }
+  .bz-card__stock { font-size: 6.5pt; padding: 0 4pt; }
+  .bz-card__note { font-size: 6pt; margin-top: 0.6mm; }
+  .bz-card__qr { width: 27mm; height: 27mm; border: none; border-radius: 0; padding: 0; }
   a[href]::after { content: "" !important; }
 }
   </style>
@@ -101,7 +106,8 @@
         <div class="bz-event__item"><strong>When</strong><span>Saturday, October 10, 2026 &middot; 11:30 AM &ndash; 4:15 PM</span></div>
         <div class="bz-event__item"><strong>Where</strong><span>Pineview Community Hub &mdash; Gloucester &amp; Meadowbrook Room, 1700 Blair Rd, Gloucester, ON K1B 4E6</span></div>
         <div class="bz-event__item"><strong>Entry</strong><span>Free &middot; Everyone welcome</span></div>
-        <div class="bz-event__item"><strong>Prices</strong><span>CAD &middot; starting from $12</span></div>
+        <div class="bz-event__item"><strong>Prices</strong><span>CAD &middot; whole dollars &middot; buy online or at our table</span></div>
+        <div class="bz-event__item"><strong>New today</strong><span>Disco Bot &times;5 &middot; Build-A-Machine &times;4 &middot; Logic Blocks &times;2</span></div>
       </div>
 
       <div class="bz-grid">
@@ -110,6 +116,7 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">Blix Minis - Bike</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$12</span><span class="bz-card__age">Ages 5+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-bike.png" width="480" height="480" alt="QR code for Blix Minis - Bike">
       </article>
@@ -117,13 +124,23 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">Blix Minis - Ferris Wheel</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$12</span><span class="bz-card__age">Ages 5+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-ferris-wheel.png" width="480" height="480" alt="QR code for Blix Minis - Ferris Wheel">
       </article>
       <article class="bz-card">
         <div class="bz-card__text">
+          <h3 class="bz-card__name">Blix Minis - Disco Bot</h3>
+          <p class="bz-card__meta"><span class="bz-card__price">$12</span><span class="bz-card__age">Ages 5+</span><span class="bz-card__stock">5 on hand</span></p>
+          <p class="bz-card__note">At our table today</p>
+        </div>
+        <img class="bz-card__qr" src="images/qrcodes/bazaar-disco-bot.png" width="480" height="480" alt="QR code for Blix Minis - Disco Bot">
+      </article>
+      <article class="bz-card">
+        <div class="bz-card__text">
           <h3 class="bz-card__name">Queaky Charge - Sleepy</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$24</span><span class="bz-card__age">Ages 3+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-queaky-charge.png" width="480" height="480" alt="QR code for Queaky Charge - Sleepy">
       </article>
@@ -131,13 +148,23 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">Blix Buddy</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$28</span><span class="bz-card__age">Ages 5+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-buddy.png" width="480" height="480" alt="QR code for Blix Buddy">
       </article>
       <article class="bz-card">
         <div class="bz-card__text">
+          <h3 class="bz-card__name">Blix Build-A-Machine</h3>
+          <p class="bz-card__meta"><span class="bz-card__price">$38</span><span class="bz-card__age">Ages 5+</span><span class="bz-card__stock">4 on hand</span></p>
+          <p class="bz-card__note">At our table today</p>
+        </div>
+        <img class="bz-card__qr" src="images/qrcodes/bazaar-build-a-machine.png" width="480" height="480" alt="QR code for Blix Build-A-Machine">
+      </article>
+      <article class="bz-card">
+        <div class="bz-card__text">
           <h3 class="bz-card__name">Crawlers</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$49</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-crawlers.png" width="480" height="480" alt="QR code for Crawlers">
       </article>
@@ -145,6 +172,7 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">Rover</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$53</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-rover.png" width="480" height="480" alt="QR code for Rover">
       </article>
@@ -152,6 +180,7 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">Gear Box</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$69</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-gear-box.png" width="480" height="480" alt="QR code for Gear Box">
       </article>
@@ -159,6 +188,7 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">Forklift Power</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$76</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-forklift-power.png" width="480" height="480" alt="QR code for Forklift Power">
       </article>
@@ -166,6 +196,7 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">Power Screw</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$80</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-power-screw.png" width="480" height="480" alt="QR code for Power Screw">
       </article>
@@ -173,6 +204,7 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">Blix Marble Run 2</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$107</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-marble-run-2.png" width="480" height="480" alt="QR code for Blix Marble Run 2">
       </article>
@@ -180,6 +212,7 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">Amusement Park</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$115</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-amusement-park.png" width="480" height="480" alt="QR code for Amusement Park">
       </article>
@@ -187,6 +220,7 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">RC Explorers</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$115</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-rc-explorers.png" width="480" height="480" alt="QR code for RC Explorers">
       </article>
@@ -194,6 +228,7 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">RC Rover</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$115</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-rc-rover.png" width="480" height="480" alt="QR code for RC Rover">
       </article>
@@ -201,13 +236,23 @@
         <div class="bz-card__text">
           <h3 class="bz-card__name">Discovering Motions</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$134</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-discovering-motions.png" width="480" height="480" alt="QR code for Discovering Motions">
       </article>
       <article class="bz-card">
         <div class="bz-card__text">
+          <h3 class="bz-card__name">Blix Logic Blocks</h3>
+          <p class="bz-card__meta"><span class="bz-card__price">$268</span><span class="bz-card__age">Ages 8+</span><span class="bz-card__stock">2 on hand</span></p>
+          <p class="bz-card__note">At our table today</p>
+        </div>
+        <img class="bz-card__qr" src="images/qrcodes/bazaar-logic-blocks.png" width="480" height="480" alt="QR code for Blix Logic Blocks">
+      </article>
+      <article class="bz-card">
+        <div class="bz-card__text">
           <h3 class="bz-card__name">RC Megastructures</h3>
           <p class="bz-card__meta"><span class="bz-card__price">$268</span><span class="bz-card__age">Ages 8+</span></p>
+          <p class="bz-card__note">Buy online</p>
         </div>
         <img class="bz-card__qr" src="images/qrcodes/bazaar-rc-megastructures.png" width="480" height="480" alt="QR code for RC Megastructures">
       </article>

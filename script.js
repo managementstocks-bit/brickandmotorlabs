@@ -213,6 +213,14 @@ document.addEventListener('DOMContentLoaded', () => {
     'amusement-park':       { name: 'Amusement Park',               price: 115, img: 'Amusement_Park_1.jpg',          age: 8 },
     'discovering-motions':  { name: 'Discovering Motions',          price: 134, img: 'Discovering_Motions.png',       age: 8 },
     'rc-megastructures':    { name: 'RC Megastructures',            price: 268, img: 'Rc_Megastructure.jpg',          age: 8 },
+    // Added 2026-10-10: three kits now in stock for our build events. eventOnly means
+    // "catalogue entry only": there is no Stripe price record and no worker stock line for
+    // them yet, so the cart must not offer them - their price stays a contact link and we
+    // take the order at the table or by email. Drop eventOnly once costing is wired
+    // (Stripe price + /prices line + STOCK_MAP) and these become ordinary cart items.
+    'disco-bot':            { name: 'Blix Minis - Disco Bot',       price: 12,  img: 'Blix_Minis_Disco_Bot.png',      age: 5, eventOnly: true },
+    'build-a-machine':      { name: 'Blix Build-A-Machine',         price: 38,  img: 'Blix_Build_A_Machine.png',      age: 5, eventOnly: true },
+    'logic-blocks':         { name: 'Blix Logic Blocks',            price: 268, img: 'Blix_Logic_Blocks.png',         age: 8, eventOnly: true },
   };
 
   const API_BASE = (typeof window.BML_API_BASE !== 'undefined')
@@ -300,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {};
       const out = {};
       for (const [slug, qty] of Object.entries(raw)) {
-        if (!CATALOG[slug]) continue;
+        if (!CATALOG[slug] || CATALOG[slug].eventOnly) continue;
         const n = parseInt(qty, 10);
         if (Number.isFinite(n) && n >= 1 && n <= 99) out[slug] = n;
       }
@@ -667,7 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function addToCart(slug, btn) {
-    if (!CATALOG[slug]) return;
+    if (!CATALOG[slug] || CATALOG[slug].eventOnly) return;
     if (stock[slug] === 0) return;
     cart[slug] = Math.min(99, (cart[slug] || 0) + 1);
     saveCart(); updateCount();
@@ -704,7 +712,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const m = link.getAttribute('href').match(/([a-z0-9-]+)\.html$/);
       if (!m) return;
       const slug = m[1];
-      if (!CATALOG[slug]) return;
+      if (!CATALOG[slug] || CATALOG[slug].eventOnly) return;
       card.dataset.slug = slug;
       const footer = card.querySelector('.product-card__footer');
       if (!footer) return;
@@ -727,7 +735,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const m = location.pathname.match(/builds\/([a-z0-9-]+)\.html$/);
     if (!m) return;
     const slug = m[1];
-    if (!CATALOG[slug]) return;
+    if (!CATALOG[slug] || CATALOG[slug].eventOnly) return;
     const cta = document.querySelector('.build-cta .container');
     if (!cta || cta.querySelector('.add-to-cart')) return;
     const btn = document.createElement('button');
