@@ -8,7 +8,8 @@
  *
  * Prices here must stay in sync with Stripe PRICE_MAP (worker repo price-map.json),
  * the site script.js CATALOG and the print flyers. Floor to whole dollars (no cents).
- * Kits marked online=false are event-only: priced by hand, no Stripe record yet.
+ * Kits marked online=false have no Stripe price record: priced by hand, table/email only.
+ * As of 2026-10-10 no kit is marked that way - all 18 have Stripe prices and worker /prices lines.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -19,14 +20,16 @@ const OUT = path.join(SITE, 'family-bazaar.html');
 
 // slug, display name, age band, price (CAD, whole dollars), on-hand qty (null = not counted), online?
 // stock is printed on this INTERNAL sheet only - it is what we physically have at the table.
-// eventOnly kits have no Stripe price yet (ordered 2026-10-10, sold at the table / by email).
+// All 18 kits now sell online (Stripe prices + worker /prices lines since 2026-10-10), so every
+// card QR leads to a page with a working Add to Cart. The 3 kits bought 2026-10-10 carry their
+// on-hand counts because they are the ones sitting on the table.
 const KITS = [
   ['bike',                'Blix Minis - Bike',      '5+',  12,  null, true],
   ['ferris-wheel',        'Blix Minis - Ferris Wheel','5+', 12,  null, true],
-  ['disco-bot',           'Blix Minis - Disco Bot',  '5+',  12,  5,    false],
+  ['disco-bot',           'Blix Minis - Disco Bot',  '5+',  12,  5,    true],
   ['queaky-charge',       'Queaky Charge - Sleepy', '3+',  24,  null, true],
   ['buddy',               'Blix Buddy',             '5+',  28,  null, true],
-  ['build-a-machine',     'Blix Build-A-Machine',   '5+',  38,  4,    false],
+  ['build-a-machine',     'Blix Build-A-Machine',   '5+',  38,  4,    true],
   ['crawlers',            'Crawlers',               '8+',  49,  null, true],
   ['rover',               'Rover',                  '8+',  53,  null, true],
   ['gear-box',           'Gear Box',                '8+',  69,  null, true],
@@ -37,7 +40,7 @@ const KITS = [
   ['rc-explorers',        'RC Explorers',           '8+',  115, null, true],
   ['rc-rover',            'RC Rover',               '8+',  115, null, true],
   ['discovering-motions', 'Discovering Motions',    '8+',  134, null, true],
-  ['logic-blocks',        'Blix Logic Blocks',      '8+',  268, 2,    false],
+  ['logic-blocks',        'Blix Logic Blocks',      '8+',  268, 2,    true],
   ['rc-megastructures',   'RC Megastructures',      '8+',  268, null, true],
 ];
 

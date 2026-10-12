@@ -213,14 +213,13 @@ document.addEventListener('DOMContentLoaded', () => {
     'amusement-park':       { name: 'Amusement Park',               price: 115, img: 'Amusement_Park_1.jpg',          age: 8 },
     'discovering-motions':  { name: 'Discovering Motions',          price: 134, img: 'Discovering_Motions.png',       age: 8 },
     'rc-megastructures':    { name: 'RC Megastructures',            price: 268, img: 'Rc_Megastructure.jpg',          age: 8 },
-    // Added 2026-10-10: three kits now in stock for our build events. eventOnly means
-    // "catalogue entry only": there is no Stripe price record and no worker stock line for
-    // them yet, so the cart must not offer them - their price stays a contact link and we
-    // take the order at the table or by email. Drop eventOnly once costing is wired
-    // (Stripe price + /prices line + STOCK_MAP) and these become ordinary cart items.
-    'disco-bot':            { name: 'Blix Minis - Disco Bot',       price: 12,  img: 'Blix_Minis_Disco_Bot.png',      age: 5, eventOnly: true },
-    'build-a-machine':      { name: 'Blix Build-A-Machine',         price: 38,  img: 'Blix_Build_A_Machine.png',      age: 5, eventOnly: true },
-    'logic-blocks':         { name: 'Blix Logic Blocks',            price: 268, img: 'Blix_Logic_Blocks.png',         age: 8, eventOnly: true },
+    // Added 2026-10-10 for our build events. Wired into checkout 2026-10-10: Stripe prices exist
+    // (disco-bot price_1UPmvn6X2p1veiXVNmuAPgZ6, build-a-machine price_1UPmz66X2p1veiXVOdzTt70W,
+    // logic-blocks price_1UPn0w6X2p1veiXVA0urToH5) and the worker's PRICE_MAP serves all 18 slugs,
+    // so these are ordinary cart items. Record: worker repo price-map.json.
+    'disco-bot':            { name: 'Blix Minis - Disco Bot',       price: 12,  img: 'Blix_Minis_Disco_Bot.png',      age: 5 },
+    'build-a-machine':      { name: 'Blix Build-A-Machine',         price: 38,  img: 'Blix_Build_A_Machine.png',      age: 5 },
+    'logic-blocks':         { name: 'Blix Logic Blocks',            price: 268, img: 'Blix_Logic_Blocks.png',         age: 8 },
   };
 
   const API_BASE = (typeof window.BML_API_BASE !== 'undefined')
