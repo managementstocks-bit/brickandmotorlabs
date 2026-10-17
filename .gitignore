@@ -33,3 +33,6 @@ images/tablecloth-*
 # The price-card / sticker QR sources are local-only print assets.
 /images/qrcodes/*
 !/images/qrcodes/bazaar-*.png
+
+# Build-page print pack (local-only render outputs + pipeline, 2026-10-15)
+flyers/builds/
