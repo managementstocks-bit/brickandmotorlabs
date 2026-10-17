@@ -1,0 +1,164 @@
+[
+  {
+    "slug": "amusement-park",
+    "url": "https://brickandmotorlabs.com/builds/amusement-park.html",
+    "h1": "Amusement Park",
+    "age": "8+",
+    "parts": "340+ Parts",
+    "price": "$115 CAD",
+    "img": "https://brickandmotorlabs.com/images/Amusement_Park_1.jpg"
+  },
+  {
+    "slug": "bike",
+    "url": "https://brickandmotorlabs.com/builds/bike.html",
+    "h1": "Blix Minis - Bike",
+    "age": "5+",
+    "parts": "45+ Parts",
+    "price": "$12 CAD",
+    "img": "https://brickandmotorlabs.com/images/Blix_Minis_Bike.png"
+  },
+  {
+    "slug": "buddy",
+    "url": "https://brickandmotorlabs.com/builds/buddy.html",
+    "h1": "Blix Buddy",
+    "age": "5+",
+    "parts": "61 Parts",
+    "price": "$28 CAD",
+    "img": "https://brickandmotorlabs.com/images/blix_buddy.jpg"
+  },
+  {
+    "slug": "build-a-machine",
+    "url": "https://brickandmotorlabs.com/builds/build-a-machine.html",
+    "h1": "Blix Build-A-Machine",
+    "age": "5+",
+    "parts": "70+ Parts",
+    "price": "$38 CAD",
+    "img": "https://brickandmotorlabs.com/images/Blix_Build_A_Machine.png"
+  },
+  {
+    "slug": "crawlers",
+    "url": "https://brickandmotorlabs.com/builds/crawlers.html",
+    "h1": "Crawlers",
+    "age": "8+",
+    "parts": "70+ Parts",
+    "price": "$49 CAD",
+    "img": "https://brickandmotorlabs.com/images/Crawlers.jpg"
+  },
+  {
+    "slug": "disco-bot",
+    "url": "https://brickandmotorlabs.com/builds/disco-bot.html",
+    "h1": "Blix Minis - Disco Bot",
+    "age": "5+",
+    "parts": "35+ Parts",
+    "price": "$12 CAD",
+    "img": "https://brickandmotorlabs.com/images/Blix_Minis_Disco_Bot.png"
+  },
+  {
+    "slug": "discovering-motions",
+    "url": "https://brickandmotorlabs.com/builds/discovering-motions.html",
+    "h1": "Discovering Motions",
+    "age": "8+",
+    "parts": "176 Parts",
+    "price": "$134 CAD",
+    "img": "https://brickandmotorlabs.com/images/Discovering_Motions.png"
+  },
+  {
+    "slug": "ferris-wheel",
+    "url": "https://brickandmotorlabs.com/builds/ferris-wheel.html",
+    "h1": "Blix Minis - Ferris Wheel",
+    "age": "5+",
+    "parts": "50+ Parts",
+    "price": "$12 CAD",
+    "img": "https://brickandmotorlabs.com/images/Blix_Minis_Ferris_Wheel.png"
+  },
+  {
+    "slug": "forklift-power",
+    "url": "https://brickandmotorlabs.com/builds/forklift-power.html",
+    "h1": "Forklift Power",
+    "age": "8+",
+    "parts": "180+ Parts",
+    "price": "$76 CAD",
+    "img": "https://brickandmotorlabs.com/images/Blix_Forklift_Power.png"
+  },
+  {
+    "slug": "gear-box",
+    "url": "https://brickandmotorlabs.com/builds/gear-box.html",
+    "h1": "Gear Box",
+    "age": "8+",
+    "parts": "100+ Parts",
+    "price": "$69 CAD",
+    "img": "https://brickandmotorlabs.com/images/Gear-box.jpg"
+  },
+  {
+    "slug": "logic-blocks",
+    "url": "https://brickandmotorlabs.com/builds/logic-blocks.html",
+    "h1": "Blix Logic Blocks",
+    "age": "8+",
+    "parts": "152+ Parts",
+    "price": "$268 CAD",
+    "img": "https://brickandmotorlabs.com/images/Blix_Logic_Blocks.png"
+  },
+  {
+    "slug": "marble-run-2",
+    "url": "https://brickandmotorlabs.com/builds/marble-run-2.html",
+    "h1": "Blix Marble Run 2",
+    "age": "8+",
+    "parts": "220+ Parts",
+    "price": "$107 CAD",
+    "img": "https://brickandmotorlabs.com/images/Marble_Run_2.png"
+  },
+  {
+    "slug": "power-screw",
+    "url": "https://brickandmotorlabs.com/builds/power-screw.html",
+    "h1": "Power Screw",
+    "age": "8+",
+    "parts": "200+ Parts",
+    "price": "$80 CAD",
+    "img": "https://brickandmotorlabs.com/images/power-screw_1.jpg"
+  },
+  {
+    "slug": "queaky-charge",
+    "url": "https://brickandmotorlabs.com/builds/queaky-charge.html",
+    "h1": "Queaky Charge - Sleepy",
+    "age": "3+",
+    "parts": "",
+    "price": "$24 CAD",
+    "img": "https://brickandmotorlabs.com/images/BlixQueakyCharge-Sleepy1.png"
+  },
+  {
+    "slug": "rc-explorers",
+    "url": "https://brickandmotorlabs.com/builds/rc-explorers.html",
+    "h1": "RC Explorers",
+    "age": "8+",
+    "parts": "120+ Parts",
+    "price": "$115 CAD",
+    "img": "https://brickandmotorlabs.com/images/Blix_RC_Explorers.png"
+  },
+  {
+    "slug": "rc-megastructures",
+    "url": "https://brickandmotorlabs.com/builds/rc-megastructures.html",
+    "h1": "RC Megastructures",
+    "age": "8+",
+    "parts": "750+ Parts",
+    "price": "$268 CAD",
+    "img": "https://brickandmotorlabs.com/images/Rc_Megastructure.jpg"
+  },
+  {
+    "slug": "rc-rover",
+    "url": "https://brickandmotorlabs.com/builds/rc-rover.html",
+    "h1": "RC Rover",
+    "age": "8+",
+    "parts": "180+ Parts",
+    "price": "$115 CAD",
+    "img": "https://brickandmotorlabs.com/images/Blix_RC_Rover_1.png"
+  },
+  {
+    "slug": "rover",
+    "url": "https://brickandmotorlabs.com/builds/rover.html",
+    "h1": "Rover",
+    "age": "8+",
+    "parts": "150+ Parts",
+    "price": "$53 CAD",
+    "img": "https://brickandmotorlabs.com/images/Rover.1.jpg"
+  }
+]

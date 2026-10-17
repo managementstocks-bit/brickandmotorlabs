@@ -8,6 +8,9 @@ from the site, so you can print from any device:
 | `table-kit.pdf` | https://brickandmotorlabs.com/flyers/table-kit.pdf | 5 sheets A4: order card, sign-up card, full price list, 15 per-kit scan cards (each code opens that exact kit page) |
 | `schools-camps.pdf` | https://brickandmotorlabs.com/flyers/schools-camps.pdf | 1 sheet A4: one-pager for a teacher, camp director or group leader (code goes to the contact form) |
 | `price-stickers.pdf` | https://brickandmotorlabs.com/flyers/price-stickers.pdf | 1 sheet A4: 15 price tags, 3 x 5, cut on the dashed line |
+| `builds/all_builds_booklet.pdf` | https://brickandmotorlabs.com/flyers/builds/all_builds_booklet.pdf | 45 pages **Letter**, duplex ~23 sheets: 1-page all-kits overview + all 18 full build pages (one print job for an event table) |
+| `builds/00_all_kits_overview.pdf` | https://brickandmotorlabs.com/flyers/builds/00_all_kits_overview.pdf | 1 page **Letter**: all 18 kits at a glance (photo, name, age, parts, price) |
+| `builds/<kit>.pdf` | e.g. https://brickandmotorlabs.com/flyers/builds/discovering-motions.pdf | 2–3 pages **Letter**: one kit's full build page (no site chrome; printed kit URL instead of buttons) |
 
 Previews (`preview-*.png`) are for looking on a screen before you spend paper.
 
