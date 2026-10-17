@@ -808,6 +808,19 @@ p {
   font-weight: 600;
 }
 
+.event-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* the 2px outline border makes this button 4px taller than .btn--primary —
+   trim its padding so both buttons match height side by side / stacked */
+.event-card__actions .btn--outline {
+  padding: 12px 30px;
+}
+
 /* --- Contact --- */
 .contact-grid {
   display: grid;
@@ -1332,6 +1345,17 @@ p {
   .event-card {
     flex-direction: column;
     text-align: center;
+  }
+
+  .event-card__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .event-card__actions .btn {
+    justify-content: center;
+    width: 100%;
   }
 
   .founders {
