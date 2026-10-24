@@ -115,7 +115,8 @@ frame and spilled past the printed area. The wordmark now has its own full-width
 ## Workshop desk card (`workshop-desk-card.pdf`)
 
 One A4 portrait page, A4, colour, **scale 100% / Actual size**. No fold, no cutting, no QR — the
-card stands on the table (or in a stand) and sessions are signed up in person.
+card sits on the table (or in a stand, or taped to the table front) and sessions are signed up in
+person.
 
 Sources: `workshop-desk-card.html` (print from the PDF), `fonts-local.css` + `fonts/` (vendored
 Inter 400/600/700/800/900 and Archivo Black TTFs — with a Google Fonts `<link>` Chromium writes
@@ -125,11 +126,17 @@ Type 3 glyph runs into the PDF, with real font files it embeds CID TrueType: thi
 baked-in "Age 8+" corner badge painted out, cropped to the product and resized to ~300 ppi —
 the label on the box itself still carries the manufacturer's "AGE 8+" in print too small to read).
 
-**No age band is printed on purpose** (owner, 2026-10-19): younger builders are taken at the table
-and the build is sized to the child. Everything else comes from `events.html` and must stay in
-sync: Sat Oct 24 2026, 1:00–3:00 PM, 411 Dovercourt Ave Ottawa, $20 per student, 4 students per
-kit, ~25-minute sessions at 1:00 / 1:30 / 2:00 / 2:30, pay at the table or e-transfer, kits sold
-separately ($134 on `builds/discovering-motions.html`).
+**Three things are left off on purpose** (owner, 2026-10-19):
+- **no age band** — younger builders are taken at the table and the build is sized to the child;
+- **no session times** — the card is read by someone already standing at the table, so sessions run
+  as people arrive ("sign up at the table");
+- **no address** — the reader is at the address.
+
+Everything printed comes from `events.html` and must stay in sync: Sat Oct 24 2026, Autumn Fall
+Bazaar '26, $20 per student, 4 students per kit, ~25 minutes per build, pay at the table or
+e-transfer. The date, the times, the venue address and the RSVP form stay on `events.html`
+(https://brickandmotorlabs.com/events.html) and on the kit page ($134 on
+`builds/discovering-motions.html`).
 
 Rebuild (the `pw-mcp` container carries Chromium; nothing here has a browser of its own):
 

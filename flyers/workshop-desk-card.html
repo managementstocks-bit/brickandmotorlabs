@@ -43,32 +43,29 @@ body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, s
 .main { flex: 1 1 auto; display: flex; flex-direction: column; padding: 11mm var(--pad) 9mm; min-height: 0; }
 
 .price { display: flex; align-items: flex-end; gap: 6mm; }
-.price .amt { font-size: 108pt; line-height: 0.78; color: var(--orange-deep); }
+.price .amt { font-size: 128pt; line-height: 0.78; color: var(--orange-deep); }
 .price .per { padding-bottom: 6mm; }
-.price .per b { display: block; font-size: 17pt; font-weight: 800; color: var(--navy-deep); line-height: 1.15; }
-.price .per span { display: block; font-size: 10.5pt; font-weight: 600; color: var(--muted); margin-top: 1.6mm; }
+.price .per b { display: block; font-size: 21pt; font-weight: 800; color: var(--navy-deep); line-height: 1.15; }
+.price .per span { display: block; font-size: 12pt; font-weight: 600; color: var(--muted); margin-top: 1.6mm; }
 
-.head { font-size: 31pt; line-height: 1.08; color: var(--navy-deep); margin-top: 7mm; text-transform: uppercase; }
+.head { font-size: 40pt; line-height: 1.08; color: var(--navy-deep); margin-top: 7mm; text-transform: uppercase; }
 .head em { font-style: normal; color: var(--orange-deep); }
-.lead { font-size: 12.5pt; line-height: 1.45; color: var(--ink); margin-top: 4mm; }
+.lead { font-size: 15pt; line-height: 1.45; color: var(--ink); margin-top: 4mm; }
 .lead b { font-weight: 800; color: var(--navy-deep); }
 
 .kitphoto { flex: 1 1 auto; min-height: 0; margin-top: 5mm; display: flex; align-items: center; justify-content: center; }
 .kitphoto img { max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; display: block; }
-.kitnote { flex: none; margin-top: 3mm; text-align: center; font-size: 10pt; font-weight: 700; color: var(--navy-deep); }
+.kitnote { flex: none; margin-top: 3mm; text-align: center; font-size: 11.5pt; font-weight: 700; color: var(--navy-deep); }
 .kitnote b { font-weight: 800; }
 
-.facts { flex: none; margin-top: 7mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3.4mm 6mm; }
-.fact { display: flex; gap: 3mm; align-items: flex-start; }
-.fact .bar { flex: none; width: 1.6mm; align-self: stretch; background: var(--orange); border-radius: 1mm; margin-top: 0.8mm; }
-.fact p { font-size: 11pt; line-height: 1.35; color: var(--ink); }
-.fact p b { display: block; font-size: 12pt; font-weight: 800; color: var(--navy-deep); }
-.fact p span { color: var(--muted); }
+.facts { flex: none; margin-top: 8mm; display: flex; gap: 4mm; }
+.fact { flex: 1 1 0; border: 0.8pt solid var(--line); border-top: 2.6mm solid var(--orange); border-radius: 2mm;
+        padding: 4mm 3mm 4.4mm; text-align: center; background: #fff; }
+.fact p b { display: block; font-size: 14pt; font-weight: 800; color: var(--navy-deep); line-height: 1.2; }
+.fact p span { display: block; font-size: 10.5pt; color: var(--muted); line-height: 1.35; margin-top: 1.4mm; }
 
-.times { flex: none; margin-top: 7mm; display: flex; gap: 3mm; }
-.time { flex: 1 1 0; text-align: center; background: var(--orange-soft); border: 0.6pt solid #ffc9a8; border-radius: 2mm;
-        padding: 3mm 0; font-size: 15pt; font-weight: 900; color: var(--orange-deep); letter-spacing: -0.01em; }
-.timesnote { flex: none; margin-top: 2.4mm; font-size: 9.5pt; color: var(--muted); text-align: center; }
+.signup { flex: none; margin-top: 5.5mm; text-align: center; font-size: 13pt; color: var(--ink); }
+.signup b { font-weight: 800; color: var(--navy-deep); }
 
 .foot { flex: none; border-top: 0.5pt solid var(--line); padding: 5mm var(--pad) 6mm;
         display: flex; align-items: center; justify-content: space-between; gap: 6mm; }
@@ -79,7 +76,7 @@ body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, s
 </head>
 <body>
 <div class="sheet">
-  <div class="kicker"><span>Sat Oct 24 <span class="dot">&middot;</span> Autumn Fall Bazaar &rsquo;26</span><span>1:00&ndash;3:00 PM</span></div>
+  <div class="kicker"><span>Sat Oct 24 <span class="dot">&middot;</span> Autumn Fall Bazaar &rsquo;26</span></div>
   <div class="rule"></div>
 
   <div class="main">
@@ -98,16 +95,12 @@ body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, s
     <p class="kitnote">Building with the Blix <b>Discovering Motions</b> kit</p>
 
     <div class="facts">
-      <div class="fact"><div class="bar"></div><p><b>25-minute sessions</b><span>Each build runs about 25 minutes</span></p></div>
-      <div class="fact"><div class="bar"></div><p><b>4 kids per kit</b><span>Everyone gets hands on</span></p></div>
-      <div class="fact"><div class="bar"></div><p><b>No screens</b><span>Build it and watch it move</span></p></div>
-      <div class="fact"><div class="bar"></div><p><b>At our table</b><span>411 Dovercourt Ave, Ottawa</span></p></div>
+      <div class="fact"><p><b>25 minutes</b><span>one build, start to finish</span></p></div>
+      <div class="fact"><p><b>4 kids per kit</b><span>everyone gets hands on</span></p></div>
+      <div class="fact"><p><b>No screens</b><span>build it, watch it move</span></p></div>
     </div>
 
-    <div class="times">
-      <div class="time">1:00</div><div class="time">1:30</div><div class="time">2:00</div><div class="time">2:30</div>
-    </div>
-    <p class="timesnote">Spaces are limited &mdash; sign up at the table.</p>
+    <p class="signup">Spaces are limited &mdash; <b>sign up at the table.</b></p>
   </div>
 
   <div class="foot">
