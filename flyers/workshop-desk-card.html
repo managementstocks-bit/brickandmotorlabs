@@ -2,209 +2,118 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Brick And Motor Labs — workshop desk card (table tent, A4 landscape)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800;900&display=swap">
+<title>Brick And Motor Labs — workshop desk card (A4, one page)</title>
+<link rel="stylesheet" href="fonts-local.css">
 <style>
-/* TABLE TENT — a desk card that stands up on its own.
-   workshop-kit.png is images/Discovering_Motions.webp with its off-white (246,246,246) background
-   normalised to pure white, so the product sits on the white card with no visible edge.
+/* DESK CARD — one sheet, one page. Sits on the table (in a stand, or taped to the table front).
    PRINT THE PDF, NOT THIS HTML:
-     workshop-desk-card.pdf  — print A4 LANDSCAPE, scale 100% / "Actual size", colour, no extra margins.
-   Fold once along the centre line (the dashed ticks top and bottom) so the two printed panels face
-   outward — left panel faces one way, right panel is printed upside down and faces the other way when
-   folded. Cardstock ~200-250 gsm recommended; nothing else needed, no holder.
+     workshop-desk-card.pdf  — A4 portrait, scale 100% / "Actual size", colour.
+   No fold, no cutting, no QR: whoever walks up is offered a session at the table.
 
-   Facts on this card come from events.html and the live RSVP form and must stay in sync with them:
-     Sat Oct 24, 2026 · 1:00–3:00 PM · 411 Dovercourt Ave, Ottawa ON K2A 0S9 · ages 8–12 ·
+   Facts on this card come from events.html and must stay in sync with it:
+     Sat Oct 24, 2026 · 1:00–3:00 PM · 411 Dovercourt Ave, Ottawa ON K2A 0S9 ·
      $20 per student · 4 students per kit · 25-minute sessions 1:00 / 1:30 / 2:00 / 2:30 ·
-     pay at the booth or by e-transfer to info@brickandmotorlabs.com · kits sold separately ($134). */
+     pay at the booth or by e-transfer to info@brickandmotorlabs.com · kits sold separately ($134).
+   No age band is printed on purpose: the owner takes younger builders too and sizes the build to
+   the child at the table (2026-10-19). */
 :root {
   --navy: #143a8c; --navy-deep: #0e2a68;
   --orange: #ff6b1a; --orange-deep: #e85d0f; --orange-soft: #fff3ec;
   --ink: #22314e; --muted: #5b6b8c; --line: #dfe7f5;
-  --panel-w: 148.5mm; --panel-h: 210mm; --pad: 10mm;
+  --pad: 14mm;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: #e9eef6; }
 body { font-family: Inter, "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
 .display { font-family: "Archivo Black", Inter, sans-serif; letter-spacing: -0.02em; }
 
-@page { size: A4 landscape; margin: 0; }
+@page { size: A4 portrait; margin: 0; }
 
-.sheet { width: 297mm; height: 210mm; display: flex; position: relative; background: #fff; overflow: hidden; }
+.sheet { width: 210mm; height: 297mm; background: #fff; position: relative; overflow: hidden;
+         display: flex; flex-direction: column; }
 @media screen { .sheet { margin: 16px auto; box-shadow: 0 8px 30px rgba(20,58,140,.20); } }
 @media print { html, body { background: #fff; } .sheet { margin: 0; box-shadow: none; } }
 
-/* centre fold guide — ticks in the outer 5 mm only, so nothing is printed across the fold */
-.fold { position: absolute; left: calc(50% - 0.15mm); top: 0; bottom: 0; width: 0.3mm;
-        background: repeating-linear-gradient(to bottom, #b9c6e0 0 4mm, transparent 4mm 8mm);
-        clip-path: polygon(0 0, 100% 0, 100% 7mm, 0 7mm, 0 0, 0 203mm, 100% 203mm, 100% 100%, 0 100%); }
-@media print { .fold { display: none; } }
-
-.panel { width: var(--panel-w); height: var(--panel-h); position: relative; overflow: hidden;
-         display: flex; flex-direction: column; }
-.panel--back { transform: rotate(180deg); }
-
-/* ---------- shared chrome ---------- */
-.kicker { height: 13mm; flex: none; background: var(--navy); color: #fff;
-          display: flex; align-items: center; justify-content: space-between; gap: 4mm;
-          padding: 0 var(--pad); }
-.kicker span { font-size: 8pt; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; white-space: nowrap; }
+.kicker { height: 16mm; flex: none; background: var(--navy); color: #fff;
+          display: flex; align-items: center; justify-content: space-between; gap: 6mm; padding: 0 var(--pad); }
+.kicker span { font-size: 9.5pt; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; white-space: nowrap; }
 .kicker .dot { color: var(--orange); }
-.rule { height: 1.6mm; flex: none; background: var(--orange); }
+.rule { height: 2.2mm; flex: none; background: var(--orange); }
 
-.body { flex: 1 1 auto; display: flex; flex-direction: column; padding: 7mm var(--pad) 7mm; min-height: 0; }
+.main { flex: 1 1 auto; display: flex; flex-direction: column; padding: 11mm var(--pad) 9mm; min-height: 0; }
 
-.foot { flex: none; border-top: 0.5pt solid var(--line); padding: 4mm var(--pad) 5mm;
-        display: flex; align-items: center; justify-content: space-between; gap: 5mm; }
-.foot .url { font-size: 9.5pt; font-weight: 800; color: var(--navy); letter-spacing: -0.01em; }
-.foot .url small { display: block; font-size: 7.6pt; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; margin-top: 0.8mm; text-transform: uppercase; }
-.foot .logo { width: 26mm; flex: none; }
+.price { display: flex; align-items: flex-end; gap: 6mm; }
+.price .amt { font-size: 108pt; line-height: 0.78; color: var(--orange-deep); }
+.price .per { padding-bottom: 6mm; }
+.price .per b { display: block; font-size: 17pt; font-weight: 800; color: var(--navy-deep); line-height: 1.15; }
+.price .per span { display: block; font-size: 10.5pt; font-weight: 600; color: var(--muted); margin-top: 1.6mm; }
 
-/* ---------- FRONT ---------- */
-.price { display: flex; align-items: flex-end; gap: 4mm; margin-top: 4mm; }
-.price .amt { font-size: 64pt; line-height: 0.80; color: var(--orange-deep); }
-.price .per { padding-bottom: 4mm; }
-.price .per b { display: block; font-size: 12.5pt; font-weight: 800; color: var(--navy-deep); line-height: 1.15; }
-.price .per span { display: block; font-size: 8.6pt; font-weight: 600; color: var(--muted); margin-top: 1mm; }
-
-.head { font-size: 19.5pt; line-height: 1.1; color: var(--navy-deep); margin-top: 3.5mm; text-transform: uppercase; }
+.head { font-size: 31pt; line-height: 1.08; color: var(--navy-deep); margin-top: 7mm; text-transform: uppercase; }
 .head em { font-style: normal; color: var(--orange-deep); }
+.lead { font-size: 12.5pt; line-height: 1.45; color: var(--ink); margin-top: 4mm; }
+.lead b { font-weight: 800; color: var(--navy-deep); }
 
-.chips { display: flex; flex-wrap: wrap; gap: 2mm; margin-top: 4.5mm; }
-.chip { border: 1pt solid var(--navy); border-radius: 999px; padding: 1.2mm 3.2mm;
-        font-size: 7.6pt; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; color: var(--navy-deep); }
-.chip.alt { border-color: var(--orange); color: var(--orange-deep); }
-
-.kitphoto { flex: none; margin-top: 5mm; display: flex; justify-content: center; }
-.kitphoto img { height: 58mm; width: auto; max-width: 100%; object-fit: contain; display: block; }
-.kitnote { flex: none; margin-top: 2.6mm; text-align: center; font-size: 8.4pt; font-weight: 700; color: var(--navy-deep); }
-.kitnote span { color: var(--muted); font-weight: 600; }
+.kitphoto { flex: 1 1 auto; min-height: 0; margin-top: 5mm; display: flex; align-items: center; justify-content: center; }
+.kitphoto img { max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+.kitnote { flex: none; margin-top: 3mm; text-align: center; font-size: 10pt; font-weight: 700; color: var(--navy-deep); }
 .kitnote b { font-weight: 800; }
 
-.cta { display: flex; align-items: center; gap: 4.5mm; margin-top: auto; padding-top: 4mm; flex: none; }
-.cta .qr { width: 33mm; height: 33mm; flex: none; border: 1pt solid var(--navy-deep); padding: 1.2mm; background: #fff; }
-.cta .qr img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
-.cta .txt strong { display: block; font-size: 12pt; font-weight: 900; color: var(--navy-deep); line-height: 1.15; letter-spacing: -0.01em; }
-.cta .txt span { display: block; font-size: 8.4pt; font-weight: 600; color: var(--muted); line-height: 1.4; margin-top: 1.4mm; }
+.facts { flex: none; margin-top: 7mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3.4mm 6mm; }
+.fact { display: flex; gap: 3mm; align-items: flex-start; }
+.fact .bar { flex: none; width: 1.6mm; align-self: stretch; background: var(--orange); border-radius: 1mm; margin-top: 0.8mm; }
+.fact p { font-size: 11pt; line-height: 1.35; color: var(--ink); }
+.fact p b { display: block; font-size: 12pt; font-weight: 800; color: var(--navy-deep); }
+.fact p span { color: var(--muted); }
 
-/* ---------- BACK ---------- */
-.btitle { font-size: 15pt; line-height: 1.12; color: var(--navy-deep); text-transform: uppercase; }
-.bmeta { display: flex; flex-wrap: wrap; gap: 1.6mm; margin-top: 2.8mm; }
-.bmeta span { font-size: 7.2pt; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
-              color: var(--navy-deep); background: #eef3fd; border-radius: 1mm; padding: 1mm 2.2mm; }
-.bmeta span.hot { background: var(--orange-soft); color: var(--orange-deep); }
-.blead { font-size: 9.2pt; line-height: 1.5; color: var(--ink); margin-top: 2.5mm; }
-.blead b { font-weight: 800; color: var(--navy-deep); }
+.times { flex: none; margin-top: 7mm; display: flex; gap: 3mm; }
+.time { flex: 1 1 0; text-align: center; background: var(--orange-soft); border: 0.6pt solid #ffc9a8; border-radius: 2mm;
+        padding: 3mm 0; font-size: 15pt; font-weight: 900; color: var(--orange-deep); letter-spacing: -0.01em; }
+.timesnote { flex: none; margin-top: 2.4mm; font-size: 9.5pt; color: var(--muted); text-align: center; }
 
-.list { display: flex; flex-direction: column; gap: 3mm; margin-top: 5mm; }
-.item { display: flex; gap: 3mm; align-items: flex-start; }
-.num { flex: none; width: 6.4mm; height: 6.4mm; border-radius: 50%; background: var(--orange); color: #fff;
-       font-size: 8.4pt; font-weight: 900; display: flex; align-items: center; justify-content: center; }
-.item p { font-size: 9.2pt; line-height: 1.42; color: var(--ink); }
-.item p b { font-weight: 800; color: var(--navy-deep); display: block; font-size: 9.6pt; }
-
-.sessions { margin-top: 6mm; border: 1pt solid var(--navy); border-radius: 2.5mm; padding: 3.4mm 3.6mm; }
-.sessions h3 { font-size: 7.8pt; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; color: var(--muted); }
-.times { display: flex; gap: 2mm; margin-top: 2.4mm; }
-.time { flex: 1 1 0; text-align: center; background: var(--orange-soft); border: 0.5pt solid #ffc9a8; border-radius: 1.6mm;
-        padding: 1.8mm 0; font-size: 11pt; font-weight: 900; color: var(--orange-deep); letter-spacing: -0.01em; }
-.sessions p { font-size: 8pt; line-height: 1.4; color: var(--muted); margin-top: 2.2mm; }
-
-.pay { margin-top: 5mm; font-size: 9pt; line-height: 1.45; color: var(--ink); }
-.pay b { font-weight: 800; color: var(--navy-deep); }
-.pay a { color: var(--navy); font-weight: 700; text-decoration: none; }
-.spacer { flex: 1 1 auto; }
-.upsell { margin-top: 4mm; border-radius: 2.5mm; background: #f5f8ff; border: 0.5pt solid var(--line); padding: 3mm 3.4mm; }
-.upsell b { font-size: 9pt; font-weight: 800; color: var(--navy-deep); display: block; }
-.upsell span { font-size: 8.2pt; color: var(--muted); line-height: 1.4; display: block; margin-top: 1mm; }
+.foot { flex: none; border-top: 0.5pt solid var(--line); padding: 5mm var(--pad) 6mm;
+        display: flex; align-items: center; justify-content: space-between; gap: 6mm; }
+.foot .url { font-size: 12.5pt; font-weight: 800; color: var(--navy); letter-spacing: -0.01em; }
+.foot .url small { display: block; font-size: 9pt; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; margin-top: 1.2mm; text-transform: uppercase; }
+.foot .logo { width: 34mm; flex: none; }
 </style>
 </head>
 <body>
 <div class="sheet">
-  <div class="fold" aria-hidden="true"></div>
+  <div class="kicker"><span>Sat Oct 24 <span class="dot">&middot;</span> Autumn Fall Bazaar &rsquo;26</span><span>1:00&ndash;3:00 PM</span></div>
+  <div class="rule"></div>
 
-  <!-- ===== FRONT PANEL (left half, faces one side of the fold) ===== -->
-  <section class="panel panel--front">
-    <div class="kicker"><span>Sat Oct 24 <span class="dot">&middot;</span> Autumn Fall Bazaar</span><span>1:00&ndash;3:00 PM</span></div>
-    <div class="rule"></div>
-
-    <div class="body">
-      <div class="price">
-        <div class="amt display">$20</div>
-        <div class="per">
-          <b>per student</b>
-          <span>Ages 8&ndash;12</span>
-        </div>
-      </div>
-
-      <h1 class="head display">Robotics STEM<br><em>workshop</em></h1>
-
-      <div class="chips">
-        <span class="chip alt">25-min sessions</span>
-        <span class="chip">4 kids per kit</span>
-        <span class="chip">No screens</span>
-      </div>
-
-      <div class="kitphoto"><img src="workshop-kit.png" alt="Blix Discovering Motions kit"></div>
-      <p class="kitnote">Built with the Blix <b>Discovering Motions</b> kit</p>
-
-      <div class="cta">
-        <div class="qr"><img src="workshop-qr-rsvp.png" alt="QR code to the workshop registration form"></div>
-        <div class="txt">
-          <strong>Scan to register</strong>
-          <span>brickandmotorlabs.com/events.html<br>411 Dovercourt Ave, Ottawa</span>
-        </div>
+  <div class="main">
+    <div class="price">
+      <div class="amt display">$20</div>
+      <div class="per">
+        <b>per student</b>
+        <span>Pay at the table or by e-transfer</span>
       </div>
     </div>
 
-    <div class="foot">
-      <div class="url">brickandmotorlabs.com<small>Brick And Motor Labs</small></div>
-      <img class="logo" src="logo.png" alt="Brick And Motor Labs">
-    </div>
-  </section>
+    <h1 class="head display">Robotics STEM<br><em>workshop</em></h1>
+    <p class="lead">Hands-on build at our table &mdash; real gears, cams and mechanisms. <b>All materials provided.</b></p>
 
-  <!-- ===== BACK PANEL (right half, rotated so it reads upright once folded) ===== -->
-  <section class="panel panel--back">
-    <div class="kicker"><span>What they&rsquo;ll build</span><span>Ages 8&ndash;12</span></div>
-    <div class="rule"></div>
+    <div class="kitphoto"><img src="workshop-kit.png" alt="Blix Discovering Motions kit"></div>
+    <p class="kitnote">Building with the Blix <b>Discovering Motions</b> kit</p>
 
-    <div class="body">
-      <h2 class="btitle display">Real mechanisms,<br>built by hand</h2>
-      <div class="bmeta"><span>Sat Oct 24</span><span>1:00&ndash;3:00 PM</span><span class="hot">$20 per student</span><span>Ages 8&ndash;12</span></div>
-      <p class="blead">Children explore <b>mechanics and the different types of motion</b>, then build a working model of their own during a hands-on session at our table.</p>
-
-      <div class="list">
-        <div class="item"><div class="num">1</div><p><b>Gears and gear trains</b>How a small turn becomes a bigger, slower or faster one.</p></div>
-        <div class="item"><div class="num">2</div><p><b>Types of motion</b>Rotary to linear &mdash; cams and linkages turn a spin into an up-and-down movement.</p></div>
-        <div class="item"><div class="num">3</div><p><b>Structures that hold</b>Frames, beams and pivots that keep a moving machine steady.</p></div>
-      </div>
-
-      <div class="sessions">
-        <h3>Pick a session</h3>
-        <div class="times">
-          <div class="time">1:00</div><div class="time">1:30</div><div class="time">2:00</div><div class="time">2:30</div>
-        </div>
-        <p>Each session runs about 25 minutes &middot; 4 students per kit, so everyone gets hands on.</p>
-      </div>
-
-      <div class="spacer"></div>
-
-      <p class="pay"><b>Payment</b> at the booth or by e-transfer to <a href="mailto:info@brickandmotorlabs.com">info@brickandmotorlabs.com</a>. <b>Spaces are limited</b> &mdash; please register ahead.</p>
-
-      <div class="upsell">
-        <b>Want the kit for home?</b>
-        <span>Blix Discovering Motions &mdash; $134 at our table, or online at brickandmotorlabs.com</span>
-      </div>
+    <div class="facts">
+      <div class="fact"><div class="bar"></div><p><b>25-minute sessions</b><span>Each build runs about 25 minutes</span></p></div>
+      <div class="fact"><div class="bar"></div><p><b>4 kids per kit</b><span>Everyone gets hands on</span></p></div>
+      <div class="fact"><div class="bar"></div><p><b>No screens</b><span>Build it and watch it move</span></p></div>
+      <div class="fact"><div class="bar"></div><p><b>At our table</b><span>411 Dovercourt Ave, Ottawa</span></p></div>
     </div>
 
-    <div class="foot">
-      <div class="url">brickandmotorlabs.com/events.html<small>Questions? info@brickandmotorlabs.com</small></div>
-      <img class="logo" src="logo.png" alt="Brick And Motor Labs">
+    <div class="times">
+      <div class="time">1:00</div><div class="time">1:30</div><div class="time">2:00</div><div class="time">2:30</div>
     </div>
-  </section>
+    <p class="timesnote">Spaces are limited &mdash; sign up at the table.</p>
+  </div>
+
+  <div class="foot">
+    <div class="url">brickandmotorlabs.com/events.html<small>Questions? info@brickandmotorlabs.com</small></div>
+    <img class="logo" src="logo.png" alt="Brick And Motor Labs">
+  </div>
 </div>
 </body>
 </html>

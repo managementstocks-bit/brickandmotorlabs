@@ -1,0 +1,12 @@
+/* Local Inter + Archivo Black for print.
+   Chromium writes CID TrueType glyph outlines into the PDF when the faces come from real font
+   files; a Google Fonts <link> instead yields Type 3 glyph runs (and a heavier PDF). Same faces,
+   same metrics as the Google Fonts versions - only the delivery differs.
+   Vendored here so /flyers/ pages print identically on any device with no third-party fetch. */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; src: url("fonts/Inter-400.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; src: url("fonts/Inter-400.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; src: url("fonts/Inter-600.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; src: url("fonts/Inter-700.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 800; src: url("fonts/Inter-800.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 900; src: url("fonts/Inter-900.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Archivo Black"; font-style: normal; font-weight: 400; src: url("fonts/ArchivoBlack-400.ttf") format("truetype"); font-display: block; }

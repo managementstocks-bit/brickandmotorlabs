@@ -5,7 +5,7 @@ from the site, so you can print from any device:
 
 | Print this | Direct link | What it is |
 |---|---|---|
-| `workshop-desk-card.pdf` | https://brickandmotorlabs.com/flyers/workshop-desk-card.pdf | 1 sheet **A4 landscape**: desk card / table tent for the Oct 24 workshop ($20, Blix Discovering Motions). Print, fold once on the centre line, stand it on the table — no holder needed |
+| `workshop-desk-card.pdf` | https://brickandmotorlabs.com/flyers/workshop-desk-card.pdf | 1 page **A4 portrait**: desk card for the Oct 24 workshop ($20, Blix Discovering Motions) — sits on the table or in a stand, sign-ups taken at the table (no QR) |
 | `table-kit.pdf` | https://brickandmotorlabs.com/flyers/table-kit.pdf | 5 sheets A4: order card, sign-up card, full price list, 15 per-kit scan cards (each code opens that exact kit page) |
 | `schools-camps.pdf` | https://brickandmotorlabs.com/flyers/schools-camps.pdf | 1 sheet A4: one-pager for a teacher, camp director or group leader (code goes to the contact form) |
 | `price-stickers.pdf` | https://brickandmotorlabs.com/flyers/price-stickers.pdf | 1 sheet A4: 15 price tags, 3 x 5, cut on the dashed line |
@@ -114,31 +114,34 @@ frame and spilled past the printed area. The wordmark now has its own full-width
 
 ## Workshop desk card (`workshop-desk-card.pdf`)
 
-Sources: `workshop-desk-card.html` (print from the PDF, not the HTML), `workshop-kit.png` (the
-`images/Discovering_Motions.webp` product shot with its off-white 246/246/246 background normalised
-to pure white so it sits on the card with no visible edge, resized to 300 ppi for print),
-`workshop-qr-rsvp.png` (EC-M QR to `brickandmotorlabs.com/events.html`, 29 modules → 1.03 mm per
-module at 30 mm print width).
+One A4 portrait page, A4, colour, **scale 100% / Actual size**. No fold, no cutting, no QR — the
+card stands on the table (or in a stand) and sessions are signed up in person.
 
-One A4 landscape sheet = two portrait A5 panels, the right one printed upside down. Fold on the
-centre line so both printed faces point outward and both read upright: that is the table tent.
-Print A4 landscape, colour, **scale 100% / Actual size**, on 200–250 gsm cardstock.
+Sources: `workshop-desk-card.html` (print from the PDF), `fonts-local.css` + `fonts/` (vendored
+Inter 400/600/700/800/900 and Archivo Black TTFs — with a Google Fonts `<link>` Chromium writes
+Type 3 glyph runs into the PDF, with real font files it embeds CID TrueType: this render has
+6 embedded CID TrueType faces and no Type 3 text), `workshop-kit.png` (the
+`images/Discovering_Motions.webp` product shot, near-white background forced to pure white, the
+baked-in "Age 8+" corner badge painted out, cropped to the product and resized to ~300 ppi —
+the label on the box itself still carries the manufacturer's "AGE 8+" in print too small to read).
 
-Facts on the card come from `events.html` and must stay in sync: Sat Oct 24 2026, 1:00–3:00 PM,
-411 Dovercourt Ave Ottawa, ages 8–12, $20 per student, 4 students per kit, 25-minute sessions at
-1:00 / 1:30 / 2:00 / 2:30, pay at the booth or e-transfer, kits sold separately ($134 — the
-Discovering Motions price, which is also on `builds/discovering-motions.html`).
+**No age band is printed on purpose** (owner, 2026-10-19): younger builders are taken at the table
+and the build is sized to the child. Everything else comes from `events.html` and must stay in
+sync: Sat Oct 24 2026, 1:00–3:00 PM, 411 Dovercourt Ave Ottawa, $20 per student, 4 students per
+kit, ~25-minute sessions at 1:00 / 1:30 / 2:00 / 2:30, pay at the table or e-transfer, kits sold
+separately ($134 on `builds/discovering-motions.html`).
 
-Rebuild (needs the Playwright image in the `pw-mcp` container, which carries Chromium):
+Rebuild (the `pw-mcp` container carries Chromium; nothing here has a browser of its own):
 
 ```
-# copy flyers/workshop-desk-card.html + logo.png + workshop-kit.png + workshop-qr-rsvp.png and
-# ../images/Discovering_Motions.webp into the container, then from /data/render:
-node render-desk-card.cjs     # QC: panel overflow, footer overlap, squashed images, broken files
-node qr-decode.cjs            # decodes the QR out of the rendered panel with jsQR -> must equal
-                              # https://brickandmotorlabs.com/events.html
+# copy flyers/workshop-desk-card.html, fonts-local.css, fonts/, workshop-kit.png, logo.png
+# into the container, then from that directory:
+node render-desk-card.cjs    # writes the PDF + preview, and QC: overflow, footer overlap,
+                             # squashed images, missing files, widest element
+node kit-image.cjs           # regenerates workshop-kit.png from ../images/Discovering_Motions.webp
+node pdf-view.cjs            # opens the finished PDF in PDFium and screenshots it
 ```
 
-QC on the committed render (2026-10-19): both panels 148.4 x 210.1 mm, no overflow, front content
-0.5 mm clear of the footer, back 6.9 mm clear, no squashed images, no broken files, QR decodes to
-`https://brickandmotorlabs.com/events.html` from a 252 px crop of the rendered page.
+QC on the committed render (2026-10-19): one page, A4 portrait (595.92 x 842.88 pt), content
+2.4 mm clear of the footer, nothing spilling the sheet, no squashed images, no broken files,
+6 embedded CID TrueType fonts (Inter Regular/SemiBold/Bold/ExtraBold/Black + Archivo Black).
