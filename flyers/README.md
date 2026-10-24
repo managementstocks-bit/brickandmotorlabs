@@ -5,6 +5,7 @@ from the site, so you can print from any device:
 
 | Print this | Direct link | What it is |
 |---|---|---|
+| `workshop-desk-card.pdf` | https://brickandmotorlabs.com/flyers/workshop-desk-card.pdf | 1 sheet **A4 landscape**: desk card / table tent for the Oct 24 workshop ($20, Blix Discovering Motions). Print, fold once on the centre line, stand it on the table — no holder needed |
 | `table-kit.pdf` | https://brickandmotorlabs.com/flyers/table-kit.pdf | 5 sheets A4: order card, sign-up card, full price list, 15 per-kit scan cards (each code opens that exact kit page) |
 | `schools-camps.pdf` | https://brickandmotorlabs.com/flyers/schools-camps.pdf | 1 sheet A4: one-pager for a teacher, camp director or group leader (code goes to the contact form) |
 | `price-stickers.pdf` | https://brickandmotorlabs.com/flyers/price-stickers.pdf | 1 sheet A4: 15 price tags, 3 x 5, cut on the dashed line |
@@ -110,3 +111,34 @@ Layout trap that caused the first clipped print: a grid `1fr` column cannot shri
 min-content width (`min-width:auto`), so a 50 pt single-word wordmark forced the row 15 mm wider than its
 frame and spilled past the printed area. The wordmark now has its own full-width row, the text column is
 `minmax(0,1fr)`, and `print-check.mjs` measures the real ink extent on the rendered PDF.
+
+## Workshop desk card (`workshop-desk-card.pdf`)
+
+Sources: `workshop-desk-card.html` (print from the PDF, not the HTML), `workshop-kit.png` (the
+`images/Discovering_Motions.webp` product shot with its off-white 246/246/246 background normalised
+to pure white so it sits on the card with no visible edge, resized to 300 ppi for print),
+`workshop-qr-rsvp.png` (EC-M QR to `brickandmotorlabs.com/events.html`, 29 modules → 1.03 mm per
+module at 30 mm print width).
+
+One A4 landscape sheet = two portrait A5 panels, the right one printed upside down. Fold on the
+centre line so both printed faces point outward and both read upright: that is the table tent.
+Print A4 landscape, colour, **scale 100% / Actual size**, on 200–250 gsm cardstock.
+
+Facts on the card come from `events.html` and must stay in sync: Sat Oct 24 2026, 1:00–3:00 PM,
+411 Dovercourt Ave Ottawa, ages 8–12, $20 per student, 4 students per kit, 25-minute sessions at
+1:00 / 1:30 / 2:00 / 2:30, pay at the booth or e-transfer, kits sold separately ($134 — the
+Discovering Motions price, which is also on `builds/discovering-motions.html`).
+
+Rebuild (needs the Playwright image in the `pw-mcp` container, which carries Chromium):
+
+```
+# copy flyers/workshop-desk-card.html + logo.png + workshop-kit.png + workshop-qr-rsvp.png and
+# ../images/Discovering_Motions.webp into the container, then from /data/render:
+node render-desk-card.cjs     # QC: panel overflow, footer overlap, squashed images, broken files
+node qr-decode.cjs            # decodes the QR out of the rendered panel with jsQR -> must equal
+                              # https://brickandmotorlabs.com/events.html
+```
+
+QC on the committed render (2026-10-19): both panels 148.4 x 210.1 mm, no overflow, front content
+0.5 mm clear of the footer, back 6.9 mm clear, no squashed images, no broken files, QR decodes to
+`https://brickandmotorlabs.com/events.html` from a 252 px crop of the rendered page.
